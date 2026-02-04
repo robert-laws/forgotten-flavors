@@ -6,7 +6,15 @@ const { recipes } = require("./recipeModel");
 const PORT = process.env.PORT || 3000;
 
 const server = http.createServer((req, res) => {
-  if (req.url === "/" || req.url === "/recipes.html") {
+  if (req.url === "/" || req.url === "/index.html") {
+    const filePath = path.join(__dirname, "index.html");
+    const html = fs.readFileSync(filePath, "utf8");
+    res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+    res.end(html);
+    return;
+  }
+
+  if (req.url === "/recipes.html") {
     const filePath = path.join(__dirname, "recipes.html");
     const html = fs.readFileSync(filePath, "utf8");
     res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
@@ -14,7 +22,7 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  if (req.url === "/api/recipes") {
+  if (req.url === "/recipes.json") {
     res.writeHead(200, { "Content-Type": "application/json; charset=utf-8" });
     res.end(JSON.stringify(recipes, null, 2));
     return;

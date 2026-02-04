@@ -184,7 +184,7 @@
 
       const loadRecipes = async () => {
         try {
-          const response = await fetch("/api/recipes");
+          const response = await fetch("recipes.json");
           if (!response.ok) {
             throw new Error("Failed to load recipes.");
           }
