@@ -1,5 +1,7 @@
 # Forgotten Flavors
 
+[![Deploy Pages](https://github.com/robert-laws/forgotten-flavors/actions/workflows/pages.yml/badge.svg)](https://github.com/robert-laws/forgotten-flavors/actions/workflows/pages.yml)
+
 Simple recipe catalog demo with a lightweight Node server and a static HTML UI.
 
 ## What's Included
