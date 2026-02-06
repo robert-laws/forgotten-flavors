@@ -118,16 +118,16 @@
     <script>
       const grid = document.getElementById("recipeGrid");
 
-      const formatOrigin = (origin) => {
-        const parts = [origin.region, origin.country, origin.city].filter(Boolean);
-        const location = parts.join(", ");
+      const formatOrigin = (recipe) => {
+        const parts = [recipe.culture, recipe.region, recipe.era].filter(Boolean);
+        const location = parts.join(" · ");
         return location ? `Origin: ${location}` : "Origin: Unknown";
       };
 
       const formatIngredient = (item) => {
         const qty = item.quantity !== undefined ? `${item.quantity}` : "";
         const unit = item.unit ? ` ${item.unit}` : "";
-        const prep = item.preparation ? ` (${item.preparation})` : "";
+        const prep = item.prep || item.preparation ? ` (${item.prep || item.preparation})` : "";
         const optional = item.optional ? " (optional)" : "";
         return `${item.name} — ${qty}${unit}${prep}${optional}`.trim();
       };
@@ -142,7 +142,11 @@
 
         const origin = document.createElement("div");
         origin.className = "origin";
-        origin.textContent = formatOrigin(recipe.origin || {});
+        origin.textContent = formatOrigin(recipe || {});
+
+        const summary = document.createElement("p");
+        summary.className = "history";
+        summary.textContent = recipe.summary || "";
 
         const ingredientsSection = document.createElement("div");
         ingredientsSection.innerHTML = "<h3 class='section-title'>Ingredients</h3>";
@@ -170,11 +174,14 @@
         historySection.innerHTML = "<h3 class='section-title'>History</h3>";
         const history = document.createElement("p");
         history.className = "history";
-        history.textContent = recipe.history?.summary || "No history available.";
+        history.textContent = recipe.history?.context || "No history available.";
         historySection.appendChild(history);
 
         card.appendChild(title);
         card.appendChild(origin);
+        if (summary.textContent) {
+          card.appendChild(summary);
+        }
         card.appendChild(ingredientsSection);
         card.appendChild(stepsSection);
         card.appendChild(historySection);

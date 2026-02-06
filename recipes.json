@@ -1,86 +1,2191 @@
 [
   {
-    "name": "Herbed Hearth Bread",
-    "origin": {
-      "region": "Tuscany",
-      "country": "Italy",
-      "city": "Florence",
-      "notes": "Village hearth bread scented with rosemary."
-    },
+    "id": "roman-silphium-honey-chicken",
+    "name": "Silphium Honey Chicken",
+    "era": "Ancient Rome",
+    "region": "Italia",
+    "culture": "Roman",
+    "summary": "Roasted chicken glazed with honey, pepper, and a silphium-inspired herb blend.",
     "ingredients": [
-      { "name": "Flour", "quantity": 500, "unit": "g", "preparation": "", "optional": false },
-      { "name": "Warm water", "quantity": 320, "unit": "ml", "preparation": "", "optional": false },
-      { "name": "Olive oil", "quantity": 30, "unit": "ml", "preparation": "", "optional": false },
-      { "name": "Rosemary", "quantity": 2, "unit": "tsp", "preparation": "chopped", "optional": false },
-      { "name": "Sea salt", "quantity": 1, "unit": "tsp", "preparation": "", "optional": false }
+      {
+        "name": "Chicken thighs",
+        "quantity": 800,
+        "unit": "g",
+        "prep": "bone-in",
+        "optional": false,
+        "substitutions": [
+          "Chicken legs"
+        ]
+      },
+      {
+        "name": "Honey",
+        "quantity": 3,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Olive oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Red wine vinegar",
+        "quantity": 1,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": [
+          "Apple cider vinegar"
+        ]
+      },
+      {
+        "name": "Black pepper",
+        "quantity": 1,
+        "unit": "tsp",
+        "prep": "freshly ground",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Silphium-inspired herb mix",
+        "quantity": 1,
+        "unit": "tsp",
+        "prep": "lovage + fennel seed + asafoetida",
+        "optional": true,
+        "substitutions": [
+          "Lovage"
+        ]
+      },
+      {
+        "name": "Sea salt",
+        "quantity": 1,
+        "unit": "tsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      }
     ],
     "steps": [
       {
         "order": 1,
-        "instruction": "Mix dry ingredients and rosemary.",
+        "instruction": "Whisk honey, oil, vinegar, pepper, silphium mix, and salt into a glaze.",
         "durationMinutes": 5,
-        "notes": ""
+        "tutorialTips": [
+          "Balance sweet and sharp before glazing."
+        ]
       },
       {
         "order": 2,
-        "instruction": "Add water and oil, then knead until smooth.",
-        "durationMinutes": 10,
-        "notes": ""
+        "instruction": "Coat chicken and roast at 400 F (200 C) for 30 minutes.",
+        "durationMinutes": 30,
+        "tutorialTips": [
+          "Roast skin-side up for color."
+        ]
       },
       {
         "order": 3,
-        "instruction": "Proof for 60 minutes, shape, and bake 25 minutes.",
-        "durationMinutes": 85,
-        "notes": ""
+        "instruction": "Brush with extra glaze and roast 10 more minutes until lacquered.",
+        "durationMinutes": 10,
+        "tutorialTips": [
+          "Let rest 5 minutes before serving."
+        ]
       }
     ],
     "history": {
-      "summary": "First recorded in 18th-century village kitchens, baked in stone hearths and flavored with local herbs.",
-      "sources": ["Regional baking journals"],
-      "firstRecordedYear": 1760,
-      "culturalContext": "Rural Tuscan hearth cooking."
+      "context": "Inspired by Roman sweet-sour flavor profiles and the legendary silphium spice.",
+      "firstRecordedYear": 50,
+      "sources": [
+        "Apicius (inspired)",
+        "Culinary reconstructions"
+      ],
+      "authenticity": "inspired"
+    },
+    "commerce": {
+      "kitsAvailable": true,
+      "ingredientLinks": [
+        "Silphium-inspired herb mix",
+        "Roman pantry starter"
+      ]
     }
   },
   {
-    "name": "Citrus Hearth Stew",
-    "origin": {
-      "region": "Andalusia",
-      "country": "Spain",
-      "city": "Seville",
-      "notes": "A coastal winter staple with bright citrus."
-    },
+    "id": "roman-garum-citrus-salad",
+    "name": "Garum Citrus Garden Salad",
+    "era": "Ancient Rome",
+    "region": "Campania",
+    "culture": "Roman",
+    "summary": "A bright salad with citrus, herbs, and a garum-style vinaigrette.",
     "ingredients": [
-      { "name": "Chickpeas", "quantity": 300, "unit": "g", "preparation": "", "optional": false },
-      { "name": "Orange zest", "quantity": 1, "unit": "tbsp", "preparation": "", "optional": false },
-      { "name": "Smoked paprika", "quantity": 1, "unit": "tsp", "preparation": "", "optional": false },
-      { "name": "Tomatoes", "quantity": 2, "unit": "ea", "preparation": "diced", "optional": false },
-      { "name": "Olive oil", "quantity": 2, "unit": "tbsp", "preparation": "", "optional": false }
+      {
+        "name": "Mixed greens",
+        "quantity": 120,
+        "unit": "g",
+        "prep": "",
+        "optional": false,
+        "substitutions": [
+          "Arugula"
+        ]
+      },
+      {
+        "name": "Orange segments",
+        "quantity": 2,
+        "unit": "ea",
+        "prep": "peeled",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Mint",
+        "quantity": 2,
+        "unit": "tbsp",
+        "prep": "torn",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Pine nuts",
+        "quantity": 2,
+        "unit": "tbsp",
+        "prep": "toasted",
+        "optional": true,
+        "substitutions": [
+          "Almonds"
+        ]
+      },
+      {
+        "name": "Olive oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Garum-style sauce",
+        "quantity": 1,
+        "unit": "tsp",
+        "prep": "fish sauce + herbs",
+        "optional": false,
+        "substitutions": [
+          "Fish sauce"
+        ]
+      },
+      {
+        "name": "Lemon juice",
+        "quantity": 1,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      }
     ],
     "steps": [
       {
         "order": 1,
-        "instruction": "Saute tomatoes and paprika in olive oil.",
-        "durationMinutes": 8,
-        "notes": ""
+        "instruction": "Whisk oil, garum-style sauce, and lemon juice.",
+        "durationMinutes": 3,
+        "tutorialTips": [
+          "Add a splash of orange juice for sweetness."
+        ]
       },
       {
         "order": 2,
-        "instruction": "Add chickpeas and simmer for 25 minutes.",
-        "durationMinutes": 25,
-        "notes": ""
+        "instruction": "Toss greens, oranges, and mint with dressing.",
+        "durationMinutes": 4,
+        "tutorialTips": [
+          "Dress just before serving."
+        ]
       },
       {
         "order": 3,
-        "instruction": "Finish with orange zest and rest 5 minutes.",
-        "durationMinutes": 5,
-        "notes": ""
+        "instruction": "Finish with toasted pine nuts.",
+        "durationMinutes": 1,
+        "tutorialTips": []
       }
     ],
     "history": {
-      "summary": "Reflects the region's citrus trade and Moorish spice traditions.",
-      "sources": ["Coastal cookbook notes"],
-      "firstRecordedYear": 1850,
-      "culturalContext": "Andalusian coastal kitchens."
+      "context": "Inspired by Roman use of citrus, herbs, and fish-based seasonings.",
+      "firstRecordedYear": 80,
+      "sources": [
+        "Roman dining notes (inspired)"
+      ],
+      "authenticity": "inspired"
+    },
+    "commerce": {
+      "kitsAvailable": false,
+      "ingredientLinks": []
+    }
+  },
+  {
+    "id": "roman-spelt-porridge-fig",
+    "name": "Spelt Porridge with Figs",
+    "era": "Ancient Rome",
+    "region": "Latium",
+    "culture": "Roman",
+    "summary": "Warm spelt porridge enriched with figs, honey, and warm spices.",
+    "ingredients": [
+      {
+        "name": "Spelt",
+        "quantity": 180,
+        "unit": "g",
+        "prep": "cracked",
+        "optional": false,
+        "substitutions": [
+          "Farro"
+        ]
+      },
+      {
+        "name": "Water",
+        "quantity": 600,
+        "unit": "ml",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Dried figs",
+        "quantity": 6,
+        "unit": "ea",
+        "prep": "chopped",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Honey",
+        "quantity": 2,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Cinnamon",
+        "quantity": 0.5,
+        "unit": "tsp",
+        "prep": "",
+        "optional": true,
+        "substitutions": []
+      },
+      {
+        "name": "Sea salt",
+        "quantity": 0.25,
+        "unit": "tsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "instruction": "Simmer spelt in water with salt until tender.",
+        "durationMinutes": 25,
+        "tutorialTips": [
+          "Stir occasionally to prevent sticking."
+        ]
+      },
+      {
+        "order": 2,
+        "instruction": "Stir in figs and cinnamon, cook 5 minutes.",
+        "durationMinutes": 5,
+        "tutorialTips": []
+      },
+      {
+        "order": 3,
+        "instruction": "Sweeten with honey and serve.",
+        "durationMinutes": 2,
+        "tutorialTips": [
+          "Add a splash of warm milk if desired."
+        ]
+      }
+    ],
+    "history": {
+      "context": "Puls (grain porridge) was a Roman staple; this is a sweetened version.",
+      "firstRecordedYear": 100,
+      "sources": [
+        "Roman staple foods (inspired)"
+      ],
+      "authenticity": "inspired"
+    },
+    "commerce": {
+      "kitsAvailable": true,
+      "ingredientLinks": [
+        "Ancient grains pack"
+      ]
+    }
+  },
+  {
+    "id": "roman-anchovy-herb-olive-spread",
+    "name": "Herbed Olive and Anchovy Spread",
+    "era": "Ancient Rome",
+    "region": "Sicilia",
+    "culture": "Roman",
+    "summary": "Savory olive spread with herbs and anchovy, inspired by garum flavors.",
+    "ingredients": [
+      {
+        "name": "Green olives",
+        "quantity": 150,
+        "unit": "g",
+        "prep": "pitted",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Anchovy fillets",
+        "quantity": 3,
+        "unit": "ea",
+        "prep": "",
+        "optional": false,
+        "substitutions": [
+          "1 tsp fish sauce"
+        ]
+      },
+      {
+        "name": "Olive oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Parsley",
+        "quantity": 2,
+        "unit": "tbsp",
+        "prep": "chopped",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Coriander seed",
+        "quantity": 0.5,
+        "unit": "tsp",
+        "prep": "toasted",
+        "optional": true,
+        "substitutions": []
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "instruction": "Pulse olives, anchovy, herbs, and oil into a coarse paste.",
+        "durationMinutes": 5,
+        "tutorialTips": [
+          "Keep texture rustic."
+        ]
+      },
+      {
+        "order": 2,
+        "instruction": "Taste and adjust with oil or herbs.",
+        "durationMinutes": 2,
+        "tutorialTips": []
+      }
+    ],
+    "history": {
+      "context": "Inspired by Roman olive preparations and fish-seasoned condiments.",
+      "firstRecordedYear": 70,
+      "sources": [
+        "Roman pantry practices (inspired)"
+      ],
+      "authenticity": "inspired"
+    },
+    "commerce": {
+      "kitsAvailable": false,
+      "ingredientLinks": []
+    }
+  },
+  {
+    "id": "roman-barley-beet-stew",
+    "name": "Barley and Beet Hearth Stew",
+    "era": "Ancient Rome",
+    "region": "Etruria",
+    "culture": "Roman",
+    "summary": "Earthy barley stew with beets, leeks, and herbal oil.",
+    "ingredients": [
+      {
+        "name": "Barley",
+        "quantity": 200,
+        "unit": "g",
+        "prep": "",
+        "optional": false,
+        "substitutions": [
+          "Farro"
+        ]
+      },
+      {
+        "name": "Beets",
+        "quantity": 2,
+        "unit": "ea",
+        "prep": "diced",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Leek",
+        "quantity": 1,
+        "unit": "ea",
+        "prep": "sliced",
+        "optional": false,
+        "substitutions": [
+          "Onion"
+        ]
+      },
+      {
+        "name": "Olive oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Vegetable stock",
+        "quantity": 750,
+        "unit": "ml",
+        "prep": "warm",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Lovage",
+        "quantity": 1,
+        "unit": "tsp",
+        "prep": "chopped",
+        "optional": true,
+        "substitutions": [
+          "Celery leaves"
+        ]
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "instruction": "Sweat leek in olive oil until soft.",
+        "durationMinutes": 6,
+        "tutorialTips": []
+      },
+      {
+        "order": 2,
+        "instruction": "Add barley and beets; stir 2 minutes.",
+        "durationMinutes": 2,
+        "tutorialTips": []
+      },
+      {
+        "order": 3,
+        "instruction": "Pour in stock and simmer until barley is tender.",
+        "durationMinutes": 35,
+        "tutorialTips": [
+          "Add water if too thick."
+        ]
+      },
+      {
+        "order": 4,
+        "instruction": "Finish with lovage and serve.",
+        "durationMinutes": 2,
+        "tutorialTips": []
+      }
+    ],
+    "history": {
+      "context": "A rustic grain stew inspired by Roman rural cooking.",
+      "firstRecordedYear": 120,
+      "sources": [
+        "Roman agrarian notes (inspired)"
+      ],
+      "authenticity": "inspired"
+    },
+    "commerce": {
+      "kitsAvailable": true,
+      "ingredientLinks": [
+        "Ancient grains pack"
+      ]
+    }
+  },
+  {
+    "id": "roman-cheese-herb-cakes",
+    "name": "Cheese and Herb Hearth Cakes",
+    "era": "Ancient Rome",
+    "region": "Latium",
+    "culture": "Roman",
+    "summary": "Pan-seared cheese cakes with herbs and honey drizzle.",
+    "ingredients": [
+      {
+        "name": "Fresh ricotta",
+        "quantity": 250,
+        "unit": "g",
+        "prep": "",
+        "optional": false,
+        "substitutions": [
+          "Fresh farmer cheese"
+        ]
+      },
+      {
+        "name": "Flour",
+        "quantity": 60,
+        "unit": "g",
+        "prep": "",
+        "optional": false,
+        "substitutions": [
+          "Spelt flour"
+        ]
+      },
+      {
+        "name": "Egg",
+        "quantity": 1,
+        "unit": "ea",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Dill",
+        "quantity": 1,
+        "unit": "tbsp",
+        "prep": "chopped",
+        "optional": true,
+        "substitutions": [
+          "Fennel fronds"
+        ]
+      },
+      {
+        "name": "Honey",
+        "quantity": 1,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": true,
+        "substitutions": []
+      },
+      {
+        "name": "Olive oil",
+        "quantity": 1,
+        "unit": "tbsp",
+        "prep": "for frying",
+        "optional": false,
+        "substitutions": []
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "instruction": "Mix ricotta, flour, egg, and herbs into a thick batter.",
+        "durationMinutes": 6,
+        "tutorialTips": [
+          "If too loose, add a spoon of flour."
+        ]
+      },
+      {
+        "order": 2,
+        "instruction": "Pan-sear spoonfuls until golden on both sides.",
+        "durationMinutes": 8,
+        "tutorialTips": []
+      },
+      {
+        "order": 3,
+        "instruction": "Drizzle with honey to serve.",
+        "durationMinutes": 1,
+        "tutorialTips": []
+      }
+    ],
+    "history": {
+      "context": "Inspired by Roman libum and cheese-based offerings.",
+      "firstRecordedYear": 50,
+      "sources": [
+        "Cato the Elder (inspired)"
+      ],
+      "authenticity": "inspired"
+    },
+    "commerce": {
+      "kitsAvailable": false,
+      "ingredientLinks": []
+    }
+  },
+  {
+    "id": "roman-lentil-leek-pot",
+    "name": "Lentil and Leek Pot",
+    "era": "Ancient Rome",
+    "region": "Umbria",
+    "culture": "Roman",
+    "summary": "Hearty lentils stewed with leeks, coriander, and vinegar.",
+    "ingredients": [
+      {
+        "name": "Green lentils",
+        "quantity": 250,
+        "unit": "g",
+        "prep": "rinsed",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Leek",
+        "quantity": 1,
+        "unit": "ea",
+        "prep": "sliced",
+        "optional": false,
+        "substitutions": [
+          "Onion"
+        ]
+      },
+      {
+        "name": "Garlic",
+        "quantity": 2,
+        "unit": "cloves",
+        "prep": "minced",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Coriander seed",
+        "quantity": 1,
+        "unit": "tsp",
+        "prep": "crushed",
+        "optional": true,
+        "substitutions": []
+      },
+      {
+        "name": "Red wine vinegar",
+        "quantity": 1,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Olive oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "instruction": "Sweat leek and garlic in olive oil.",
+        "durationMinutes": 6,
+        "tutorialTips": []
+      },
+      {
+        "order": 2,
+        "instruction": "Add lentils and coriander; cover with water and simmer.",
+        "durationMinutes": 25,
+        "tutorialTips": [
+          "Keep lentils just tender."
+        ]
+      },
+      {
+        "order": 3,
+        "instruction": "Finish with vinegar and serve.",
+        "durationMinutes": 2,
+        "tutorialTips": []
+      }
+    ],
+    "history": {
+      "context": "Lentils were common in Roman diets; vinegar brightens the dish.",
+      "firstRecordedYear": 90,
+      "sources": [
+        "Roman agrarian notes (inspired)"
+      ],
+      "authenticity": "inspired"
+    },
+    "commerce": {
+      "kitsAvailable": true,
+      "ingredientLinks": [
+        "Roman pantry starter"
+      ]
+    }
+  },
+  {
+    "id": "roman-pistachio-dates",
+    "name": "Pistachio and Date Bites",
+    "era": "Ancient Rome",
+    "region": "Syria Palaestina",
+    "culture": "Roman",
+    "summary": "Sticky date confections with pistachio and rosewater.",
+    "ingredients": [
+      {
+        "name": "Dates",
+        "quantity": 200,
+        "unit": "g",
+        "prep": "pitted",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Pistachios",
+        "quantity": 60,
+        "unit": "g",
+        "prep": "chopped",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Rosewater",
+        "quantity": 1,
+        "unit": "tsp",
+        "prep": "",
+        "optional": true,
+        "substitutions": []
+      },
+      {
+        "name": "Honey",
+        "quantity": 1,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Sea salt",
+        "quantity": 0.25,
+        "unit": "tsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "instruction": "Warm dates with honey and salt, then mash.",
+        "durationMinutes": 5,
+        "tutorialTips": [
+          "Use a splash of water if too dry."
+        ]
+      },
+      {
+        "order": 2,
+        "instruction": "Fold in pistachios and rosewater.",
+        "durationMinutes": 3,
+        "tutorialTips": []
+      },
+      {
+        "order": 3,
+        "instruction": "Shape into small bites and chill.",
+        "durationMinutes": 10,
+        "tutorialTips": []
+      }
+    ],
+    "history": {
+      "context": "Sweetmeats were popular in Roman banquets; this is a creative echo.",
+      "firstRecordedYear": 120,
+      "sources": [
+        "Banquet dessert notes (inspired)"
+      ],
+      "authenticity": "inspired"
+    },
+    "commerce": {
+      "kitsAvailable": false,
+      "ingredientLinks": []
+    }
+  },
+  {
+    "id": "roman-pear-wine-relish",
+    "name": "Pear and Spiced Wine Relish",
+    "era": "Ancient Rome",
+    "region": "Gallia",
+    "culture": "Roman",
+    "summary": "Pears simmered in spiced wine with honey and black pepper.",
+    "ingredients": [
+      {
+        "name": "Pears",
+        "quantity": 3,
+        "unit": "ea",
+        "prep": "sliced",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Red wine",
+        "quantity": 250,
+        "unit": "ml",
+        "prep": "",
+        "optional": false,
+        "substitutions": [
+          "Grape juice"
+        ]
+      },
+      {
+        "name": "Honey",
+        "quantity": 2,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Black pepper",
+        "quantity": 0.5,
+        "unit": "tsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Bay leaf",
+        "quantity": 1,
+        "unit": "ea",
+        "prep": "",
+        "optional": true,
+        "substitutions": []
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "instruction": "Simmer pears in wine with honey and spices.",
+        "durationMinutes": 12,
+        "tutorialTips": [
+          "Keep a gentle simmer to avoid mush."
+        ]
+      },
+      {
+        "order": 2,
+        "instruction": "Reduce slightly and serve warm or cool.",
+        "durationMinutes": 5,
+        "tutorialTips": []
+      }
+    ],
+    "history": {
+      "context": "Fruit cooked in wine appears in Roman culinary traditions.",
+      "firstRecordedYear": 60,
+      "sources": [
+        "Apicius (inspired)"
+      ],
+      "authenticity": "inspired"
+    },
+    "commerce": {
+      "kitsAvailable": true,
+      "ingredientLinks": [
+        "Roman dessert spices"
+      ]
+    }
+  },
+  {
+    "id": "roman-farro-dumplings",
+    "name": "Farro Dumplings with Herb Oil",
+    "era": "Ancient Rome",
+    "region": "Latium",
+    "culture": "Roman",
+    "summary": "Soft dumplings made from farro flour, dressed in herb oil.",
+    "ingredients": [
+      {
+        "name": "Farro flour",
+        "quantity": 200,
+        "unit": "g",
+        "prep": "",
+        "optional": false,
+        "substitutions": [
+          "Spelt flour"
+        ]
+      },
+      {
+        "name": "Water",
+        "quantity": 140,
+        "unit": "ml",
+        "prep": "warm",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Olive oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Parsley",
+        "quantity": 2,
+        "unit": "tbsp",
+        "prep": "chopped",
+        "optional": true,
+        "substitutions": []
+      },
+      {
+        "name": "Garlic",
+        "quantity": 1,
+        "unit": "clove",
+        "prep": "minced",
+        "optional": true,
+        "substitutions": []
+      },
+      {
+        "name": "Sea salt",
+        "quantity": 0.5,
+        "unit": "tsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "instruction": "Mix flour, salt, and water into a soft dough.",
+        "durationMinutes": 6,
+        "tutorialTips": [
+          "Add a splash more water if dry."
+        ]
+      },
+      {
+        "order": 2,
+        "instruction": "Shape into small dumplings and boil until they float.",
+        "durationMinutes": 6,
+        "tutorialTips": []
+      },
+      {
+        "order": 3,
+        "instruction": "Toss with olive oil, parsley, and garlic.",
+        "durationMinutes": 3,
+        "tutorialTips": []
+      }
+    ],
+    "history": {
+      "context": "Inspired by Roman grain preparations and herb oils.",
+      "firstRecordedYear": 100,
+      "sources": [
+        "Roman grain cookery (inspired)"
+      ],
+      "authenticity": "inspired"
+    },
+    "commerce": {
+      "kitsAvailable": false,
+      "ingredientLinks": []
+    }
+  },
+  {
+    "id": "roman-saffron-scallops",
+    "name": "Saffron Scallops with Grape Must",
+    "era": "Ancient Rome",
+    "region": "Baetica",
+    "culture": "Roman",
+    "summary": "Seared scallops with saffron and a sweet-sour grape reduction.",
+    "ingredients": [
+      {
+        "name": "Scallops",
+        "quantity": 300,
+        "unit": "g",
+        "prep": "patted dry",
+        "optional": false,
+        "substitutions": [
+          "Shrimp"
+        ]
+      },
+      {
+        "name": "Olive oil",
+        "quantity": 1,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Saffron",
+        "quantity": 0.1,
+        "unit": "tsp",
+        "prep": "steeped",
+        "optional": true,
+        "substitutions": []
+      },
+      {
+        "name": "Grape must",
+        "quantity": 120,
+        "unit": "ml",
+        "prep": "or grape juice",
+        "optional": false,
+        "substitutions": [
+          "Grape juice"
+        ]
+      },
+      {
+        "name": "Red wine vinegar",
+        "quantity": 1,
+        "unit": "tsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "instruction": "Reduce grape must with vinegar to a syrup.",
+        "durationMinutes": 8,
+        "tutorialTips": [
+          "Keep it glossy, not sticky."
+        ]
+      },
+      {
+        "order": 2,
+        "instruction": "Sear scallops in oil until golden.",
+        "durationMinutes": 4,
+        "tutorialTips": [
+          "Do not move for the first 2 minutes."
+        ]
+      },
+      {
+        "order": 3,
+        "instruction": "Finish with saffron and drizzle syrup.",
+        "durationMinutes": 2,
+        "tutorialTips": []
+      }
+    ],
+    "history": {
+      "context": "Sweet-sour sauces and saffron were prized in Roman kitchens.",
+      "firstRecordedYear": 90,
+      "sources": [
+        "Roman coastal recipes (inspired)"
+      ],
+      "authenticity": "inspired"
+    },
+    "commerce": {
+      "kitsAvailable": true,
+      "ingredientLinks": [
+        "Saffron threads",
+        "Roman pantry starter"
+      ]
+    }
+  },
+  {
+    "id": "roman-honey-wine-custard",
+    "name": "Honeyed Wine Custard",
+    "era": "Ancient Rome",
+    "region": "Italia",
+    "culture": "Roman",
+    "summary": "Silky custard scented with wine, bay, and honey.",
+    "ingredients": [
+      {
+        "name": "Milk",
+        "quantity": 400,
+        "unit": "ml",
+        "prep": "",
+        "optional": false,
+        "substitutions": [
+          "Almond milk"
+        ]
+      },
+      {
+        "name": "Egg yolks",
+        "quantity": 3,
+        "unit": "ea",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Honey",
+        "quantity": 3,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "White wine",
+        "quantity": 120,
+        "unit": "ml",
+        "prep": "",
+        "optional": false,
+        "substitutions": [
+          "Grape juice"
+        ]
+      },
+      {
+        "name": "Bay leaf",
+        "quantity": 1,
+        "unit": "ea",
+        "prep": "",
+        "optional": true,
+        "substitutions": []
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "instruction": "Warm milk with bay leaf; remove leaf.",
+        "durationMinutes": 5,
+        "tutorialTips": []
+      },
+      {
+        "order": 2,
+        "instruction": "Whisk yolks, honey, and wine; temper with warm milk.",
+        "durationMinutes": 6,
+        "tutorialTips": [
+          "Pour slowly to avoid scrambling."
+        ]
+      },
+      {
+        "order": 3,
+        "instruction": "Cook gently until thickened.",
+        "durationMinutes": 8,
+        "tutorialTips": [
+          "Do not boil."
+        ]
+      }
+    ],
+    "history": {
+      "context": "Roman desserts often combined wine and honey.",
+      "firstRecordedYear": 100,
+      "sources": [
+        "Apicius (inspired)"
+      ],
+      "authenticity": "inspired"
+    },
+    "commerce": {
+      "kitsAvailable": false,
+      "ingredientLinks": []
+    }
+  },
+  {
+    "id": "roman-fig-vinegar-chutney",
+    "name": "Fig and Vinegar Chutney",
+    "era": "Ancient Rome",
+    "region": "Italia",
+    "culture": "Roman",
+    "summary": "Sweet-sour fig relish with wine vinegar and pepper.",
+    "ingredients": [
+      {
+        "name": "Dried figs",
+        "quantity": 150,
+        "unit": "g",
+        "prep": "chopped",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Red wine vinegar",
+        "quantity": 2,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Honey",
+        "quantity": 1,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Black pepper",
+        "quantity": 0.5,
+        "unit": "tsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Water",
+        "quantity": 120,
+        "unit": "ml",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "instruction": "Simmer figs with water, vinegar, honey, and pepper.",
+        "durationMinutes": 12,
+        "tutorialTips": [
+          "Stir until jammy."
+        ]
+      },
+      {
+        "order": 2,
+        "instruction": "Cool and serve with cheese or meats.",
+        "durationMinutes": 5,
+        "tutorialTips": []
+      }
+    ],
+    "history": {
+      "context": "Sweet-sour relishes echo Roman palate preferences.",
+      "firstRecordedYear": 80,
+      "sources": [
+        "Roman pantry notes (inspired)"
+      ],
+      "authenticity": "inspired"
+    },
+    "commerce": {
+      "kitsAvailable": true,
+      "ingredientLinks": [
+        "Roman dessert spices"
+      ]
+    }
+  },
+  {
+    "id": "roman-herb-salt-flatbread",
+    "name": "Herb and Sea Salt Flatbread",
+    "era": "Ancient Rome",
+    "region": "Italia",
+    "culture": "Roman",
+    "summary": "Thin flatbread with rosemary, thyme, and flaky salt.",
+    "ingredients": [
+      {
+        "name": "Flour",
+        "quantity": 300,
+        "unit": "g",
+        "prep": "",
+        "optional": false,
+        "substitutions": [
+          "Spelt flour"
+        ]
+      },
+      {
+        "name": "Water",
+        "quantity": 180,
+        "unit": "ml",
+        "prep": "warm",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Olive oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Rosemary",
+        "quantity": 1,
+        "unit": "tsp",
+        "prep": "chopped",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Thyme",
+        "quantity": 1,
+        "unit": "tsp",
+        "prep": "chopped",
+        "optional": true,
+        "substitutions": []
+      },
+      {
+        "name": "Sea salt",
+        "quantity": 1,
+        "unit": "tsp",
+        "prep": "flaky",
+        "optional": false,
+        "substitutions": []
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "instruction": "Mix flour, water, oil, and herbs into a dough.",
+        "durationMinutes": 6,
+        "tutorialTips": []
+      },
+      {
+        "order": 2,
+        "instruction": "Roll thin, sprinkle salt, and bake at 425 F (220 C).",
+        "durationMinutes": 12,
+        "tutorialTips": [
+          "Bake until blistered."
+        ]
+      }
+    ],
+    "history": {
+      "context": "Flatbreads with herbs were common in Roman kitchens.",
+      "firstRecordedYear": 30,
+      "sources": [
+        "Roman bread notes (inspired)"
+      ],
+      "authenticity": "inspired"
+    },
+    "commerce": {
+      "kitsAvailable": true,
+      "ingredientLinks": [
+        "Roman baking kit"
+      ]
+    }
+  },
+  {
+    "id": "roman-roasted-carrots-cumin",
+    "name": "Roasted Carrots with Cumin and Honey",
+    "era": "Ancient Rome",
+    "region": "Africa Proconsularis",
+    "culture": "Roman",
+    "summary": "Carrots roasted with cumin, honey, and vinegar.",
+    "ingredients": [
+      {
+        "name": "Carrots",
+        "quantity": 500,
+        "unit": "g",
+        "prep": "halved",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Honey",
+        "quantity": 1,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Cumin",
+        "quantity": 0.5,
+        "unit": "tsp",
+        "prep": "toasted",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Olive oil",
+        "quantity": 1,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Red wine vinegar",
+        "quantity": 1,
+        "unit": "tsp",
+        "prep": "",
+        "optional": true,
+        "substitutions": []
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "instruction": "Toss carrots with oil, honey, cumin, and vinegar.",
+        "durationMinutes": 4,
+        "tutorialTips": []
+      },
+      {
+        "order": 2,
+        "instruction": "Roast at 425 F (220 C) until caramelized.",
+        "durationMinutes": 20,
+        "tutorialTips": [
+          "Turn once midway."
+        ]
+      }
+    ],
+    "history": {
+      "context": "Cumin and honey appear in Roman seasoning traditions.",
+      "firstRecordedYear": 75,
+      "sources": [
+        "Roman flavor notes (inspired)"
+      ],
+      "authenticity": "inspired"
+    },
+    "commerce": {
+      "kitsAvailable": true,
+      "ingredientLinks": [
+        "Roman spice trio"
+      ]
+    }
+  },
+  {
+    "id": "greek-olive-oil-cake",
+    "name": "Olive Oil Honey Cake",
+    "era": "Classical Greece",
+    "region": "Attica",
+    "culture": "Greek",
+    "summary": "Moist olive oil cake with honey and sesame.",
+    "ingredients": [
+      {
+        "name": "Flour",
+        "quantity": 220,
+        "unit": "g",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Olive oil",
+        "quantity": 120,
+        "unit": "ml",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Honey",
+        "quantity": 3,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Eggs",
+        "quantity": 2,
+        "unit": "ea",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Sesame seeds",
+        "quantity": 1,
+        "unit": "tbsp",
+        "prep": "toasted",
+        "optional": true,
+        "substitutions": []
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "instruction": "Whisk oil, honey, and eggs until glossy.",
+        "durationMinutes": 4,
+        "tutorialTips": []
+      },
+      {
+        "order": 2,
+        "instruction": "Fold in flour, pour into a pan, and bake at 350 F (175 C).",
+        "durationMinutes": 25,
+        "tutorialTips": []
+      },
+      {
+        "order": 3,
+        "instruction": "Finish with sesame.",
+        "durationMinutes": 1,
+        "tutorialTips": []
+      }
+    ],
+    "history": {
+      "context": "Olive oil and honey were central to Greek sweets.",
+      "firstRecordedYear": 450,
+      "sources": [
+        "Greek festival foods (inspired)"
+      ],
+      "authenticity": "inspired"
+    },
+    "commerce": {
+      "kitsAvailable": true,
+      "ingredientLinks": [
+        "Greek baking kit"
+      ]
+    }
+  },
+  {
+    "id": "greek-lentil-honey-stew",
+    "name": "Lentils with Honeyed Herbs",
+    "era": "Classical Greece",
+    "region": "Aegean",
+    "culture": "Greek",
+    "summary": "Lentil stew brightened with honey, oregano, and lemon.",
+    "ingredients": [
+      {
+        "name": "Brown lentils",
+        "quantity": 250,
+        "unit": "g",
+        "prep": "rinsed",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Onion",
+        "quantity": 1,
+        "unit": "ea",
+        "prep": "diced",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Olive oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Honey",
+        "quantity": 1,
+        "unit": "tsp",
+        "prep": "",
+        "optional": true,
+        "substitutions": []
+      },
+      {
+        "name": "Oregano",
+        "quantity": 1,
+        "unit": "tsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Lemon juice",
+        "quantity": 1,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "instruction": "Saute onion in oil until translucent.",
+        "durationMinutes": 6,
+        "tutorialTips": []
+      },
+      {
+        "order": 2,
+        "instruction": "Add lentils and water; simmer until tender.",
+        "durationMinutes": 25,
+        "tutorialTips": []
+      },
+      {
+        "order": 3,
+        "instruction": "Stir in oregano, lemon, and honey.",
+        "durationMinutes": 3,
+        "tutorialTips": []
+      }
+    ],
+    "history": {
+      "context": "Greek lentil dishes often used herbs and citrus.",
+      "firstRecordedYear": 400,
+      "sources": [
+        "Greek household notes (inspired)"
+      ],
+      "authenticity": "inspired"
+    },
+    "commerce": {
+      "kitsAvailable": false,
+      "ingredientLinks": []
+    }
+  },
+  {
+    "id": "greek-barley-herb-salad",
+    "name": "Barley and Herb Salad",
+    "era": "Classical Greece",
+    "region": "Peloponnese",
+    "culture": "Greek",
+    "summary": "Chewy barley with cucumber, herbs, and lemon oil.",
+    "ingredients": [
+      {
+        "name": "Barley",
+        "quantity": 200,
+        "unit": "g",
+        "prep": "cooked",
+        "optional": false,
+        "substitutions": [
+          "Farro"
+        ]
+      },
+      {
+        "name": "Cucumber",
+        "quantity": 1,
+        "unit": "ea",
+        "prep": "diced",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Parsley",
+        "quantity": 2,
+        "unit": "tbsp",
+        "prep": "chopped",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Dill",
+        "quantity": 1,
+        "unit": "tbsp",
+        "prep": "chopped",
+        "optional": true,
+        "substitutions": []
+      },
+      {
+        "name": "Olive oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Lemon juice",
+        "quantity": 1,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "instruction": "Toss barley with cucumber and herbs.",
+        "durationMinutes": 4,
+        "tutorialTips": []
+      },
+      {
+        "order": 2,
+        "instruction": "Dress with oil and lemon.",
+        "durationMinutes": 2,
+        "tutorialTips": []
+      }
+    ],
+    "history": {
+      "context": "Barley was a common Greek grain; salads used fresh herbs.",
+      "firstRecordedYear": 430,
+      "sources": [
+        "Greek agrarian notes (inspired)"
+      ],
+      "authenticity": "inspired"
+    },
+    "commerce": {
+      "kitsAvailable": false,
+      "ingredientLinks": []
+    }
+  },
+  {
+    "id": "greek-fig-feta-plate",
+    "name": "Fig and Feta Plate",
+    "era": "Classical Greece",
+    "region": "Aegean",
+    "culture": "Greek",
+    "summary": "Fresh figs with brined cheese, herbs, and honey.",
+    "ingredients": [
+      {
+        "name": "Fresh figs",
+        "quantity": 6,
+        "unit": "ea",
+        "prep": "halved",
+        "optional": false,
+        "substitutions": [
+          "Dried figs"
+        ]
+      },
+      {
+        "name": "Feta",
+        "quantity": 120,
+        "unit": "g",
+        "prep": "crumbled",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Honey",
+        "quantity": 1,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": true,
+        "substitutions": []
+      },
+      {
+        "name": "Thyme",
+        "quantity": 0.5,
+        "unit": "tsp",
+        "prep": "",
+        "optional": true,
+        "substitutions": []
+      },
+      {
+        "name": "Olive oil",
+        "quantity": 1,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "instruction": "Arrange figs and feta on a plate.",
+        "durationMinutes": 3,
+        "tutorialTips": []
+      },
+      {
+        "order": 2,
+        "instruction": "Drizzle with oil, honey, and thyme.",
+        "durationMinutes": 2,
+        "tutorialTips": []
+      }
+    ],
+    "history": {
+      "context": "Figs and brined cheeses were staples in Greek diets.",
+      "firstRecordedYear": 500,
+      "sources": [
+        "Greek symposium fare (inspired)"
+      ],
+      "authenticity": "inspired"
+    },
+    "commerce": {
+      "kitsAvailable": true,
+      "ingredientLinks": [
+        "Greek cheese pairings"
+      ]
+    }
+  },
+  {
+    "id": "greek-garlic-oregano-lamb",
+    "name": "Garlic and Oregano Lamb Skewers",
+    "era": "Classical Greece",
+    "region": "Macedonia",
+    "culture": "Greek",
+    "summary": "Lamb skewers marinated with oregano, garlic, and wine.",
+    "ingredients": [
+      {
+        "name": "Lamb",
+        "quantity": 500,
+        "unit": "g",
+        "prep": "cubed",
+        "optional": false,
+        "substitutions": [
+          "Beef"
+        ]
+      },
+      {
+        "name": "Olive oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Red wine",
+        "quantity": 2,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Garlic",
+        "quantity": 2,
+        "unit": "cloves",
+        "prep": "minced",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Oregano",
+        "quantity": 1,
+        "unit": "tsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "instruction": "Marinate lamb with oil, wine, garlic, and oregano.",
+        "durationMinutes": 15,
+        "tutorialTips": [
+          "Longer marination adds depth."
+        ]
+      },
+      {
+        "order": 2,
+        "instruction": "Skewer and grill until charred and juicy.",
+        "durationMinutes": 8,
+        "tutorialTips": []
+      }
+    ],
+    "history": {
+      "context": "Greek grilling traditions centered on lamb and herbs.",
+      "firstRecordedYear": 450,
+      "sources": [
+        "Greek campfire notes (inspired)"
+      ],
+      "authenticity": "inspired"
+    },
+    "commerce": {
+      "kitsAvailable": true,
+      "ingredientLinks": [
+        "Greek herb bundle"
+      ]
+    }
+  },
+  {
+    "id": "greek-eggplant-grape-must",
+    "name": "Eggplant with Grape Must",
+    "era": "Classical Greece",
+    "region": "Ionia",
+    "culture": "Greek",
+    "summary": "Roasted eggplant with sweet-sour grape must and herbs.",
+    "ingredients": [
+      {
+        "name": "Eggplant",
+        "quantity": 2,
+        "unit": "ea",
+        "prep": "sliced",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Grape must",
+        "quantity": 120,
+        "unit": "ml",
+        "prep": "or grape juice",
+        "optional": false,
+        "substitutions": [
+          "Grape juice"
+        ]
+      },
+      {
+        "name": "Olive oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Mint",
+        "quantity": 1,
+        "unit": "tbsp",
+        "prep": "chopped",
+        "optional": true,
+        "substitutions": []
+      },
+      {
+        "name": "Sea salt",
+        "quantity": 0.5,
+        "unit": "tsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "instruction": "Brush eggplant with oil and roast until tender.",
+        "durationMinutes": 20,
+        "tutorialTips": []
+      },
+      {
+        "order": 2,
+        "instruction": "Reduce grape must to a syrup.",
+        "durationMinutes": 8,
+        "tutorialTips": []
+      },
+      {
+        "order": 3,
+        "instruction": "Drizzle eggplant with syrup, salt, and mint.",
+        "durationMinutes": 2,
+        "tutorialTips": []
+      }
+    ],
+    "history": {
+      "context": "Sweet-sour sauces were prized across the Aegean.",
+      "firstRecordedYear": 420,
+      "sources": [
+        "Greek coastal notes (inspired)"
+      ],
+      "authenticity": "inspired"
+    },
+    "commerce": {
+      "kitsAvailable": false,
+      "ingredientLinks": []
+    }
+  },
+  {
+    "id": "greek-sesame-honey-bites",
+    "name": "Sesame Honey Bites",
+    "era": "Classical Greece",
+    "region": "Attica",
+    "culture": "Greek",
+    "summary": "Toasted sesame and honey confections.",
+    "ingredients": [
+      {
+        "name": "Sesame seeds",
+        "quantity": 120,
+        "unit": "g",
+        "prep": "toasted",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Honey",
+        "quantity": 3,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Sea salt",
+        "quantity": 0.25,
+        "unit": "tsp",
+        "prep": "",
+        "optional": true,
+        "substitutions": []
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "instruction": "Warm honey and stir in sesame seeds and salt.",
+        "durationMinutes": 4,
+        "tutorialTips": []
+      },
+      {
+        "order": 2,
+        "instruction": "Spread on parchment and cool.",
+        "durationMinutes": 10,
+        "tutorialTips": [
+          "Score before fully set for easy pieces."
+        ]
+      }
+    ],
+    "history": {
+      "context": "Sesame and honey sweets are mentioned in Greek festival fare.",
+      "firstRecordedYear": 470,
+      "sources": [
+        "Greek festival notes (inspired)"
+      ],
+      "authenticity": "inspired"
+    },
+    "commerce": {
+      "kitsAvailable": true,
+      "ingredientLinks": [
+        "Greek sweets kit"
+      ]
+    }
+  },
+  {
+    "id": "greek-millet-porridge",
+    "name": "Millet Porridge with Grapes",
+    "era": "Classical Greece",
+    "region": "Thrace",
+    "culture": "Greek",
+    "summary": "Millet simmered with grapes, honey, and bay.",
+    "ingredients": [
+      {
+        "name": "Millet",
+        "quantity": 180,
+        "unit": "g",
+        "prep": "rinsed",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Water",
+        "quantity": 600,
+        "unit": "ml",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Grapes",
+        "quantity": 120,
+        "unit": "g",
+        "prep": "halved",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Honey",
+        "quantity": 1,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": true,
+        "substitutions": []
+      },
+      {
+        "name": "Bay leaf",
+        "quantity": 1,
+        "unit": "ea",
+        "prep": "",
+        "optional": true,
+        "substitutions": []
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "instruction": "Simmer millet with bay leaf until tender.",
+        "durationMinutes": 20,
+        "tutorialTips": []
+      },
+      {
+        "order": 2,
+        "instruction": "Stir in grapes and honey.",
+        "durationMinutes": 3,
+        "tutorialTips": []
+      }
+    ],
+    "history": {
+      "context": "Millet was a common grain in northern Greek regions.",
+      "firstRecordedYear": 430,
+      "sources": [
+        "Greek agrarian notes (inspired)"
+      ],
+      "authenticity": "inspired"
+    },
+    "commerce": {
+      "kitsAvailable": false,
+      "ingredientLinks": []
+    }
+  },
+  {
+    "id": "greek-wine-poached-pears",
+    "name": "Wine-Poached Pears with Laurel",
+    "era": "Classical Greece",
+    "region": "Aegean",
+    "culture": "Greek",
+    "summary": "Pears poached in red wine, honey, and laurel.",
+    "ingredients": [
+      {
+        "name": "Pears",
+        "quantity": 3,
+        "unit": "ea",
+        "prep": "peeled",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Red wine",
+        "quantity": 300,
+        "unit": "ml",
+        "prep": "",
+        "optional": false,
+        "substitutions": [
+          "Grape juice"
+        ]
+      },
+      {
+        "name": "Honey",
+        "quantity": 2,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Laurel leaf",
+        "quantity": 1,
+        "unit": "ea",
+        "prep": "",
+        "optional": true,
+        "substitutions": []
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "instruction": "Simmer pears in wine with honey and laurel.",
+        "durationMinutes": 15,
+        "tutorialTips": [
+          "Keep a gentle simmer."
+        ]
+      },
+      {
+        "order": 2,
+        "instruction": "Reduce liquid and serve pears with syrup.",
+        "durationMinutes": 5,
+        "tutorialTips": []
+      }
+    ],
+    "history": {
+      "context": "Wine-poached fruits appear in Greek banquet traditions.",
+      "firstRecordedYear": 410,
+      "sources": [
+        "Greek symposium notes (inspired)"
+      ],
+      "authenticity": "inspired"
+    },
+    "commerce": {
+      "kitsAvailable": true,
+      "ingredientLinks": [
+        "Greek dessert spices"
+      ]
+    }
+  },
+  {
+    "id": "greek-chickpea-olive-bake",
+    "name": "Chickpea and Olive Bake",
+    "era": "Classical Greece",
+    "region": "Crete",
+    "culture": "Greek",
+    "summary": "Baked chickpeas with olives, oregano, and garlic.",
+    "ingredients": [
+      {
+        "name": "Chickpeas",
+        "quantity": 300,
+        "unit": "g",
+        "prep": "cooked",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Olives",
+        "quantity": 80,
+        "unit": "g",
+        "prep": "pitted",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Garlic",
+        "quantity": 2,
+        "unit": "cloves",
+        "prep": "sliced",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Olive oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": false,
+        "substitutions": []
+      },
+      {
+        "name": "Oregano",
+        "quantity": 1,
+        "unit": "tsp",
+        "prep": "",
+        "optional": true,
+        "substitutions": []
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "instruction": "Toss chickpeas with oil, garlic, olives, and oregano.",
+        "durationMinutes": 4,
+        "tutorialTips": []
+      },
+      {
+        "order": 2,
+        "instruction": "Bake at 400 F (200 C) until fragrant.",
+        "durationMinutes": 12,
+        "tutorialTips": []
+      }
+    ],
+    "history": {
+      "context": "Chickpeas and olives were staples on Greek islands.",
+      "firstRecordedYear": 420,
+      "sources": [
+        "Greek island notes (inspired)"
+      ],
+      "authenticity": "inspired"
+    },
+    "commerce": {
+      "kitsAvailable": false,
+      "ingredientLinks": []
     }
   }
 ]
