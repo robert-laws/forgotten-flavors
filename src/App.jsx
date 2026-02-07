@@ -70,6 +70,14 @@ function getMockPrice(itemName) {
   return Number((5 + (hash % 160) / 10).toFixed(2))
 }
 
+function getRecipeSubstitutions(recipe) {
+  const substitutions = (recipe.ingredients || [])
+    .flatMap((ingredient) => ingredient.substitutions || [])
+    .filter(Boolean)
+
+  return Array.from(new Set(substitutions))
+}
+
 function App() {
   const [recipes, setRecipes] = useState([])
   const [loading, setLoading] = useState(true)
@@ -82,6 +90,9 @@ function App() {
   const [detailTab, setDetailTab] = useState('recipe')
   const [cartOpen, setCartOpen] = useState(false)
   const [cartItems, setCartItems] = useState([])
+  const [variationsByRecipe, setVariationsByRecipe] = useState({})
+  const [variationName, setVariationName] = useState('')
+  const [variationNotes, setVariationNotes] = useState('')
 
   useEffect(() => {
     const loadRecipes = async () => {
@@ -157,11 +168,15 @@ function App() {
   const openRecipeDetails = (recipe, tab = 'recipe') => {
     setSelectedRecipe(recipe)
     setDetailTab(tab)
+    setVariationName('')
+    setVariationNotes('')
   }
 
   const closeRecipeDetails = () => {
     setSelectedRecipe(null)
     setDetailTab('recipe')
+    setVariationName('')
+    setVariationNotes('')
   }
 
   const addCartItem = (recipe, itemName) => {
@@ -223,6 +238,31 @@ function App() {
 
   const removeCartItem = (id) => {
     setCartItems((previous) => previous.filter((item) => item.id !== id))
+  }
+
+  const saveVariation = () => {
+    if (!selectedRecipe) {
+      return
+    }
+
+    const cleanName = variationName.trim()
+    const cleanNotes = variationNotes.trim()
+    if (!cleanName && !cleanNotes) {
+      return
+    }
+
+    const nextVariation = {
+      id: `${selectedRecipe.id}-${Date.now()}`,
+      name: cleanName || 'Untitled variation',
+      notes: cleanNotes || 'No notes provided.',
+    }
+
+    setVariationsByRecipe((previous) => ({
+      ...previous,
+      [selectedRecipe.id]: [...(previous[selectedRecipe.id] || []), nextVariation],
+    }))
+    setVariationName('')
+    setVariationNotes('')
   }
 
   return (
@@ -440,6 +480,13 @@ function App() {
         <Box sx={{ width: { xs: '100vw', sm: 470 }, p: 2.5 }}>
           {selectedRecipe && (
             <Stack spacing={2}>
+              {(() => {
+                const totalMinutes = estimateMinutes(selectedRecipe)
+                const substitutions = getRecipeSubstitutions(selectedRecipe)
+                const savedVariations = variationsByRecipe[selectedRecipe.id] || []
+
+                return (
+                  <>
               <Stack direction="row" justifyContent="space-between" alignItems="flex-start">
                 <Box>
                   <Typography variant="h5" sx={{ lineHeight: 1.15, mb: 0.5 }}>
@@ -460,6 +507,7 @@ function App() {
                 <Tab label="Recipe" value="recipe" />
                 <Tab label="History" value="history" />
                 <Tab label="Kit" value="kit" />
+                <Tab label="Variations" value="variations" />
               </Tabs>
 
               {detailTab === 'recipe' && (
@@ -469,6 +517,11 @@ function App() {
                       {selectedRecipe.summary}
                     </Typography>
                   )}
+                  <Stack direction="row" spacing={0.75} useFlexGap flexWrap="wrap">
+                    {totalMinutes && <Chip size="small" label={`${totalMinutes} min total`} />}
+                    <Chip size="small" label={`${(selectedRecipe.ingredients || []).length} ingredients`} />
+                    <Chip size="small" label={`${(selectedRecipe.steps || []).length} steps`} />
+                  </Stack>
                   <Divider />
                   <Typography variant="subtitle2">Ingredients</Typography>
                   <List dense disablePadding>
@@ -484,11 +537,29 @@ function App() {
                       <ListItem key={`${selectedRecipe.id}-drawer-step-${step.order}`} disableGutters>
                         <ListItemText
                           primary={`${step.order}. ${step.instruction}`}
-                          secondary={step.durationMinutes ? `${step.durationMinutes} min` : ''}
+                          secondary={
+                            step.durationMinutes
+                              ? `${step.durationMinutes} min${step.tutorialTips?.length ? ` · Tip: ${step.tutorialTips[0]}` : ''}`
+                              : step.tutorialTips?.length
+                                ? `Tip: ${step.tutorialTips[0]}`
+                                : ''
+                          }
                         />
                       </ListItem>
                     ))}
                   </List>
+                  {substitutions.length > 0 && (
+                    <>
+                      <Typography variant="subtitle2">Substitution ideas</Typography>
+                      <List dense disablePadding>
+                        {substitutions.map((substitution) => (
+                          <ListItem key={substitution} disableGutters>
+                            <ListItemText primary={substitution} />
+                          </ListItem>
+                        ))}
+                      </List>
+                    </>
+                  )}
                 </Stack>
               )}
 
@@ -536,6 +607,45 @@ function App() {
                   </Button>
                 </Stack>
               )}
+
+              {detailTab === 'variations' && (
+                <Stack spacing={1.5}>
+                  <Typography variant="body2" color="text.secondary">
+                    Save your personal twist for this recipe. Variations persist for this browser session.
+                  </Typography>
+                  <TextField
+                    label="Variation name"
+                    size="small"
+                    value={variationName}
+                    onChange={(event) => setVariationName(event.target.value)}
+                  />
+                  <TextField
+                    label="What changed?"
+                    size="small"
+                    multiline
+                    minRows={3}
+                    value={variationNotes}
+                    onChange={(event) => setVariationNotes(event.target.value)}
+                  />
+                  <Button variant="contained" onClick={saveVariation}>
+                    Save variation
+                  </Button>
+                  {savedVariations.length === 0 ? (
+                    <Alert severity="info">No variations saved for this recipe yet.</Alert>
+                  ) : (
+                    <List dense disablePadding>
+                      {savedVariations.map((variation) => (
+                        <ListItem key={variation.id} disableGutters>
+                          <ListItemText primary={variation.name} secondary={variation.notes} />
+                        </ListItem>
+                      ))}
+                    </List>
+                  )}
+                </Stack>
+              )}
+                  </>
+                )
+              })()}
             </Stack>
           )}
         </Box>
