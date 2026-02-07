@@ -26,10 +26,13 @@ import {
   TextField,
   Typography,
 } from '@mui/material'
+import AddIcon from '@mui/icons-material/Add'
+import CloseIcon from '@mui/icons-material/Close'
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined'
 import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined'
 import PublicOutlinedIcon from '@mui/icons-material/PublicOutlined'
-import CloseIcon from '@mui/icons-material/Close'
+import RemoveIcon from '@mui/icons-material/Remove'
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
 
 function estimateMinutes(recipe) {
   const durations = (recipe.steps || [])
@@ -50,6 +53,23 @@ function getIngredientLine(item) {
   return `${item.name} - ${qty}${unit}${optional}`.trim()
 }
 
+function getKitItems(recipe) {
+  if ((recipe.commerce?.ingredientLinks || []).length > 0) {
+    return recipe.commerce.ingredientLinks
+  }
+
+  return (recipe.ingredients || []).slice(0, 4).map((item) => item.name)
+}
+
+function toCartItemId(recipeId, itemName) {
+  return `${recipeId}:${itemName}`
+}
+
+function getMockPrice(itemName) {
+  const hash = itemName.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0)
+  return Number((5 + (hash % 160) / 10).toFixed(2))
+}
+
 function App() {
   const [recipes, setRecipes] = useState([])
   const [loading, setLoading] = useState(true)
@@ -60,6 +80,8 @@ function App() {
   const [sortBy, setSortBy] = useState('featured')
   const [selectedRecipe, setSelectedRecipe] = useState(null)
   const [detailTab, setDetailTab] = useState('recipe')
+  const [cartOpen, setCartOpen] = useState(false)
+  const [cartItems, setCartItems] = useState([])
 
   useEffect(() => {
     const loadRecipes = async () => {
@@ -125,6 +147,13 @@ function App() {
     sortBy !== 'featured' ? `Sort: ${sortBy}` : null,
   ].filter(Boolean)
 
+  const cartItemCount = useMemo(() => cartItems.reduce((sum, item) => sum + item.quantity, 0), [cartItems])
+
+  const cartSubtotal = useMemo(
+    () => cartItems.reduce((sum, item) => sum + item.quantity * item.unitPrice, 0),
+    [cartItems],
+  )
+
   const openRecipeDetails = (recipe, tab = 'recipe') => {
     setSelectedRecipe(recipe)
     setDetailTab(tab)
@@ -133,6 +162,67 @@ function App() {
   const closeRecipeDetails = () => {
     setSelectedRecipe(null)
     setDetailTab('recipe')
+  }
+
+  const addCartItem = (recipe, itemName) => {
+    const id = toCartItemId(recipe.id, itemName)
+
+    setCartItems((previous) => {
+      const existing = previous.find((item) => item.id === id)
+      if (existing) {
+        return previous.map((item) =>
+          item.id === id
+            ? {
+                ...item,
+                quantity: item.quantity + 1,
+              }
+            : item,
+        )
+      }
+
+      return [
+        ...previous,
+        {
+          id,
+          itemName,
+          recipeName: recipe.name,
+          unitPrice: getMockPrice(itemName),
+          quantity: 1,
+        },
+      ]
+    })
+  }
+
+  const addKitToCart = (recipe) => {
+    const kitItems = getKitItems(recipe)
+    if (kitItems.length === 0) {
+      return
+    }
+
+    kitItems.forEach((itemName) => {
+      addCartItem(recipe, itemName)
+    })
+
+    setCartOpen(true)
+  }
+
+  const updateCartQuantity = (id, change) => {
+    setCartItems((previous) =>
+      previous
+        .map((item) =>
+          item.id === id
+            ? {
+                ...item,
+                quantity: item.quantity + change,
+              }
+            : item,
+        )
+        .filter((item) => item.quantity > 0),
+    )
+  }
+
+  const removeCartItem = (id) => {
+    setCartItems((previous) => previous.filter((item) => item.id !== id))
   }
 
   return (
@@ -150,9 +240,19 @@ function App() {
             <Typography variant="overline" sx={{ color: 'secondary.main', letterSpacing: 2 }}>
               FORGOTTEN FLAVORS
             </Typography>
-            <Typography variant="h2" sx={{ maxWidth: 860 }}>
-              Lost Tables, Reimagined for Modern Kitchens
-            </Typography>
+            <Stack direction={{ xs: 'column', sm: 'row' }} justifyContent="space-between" alignItems={{ sm: 'flex-end' }} spacing={2}>
+              <Typography variant="h2" sx={{ maxWidth: 860 }}>
+                Lost Tables, Reimagined for Modern Kitchens
+              </Typography>
+              <Button
+                variant="contained"
+                color="secondary"
+                startIcon={<ShoppingCartOutlinedIcon />}
+                onClick={() => setCartOpen(true)}
+              >
+                Cart ({cartItemCount})
+              </Button>
+            </Stack>
             <Typography variant="body1" sx={{ color: 'text.secondary', maxWidth: 760 }}>
               Browse inspired Roman and Greek reconstructions with compact discovery tools and clear paths to cook or build ingredient
               kits.
@@ -415,26 +515,87 @@ function App() {
               {detailTab === 'kit' && (
                 <Stack spacing={1.25}>
                   <Typography variant="body2" color="text.secondary">
-                    Build an ingredient kit from this recipe. This is a starter mock flow for Iteration 2.
+                    Add a ready-to-cook ingredient kit to the cart.
                   </Typography>
-                  {(selectedRecipe.commerce?.ingredientLinks || []).length > 0 ? (
+                  {getKitItems(selectedRecipe).length > 0 ? (
                     <List dense disablePadding>
-                      {selectedRecipe.commerce.ingredientLinks.map((item) => (
+                      {getKitItems(selectedRecipe).map((item) => (
                         <ListItem key={item} disableGutters>
-                          <ListItemText primary={item} secondary="Mock listing" />
+                          <ListItemText primary={item} secondary={`$${getMockPrice(item).toFixed(2)}`} />
+                          <Button size="small" variant="outlined" onClick={() => addCartItem(selectedRecipe, item)}>
+                            Add
+                          </Button>
                         </ListItem>
                       ))}
                     </List>
                   ) : (
                     <Alert severity="info">No predefined kit items yet for this recipe.</Alert>
                   )}
-                  <Button variant="contained" startIcon={<LocalMallOutlinedIcon />}>
-                    Add Kit to Cart (Mock)
+                  <Button variant="contained" startIcon={<LocalMallOutlinedIcon />} onClick={() => addKitToCart(selectedRecipe)}>
+                    Add Entire Kit
                   </Button>
                 </Stack>
               )}
             </Stack>
           )}
+        </Box>
+      </Drawer>
+
+      <Drawer anchor="left" open={cartOpen} onClose={() => setCartOpen(false)}>
+        <Box sx={{ width: { xs: '100vw', sm: 400 }, p: 2.5 }}>
+          <Stack spacing={2}>
+            <Stack direction="row" justifyContent="space-between" alignItems="center">
+              <Typography variant="h5">Cart</Typography>
+              <IconButton onClick={() => setCartOpen(false)}>
+                <CloseIcon />
+              </IconButton>
+            </Stack>
+
+            {cartItems.length === 0 && (
+              <Alert severity="info">Your cart is empty. Add kit items from any recipe.</Alert>
+            )}
+
+            {cartItems.length > 0 && (
+              <>
+                <List dense disablePadding>
+                  {cartItems.map((item) => (
+                    <ListItem key={item.id} disableGutters sx={{ alignItems: 'flex-start', py: 1 }}>
+                      <ListItemText
+                        primary={item.itemName}
+                        secondary={`${item.recipeName} · $${item.unitPrice.toFixed(2)} each`}
+                        sx={{ mr: 1 }}
+                      />
+                      <Stack direction="row" spacing={0.25} alignItems="center">
+                        <IconButton size="small" onClick={() => updateCartQuantity(item.id, -1)}>
+                          <RemoveIcon fontSize="small" />
+                        </IconButton>
+                        <Typography variant="body2" sx={{ minWidth: 20, textAlign: 'center' }}>
+                          {item.quantity}
+                        </Typography>
+                        <IconButton size="small" onClick={() => updateCartQuantity(item.id, 1)}>
+                          <AddIcon fontSize="small" />
+                        </IconButton>
+                      </Stack>
+                      <Button size="small" color="inherit" onClick={() => removeCartItem(item.id)}>
+                        Remove
+                      </Button>
+                    </ListItem>
+                  ))}
+                </List>
+
+                <Divider />
+
+                <Stack direction="row" justifyContent="space-between" alignItems="center">
+                  <Typography variant="subtitle1">Subtotal ({cartItemCount} items)</Typography>
+                  <Typography variant="h6">${cartSubtotal.toFixed(2)}</Typography>
+                </Stack>
+
+                <Button variant="contained" size="large" startIcon={<ShoppingCartOutlinedIcon />}>
+                  Checkout (Mock)
+                </Button>
+              </>
+            )}
+          </Stack>
         </Box>
       </Drawer>
     </Box>
