@@ -8,19 +8,28 @@ import {
   Chip,
   CircularProgress,
   Container,
+  Divider,
+  Drawer,
   FormControl,
   Grid,
+  IconButton,
   InputLabel,
+  List,
+  ListItem,
+  ListItemText,
   MenuItem,
   Paper,
   Select,
   Stack,
+  Tab,
+  Tabs,
   TextField,
   Typography,
 } from '@mui/material'
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined'
 import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined'
 import PublicOutlinedIcon from '@mui/icons-material/PublicOutlined'
+import CloseIcon from '@mui/icons-material/Close'
 
 function estimateMinutes(recipe) {
   const durations = (recipe.steps || [])
@@ -49,6 +58,8 @@ function App() {
   const [culture, setCulture] = useState('all')
   const [era, setEra] = useState('all')
   const [sortBy, setSortBy] = useState('featured')
+  const [selectedRecipe, setSelectedRecipe] = useState(null)
+  const [detailTab, setDetailTab] = useState('recipe')
 
   useEffect(() => {
     const loadRecipes = async () => {
@@ -106,6 +117,23 @@ function App() {
       return a.name.localeCompare(b.name)
     })
   }, [recipes, query, culture, era, sortBy])
+
+  const activeFilters = [
+    query ? `Search: ${query}` : null,
+    culture !== 'all' ? `Culture: ${culture}` : null,
+    era !== 'all' ? `Era: ${era}` : null,
+    sortBy !== 'featured' ? `Sort: ${sortBy}` : null,
+  ].filter(Boolean)
+
+  const openRecipeDetails = (recipe, tab = 'recipe') => {
+    setSelectedRecipe(recipe)
+    setDetailTab(tab)
+  }
+
+  const closeRecipeDetails = () => {
+    setSelectedRecipe(null)
+    setDetailTab('recipe')
+  }
 
   return (
     <Box
@@ -208,12 +236,20 @@ function App() {
           </Grid>
         </Paper>
 
-        <Stack direction={{ xs: 'column', sm: 'row' }} justifyContent="space-between" alignItems={{ sm: 'center' }} sx={{ mb: 2 }}>
+        <Stack direction={{ xs: 'column', sm: 'row' }} justifyContent="space-between" alignItems={{ sm: 'center' }} sx={{ mb: 1.5 }}>
           <Typography variant="h5">Recipe Repository</Typography>
           <Typography variant="body2" color="text.secondary">
             Showing {filteredRecipes.length} of {recipes.length}
           </Typography>
         </Stack>
+
+        {activeFilters.length > 0 && (
+          <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap" sx={{ mb: 2 }}>
+            {activeFilters.map((label) => (
+              <Chip key={label} label={label} size="small" variant="outlined" color="secondary" />
+            ))}
+          </Stack>
+        )}
 
         {loading && (
           <Stack alignItems="center" sx={{ py: 8 }}>
@@ -223,7 +259,29 @@ function App() {
 
         {error && <Alert severity="error">{error}</Alert>}
 
-        {!loading && !error && (
+        {!loading && !error && filteredRecipes.length === 0 && (
+          <Paper sx={{ p: 3 }}>
+            <Typography variant="h6" sx={{ mb: 0.5 }}>
+              No recipes match current filters
+            </Typography>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              Try broadening your search or clearing one of the active filters.
+            </Typography>
+            <Button
+              variant="outlined"
+              onClick={() => {
+                setQuery('')
+                setCulture('all')
+                setEra('all')
+                setSortBy('featured')
+              }}
+            >
+              Clear filters
+            </Button>
+          </Paper>
+        )}
+
+        {!loading && !error && filteredRecipes.length > 0 && (
           <Grid container spacing={2}>
             {filteredRecipes.map((recipe) => {
               const minutes = estimateMinutes(recipe)
@@ -261,10 +319,10 @@ function App() {
                         </Stack>
 
                         <Stack direction="row" spacing={1} sx={{ pt: 0.5 }}>
-                          <Button variant="contained" size="small">
+                          <Button variant="contained" size="small" onClick={() => openRecipeDetails(recipe, 'recipe')}>
                             View
                           </Button>
-                          <Button variant="outlined" size="small">
+                          <Button variant="outlined" size="small" onClick={() => openRecipeDetails(recipe, 'kit')}>
                             Kit
                           </Button>
                         </Stack>
@@ -277,6 +335,108 @@ function App() {
           </Grid>
         )}
       </Container>
+
+      <Drawer anchor="right" open={Boolean(selectedRecipe)} onClose={closeRecipeDetails}>
+        <Box sx={{ width: { xs: '100vw', sm: 470 }, p: 2.5 }}>
+          {selectedRecipe && (
+            <Stack spacing={2}>
+              <Stack direction="row" justifyContent="space-between" alignItems="flex-start">
+                <Box>
+                  <Typography variant="h5" sx={{ lineHeight: 1.15, mb: 0.5 }}>
+                    {selectedRecipe.name}
+                  </Typography>
+                  <Stack direction="row" spacing={0.75} useFlexGap flexWrap="wrap">
+                    {selectedRecipe.culture && <Chip label={selectedRecipe.culture} size="small" color="secondary" variant="outlined" />}
+                    {selectedRecipe.region && <Chip label={selectedRecipe.region} size="small" variant="outlined" />}
+                    {selectedRecipe.era && <Chip label={selectedRecipe.era} size="small" variant="outlined" />}
+                  </Stack>
+                </Box>
+                <IconButton onClick={closeRecipeDetails}>
+                  <CloseIcon />
+                </IconButton>
+              </Stack>
+
+              <Tabs value={detailTab} onChange={(_, value) => setDetailTab(value)}>
+                <Tab label="Recipe" value="recipe" />
+                <Tab label="History" value="history" />
+                <Tab label="Kit" value="kit" />
+              </Tabs>
+
+              {detailTab === 'recipe' && (
+                <Stack spacing={1.5}>
+                  {selectedRecipe.summary && (
+                    <Typography variant="body2" color="text.secondary">
+                      {selectedRecipe.summary}
+                    </Typography>
+                  )}
+                  <Divider />
+                  <Typography variant="subtitle2">Ingredients</Typography>
+                  <List dense disablePadding>
+                    {(selectedRecipe.ingredients || []).map((item, index) => (
+                      <ListItem key={`${selectedRecipe.id}-drawer-ingredient-${index}`} disableGutters>
+                        <ListItemText primary={getIngredientLine(item)} />
+                      </ListItem>
+                    ))}
+                  </List>
+                  <Typography variant="subtitle2">Steps</Typography>
+                  <List dense disablePadding>
+                    {(selectedRecipe.steps || []).map((step) => (
+                      <ListItem key={`${selectedRecipe.id}-drawer-step-${step.order}`} disableGutters>
+                        <ListItemText
+                          primary={`${step.order}. ${step.instruction}`}
+                          secondary={step.durationMinutes ? `${step.durationMinutes} min` : ''}
+                        />
+                      </ListItem>
+                    ))}
+                  </List>
+                </Stack>
+              )}
+
+              {detailTab === 'history' && (
+                <Stack spacing={1.25}>
+                  <Typography variant="body2" color="text.secondary">
+                    {selectedRecipe.history?.context || 'No history available for this recipe.'}
+                  </Typography>
+                  {selectedRecipe.history?.sources?.length > 0 && (
+                    <>
+                      <Typography variant="subtitle2">Sources</Typography>
+                      <List dense disablePadding>
+                        {selectedRecipe.history.sources.map((source) => (
+                          <ListItem key={source} disableGutters>
+                            <ListItemText primary={source} />
+                          </ListItem>
+                        ))}
+                      </List>
+                    </>
+                  )}
+                </Stack>
+              )}
+
+              {detailTab === 'kit' && (
+                <Stack spacing={1.25}>
+                  <Typography variant="body2" color="text.secondary">
+                    Build an ingredient kit from this recipe. This is a starter mock flow for Iteration 2.
+                  </Typography>
+                  {(selectedRecipe.commerce?.ingredientLinks || []).length > 0 ? (
+                    <List dense disablePadding>
+                      {selectedRecipe.commerce.ingredientLinks.map((item) => (
+                        <ListItem key={item} disableGutters>
+                          <ListItemText primary={item} secondary="Mock listing" />
+                        </ListItem>
+                      ))}
+                    </List>
+                  ) : (
+                    <Alert severity="info">No predefined kit items yet for this recipe.</Alert>
+                  )}
+                  <Button variant="contained" startIcon={<LocalMallOutlinedIcon />}>
+                    Add Kit to Cart (Mock)
+                  </Button>
+                </Stack>
+              )}
+            </Stack>
+          )}
+        </Box>
+      </Drawer>
     </Box>
   )
 }
