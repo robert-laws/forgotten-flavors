@@ -31,9 +31,9 @@ const theme = createTheme({
     h2: {
       fontFamily: ['"Source Serif 4"', 'Georgia', 'serif'].join(','),
       fontWeight: 700,
-      lineHeight: 1.04,
+      lineHeight: 1.06,
       letterSpacing: -0.7,
-      fontSize: 'clamp(2.3rem, 6vw, 4.4rem)',
+      fontSize: 'clamp(2.05rem, 4.5vw, 3.7rem)',
     },
     h4: {
       fontFamily: ['"Source Serif 4"', 'Georgia', 'serif'].join(','),

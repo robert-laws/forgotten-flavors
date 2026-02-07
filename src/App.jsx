@@ -332,7 +332,7 @@ function App() {
             <Typography variant="overline" sx={{ color: 'secondary.main', letterSpacing: 2 }}>
               FORGOTTEN FLAVORS
             </Typography>
-            <Typography variant="h2" sx={{ maxWidth: 760 }}>
+            <Typography variant="h2" sx={{ maxWidth: 940 }}>
               Lost Tables, Reimagined for Modern Kitchens
             </Typography>
             <Typography variant="body1" sx={{ color: 'text.secondary', maxWidth: 760 }}>
@@ -469,10 +469,13 @@ function App() {
 
         <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap" sx={{ mb: 2 }}>
           <Chip
-            size="small"
             label="45 min or less"
             variant="outlined"
-            sx={quickFilterChipSx(quickFilters.fast)}
+            sx={{
+              ...quickFilterChipSx(quickFilters.fast),
+              px: 0.65,
+              py: 0.4,
+            }}
             onClick={() =>
               setQuickFilters((previous) => ({
                 ...previous,
@@ -481,10 +484,13 @@ function App() {
             }
           />
           <Chip
-            size="small"
             label="Kit-ready only"
             variant="outlined"
-            sx={quickFilterChipSx(quickFilters.kitReady)}
+            sx={{
+              ...quickFilterChipSx(quickFilters.kitReady),
+              px: 0.65,
+              py: 0.4,
+            }}
             onClick={() =>
               setQuickFilters((previous) => ({
                 ...previous,
@@ -543,37 +549,42 @@ function App() {
         )}
 
         {!loading && !error && filteredRecipes.length > 0 && (
-          <Grid container spacing={2}>
+          <Box
+            sx={{
+              display: 'grid',
+              gap: 2,
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
+            }}
+          >
             {pagedRecipes.map((recipe) => {
               const minutes = estimateMinutes(recipe)
 
               return (
-                <Grid key={recipe.id} item xs={12} sm={6} lg={4}>
-                  <Card sx={{ height: '100%' }}>
-                    <CardContent sx={{ p: 2 }}>
-                      <Stack spacing={1.25}>
-                        <Stack direction="row" justifyContent="space-between" alignItems="flex-start" spacing={1}>
-                          <Typography variant="h6" sx={{ lineHeight: 1.2 }}>
-                            {recipe.name}
-                          </Typography>
-                          {minutes && <Chip size="small" label={`${minutes} min`} />}
-                        </Stack>
+                <Card key={recipe.id} sx={{ height: '100%', minHeight: 340 }}>
+                  <CardContent sx={{ p: 2, height: '100%', display: 'flex', flexDirection: 'column' }}>
+                    <Stack spacing={1.25} sx={{ height: '100%' }}>
+                      <Stack direction="row" justifyContent="space-between" alignItems="flex-start" spacing={1}>
+                        <Typography variant="h6" sx={{ lineHeight: 1.2 }}>
+                          {recipe.name}
+                        </Typography>
+                        {minutes && <Chip size="small" label={`${minutes} min`} />}
+                      </Stack>
 
-                        <Stack direction="row" spacing={0.75} useFlexGap flexWrap="wrap">
-                          {recipe.culture && <Chip label={recipe.culture} variant="outlined" color="secondary" size="small" />}
-                          {recipe.region && <Chip label={recipe.region} variant="outlined" size="small" />}
-                          {recipe.era && <Chip label={recipe.era} variant="outlined" size="small" />}
-                        </Stack>
+                      <Stack direction="row" spacing={0.75} useFlexGap flexWrap="wrap">
+                        {recipe.culture && <Chip label={recipe.culture} variant="outlined" color="secondary" size="small" />}
+                        {recipe.region && <Chip label={recipe.region} variant="outlined" size="small" />}
+                        {recipe.era && <Chip label={recipe.era} variant="outlined" size="small" />}
+                      </Stack>
 
-                        {recipe.summary && (
-                          <Typography variant="body2" color="text.secondary">
-                            {recipe.summary}
-                          </Typography>
-                        )}
+                      {recipe.summary && (
+                        <Typography variant="body2" color="text.secondary">
+                          {recipe.summary}
+                        </Typography>
+                      )}
 
+                      <Box sx={{ flexGrow: 1 }}>
                         <Divider />
-
-                        <Box>
+                        <Box sx={{ pt: 0.75 }}>
                           <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 600 }}>
                             Key ingredients
                           </Typography>
@@ -588,22 +599,22 @@ function App() {
                             ))}
                           </List>
                         </Box>
+                      </Box>
 
-                        <Stack direction="row" spacing={1} sx={{ pt: 0.5 }}>
-                          <Button fullWidth variant="contained" size="small" onClick={() => openRecipeDetails(recipe, 'recipe')}>
-                            View
-                          </Button>
-                          <Button fullWidth variant="outlined" size="small" onClick={() => openRecipeDetails(recipe, 'kit')}>
-                            Kit
-                          </Button>
-                        </Stack>
+                      <Stack direction="row" spacing={1} sx={{ pt: 0.5, mt: 'auto' }}>
+                        <Button fullWidth variant="contained" size="small" onClick={() => openRecipeDetails(recipe, 'recipe')}>
+                          View
+                        </Button>
+                        <Button fullWidth variant="outlined" size="small" onClick={() => openRecipeDetails(recipe, 'kit')}>
+                          Kit
+                        </Button>
                       </Stack>
-                    </CardContent>
-                  </Card>
-                </Grid>
+                    </Stack>
+                  </CardContent>
+                </Card>
               )
             })}
-          </Grid>
+          </Box>
         )}
 
         {!loading && !error && filteredRecipes.length > pageSize && (
