@@ -274,8 +274,6 @@ function App() {
     query ? `Search: ${query}` : null,
     culturesSelected.length > 0 ? `Culture: ${culturesSelected.join(', ')}` : null,
     erasSelected.length > 0 ? `Era: ${erasSelected.join(', ')}` : null,
-    quickFilters.fast ? 'Quick: 45 min or less' : null,
-    quickFilters.kitReady ? 'Quick: kit-ready' : null,
     sortBy !== 'featured' ? `Sort: ${sortBy}` : null,
   ].filter(Boolean)
 
@@ -567,7 +565,21 @@ function App() {
           </Grid>
         </Paper>
 
-        <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap" sx={{ mb: 2 }}>
+        <Stack
+          direction={{ xs: 'column', sm: 'row' }}
+          justifyContent="space-between"
+          alignItems={{ sm: 'center' }}
+          sx={{ mb: 1.25 }}
+        >
+          <Typography variant="h5">Recipe Repository</Typography>
+          <Typography variant="body2" color="text.secondary">
+            Showing {filteredRecipes.length === 0 ? 0 : (page - 1) * pageSize + 1}
+            -
+            {Math.min(page * pageSize, filteredRecipes.length)} of {filteredRecipes.length}
+          </Typography>
+        </Stack>
+
+        <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap" sx={{ mb: 2, alignItems: 'center' }}>
           <Chip
             label="45 min or less"
             variant="outlined"
@@ -598,24 +610,19 @@ function App() {
               }))
             }
           />
-        </Stack>
-
-        <Stack direction={{ xs: 'column', sm: 'row' }} justifyContent="space-between" alignItems={{ sm: 'center' }} sx={{ mb: 1.5 }}>
-          <Typography variant="h5">Recipe Repository</Typography>
+          <Chip
+            color="secondary"
+            variant="filled"
+            label={`${filteredRecipes.length} match${filteredRecipes.length === 1 ? '' : 'es'}`}
+            sx={{ fontWeight: 700 }}
+          />
           <Typography variant="body2" color="text.secondary">
-            Showing {filteredRecipes.length === 0 ? 0 : (page - 1) * pageSize + 1}
-            -
-            {Math.min(page * pageSize, filteredRecipes.length)} of {filteredRecipes.length}
+            {filteredRecipes.length !== recipes.length ? `of ${recipes.length} total` : 'all shown'}
           </Typography>
+          {activeFilters.map((label) => (
+            <Chip key={label} label={label} size="small" variant="outlined" color="secondary" />
+          ))}
         </Stack>
-
-        {activeFilters.length > 0 && (
-          <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap" sx={{ mb: 2 }}>
-            {activeFilters.map((label) => (
-              <Chip key={label} label={label} size="small" variant="outlined" color="secondary" />
-            ))}
-          </Stack>
-        )}
 
         {loading && (
           <Stack alignItems="center" sx={{ py: 8 }}>
