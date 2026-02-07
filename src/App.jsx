@@ -5,6 +5,7 @@ import {
   Button,
   Card,
   CardContent,
+  Checkbox,
   Chip,
   CircularProgress,
   Container,
@@ -19,6 +20,7 @@ import {
   ListItemText,
   MenuItem,
   Paper,
+  Pagination,
   Select,
   Stack,
   Tab,
@@ -83,9 +85,14 @@ function App() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [query, setQuery] = useState('')
-  const [culture, setCulture] = useState('all')
-  const [era, setEra] = useState('all')
+  const [culturesSelected, setCulturesSelected] = useState([])
+  const [erasSelected, setErasSelected] = useState([])
+  const [quickFilters, setQuickFilters] = useState({
+    fast: false,
+    kitReady: false,
+  })
   const [sortBy, setSortBy] = useState('featured')
+  const [page, setPage] = useState(1)
   const [selectedRecipe, setSelectedRecipe] = useState(null)
   const [detailTab, setDetailTab] = useState('recipe')
   const [cartOpen, setCartOpen] = useState(false)
@@ -93,6 +100,29 @@ function App() {
   const [variationsByRecipe, setVariationsByRecipe] = useState({})
   const [variationName, setVariationName] = useState('')
   const [variationNotes, setVariationNotes] = useState('')
+
+  const formatSelectedValues = (selected, emptyLabel) => {
+    if (!Array.isArray(selected) || selected.length === 0) {
+      return emptyLabel
+    }
+
+    if (selected.length === 1) {
+      return selected[0]
+    }
+
+    return `${selected.length} selected`
+  }
+
+  const quickFilterChipSx = (active) => ({
+    borderWidth: 1.5,
+    borderColor: active ? 'secondary.main' : 'rgba(39, 25, 15, 0.2)',
+    bgcolor: active ? 'secondary.main' : 'background.paper',
+    color: active ? 'secondary.contrastText' : 'text.primary',
+    fontWeight: 600,
+    '&:hover': {
+      bgcolor: active ? 'secondary.dark' : 'rgba(45, 95, 88, 0.08)',
+    },
+  })
 
   useEffect(() => {
     const loadRecipes = async () => {
@@ -115,27 +145,30 @@ function App() {
 
   const cultures = useMemo(() => {
     const values = new Set(recipes.map((recipe) => recipe.culture).filter(Boolean))
-    return ['all', ...Array.from(values)]
+    return Array.from(values)
   }, [recipes])
 
   const eras = useMemo(() => {
     const values = new Set(recipes.map((recipe) => recipe.era).filter(Boolean))
-    return ['all', ...Array.from(values)]
+    return Array.from(values)
   }, [recipes])
 
   const filteredRecipes = useMemo(() => {
     const lowered = query.trim().toLowerCase()
 
     const matches = recipes.filter((recipe) => {
-      const matchesCulture = culture === 'all' || recipe.culture === culture
-      const matchesEra = era === 'all' || recipe.era === era
+      const matchesCulture =
+        culturesSelected.length === 0 || culturesSelected.includes(recipe.culture)
+      const matchesEra = erasSelected.length === 0 || erasSelected.includes(recipe.era)
+      const matchesFast = !quickFilters.fast || (estimateMinutes(recipe) ?? Number.MAX_SAFE_INTEGER) <= 45
+      const matchesKitReady = !quickFilters.kitReady || getKitItems(recipe).length > 0
       const searchable = [recipe.name, recipe.summary, recipe.region, recipe.era, recipe.culture]
         .filter(Boolean)
         .join(' ')
         .toLowerCase()
 
       const matchesSearch = lowered.length === 0 || searchable.includes(lowered)
-      return matchesCulture && matchesEra && matchesSearch
+      return matchesCulture && matchesEra && matchesFast && matchesKitReady && matchesSearch
     })
 
     return matches.sort((a, b) => {
@@ -149,14 +182,23 @@ function App() {
       }
       return a.name.localeCompare(b.name)
     })
-  }, [recipes, query, culture, era, sortBy])
+  }, [recipes, query, culturesSelected, erasSelected, quickFilters, sortBy])
 
   const activeFilters = [
     query ? `Search: ${query}` : null,
-    culture !== 'all' ? `Culture: ${culture}` : null,
-    era !== 'all' ? `Era: ${era}` : null,
+    culturesSelected.length > 0 ? `Culture: ${culturesSelected.join(', ')}` : null,
+    erasSelected.length > 0 ? `Era: ${erasSelected.join(', ')}` : null,
+    quickFilters.fast ? 'Quick: 45 min or less' : null,
+    quickFilters.kitReady ? 'Quick: kit-ready' : null,
     sortBy !== 'featured' ? `Sort: ${sortBy}` : null,
   ].filter(Boolean)
+
+  const pageSize = 9
+  const totalPages = Math.max(1, Math.ceil(filteredRecipes.length / pageSize))
+  const pagedRecipes = useMemo(() => {
+    const start = (page - 1) * pageSize
+    return filteredRecipes.slice(start, start + pageSize)
+  }, [filteredRecipes, page])
 
   const cartItemCount = useMemo(() => cartItems.reduce((sum, item) => sum + item.quantity, 0), [cartItems])
 
@@ -164,6 +206,16 @@ function App() {
     () => cartItems.reduce((sum, item) => sum + item.quantity * item.unitPrice, 0),
     [cartItems],
   )
+
+  useEffect(() => {
+    setPage(1)
+  }, [query, culturesSelected, erasSelected, quickFilters, sortBy])
+
+  useEffect(() => {
+    if (page > totalPages) {
+      setPage(totalPages)
+    }
+  }, [page, totalPages])
 
   const openRecipeDetails = (recipe, tab = 'recipe') => {
     setSelectedRecipe(recipe)
@@ -280,27 +332,33 @@ function App() {
             <Typography variant="overline" sx={{ color: 'secondary.main', letterSpacing: 2 }}>
               FORGOTTEN FLAVORS
             </Typography>
-            <Stack direction={{ xs: 'column', sm: 'row' }} justifyContent="space-between" alignItems={{ sm: 'flex-end' }} spacing={2}>
-              <Typography variant="h2" sx={{ maxWidth: 860 }}>
-                Lost Tables, Reimagined for Modern Kitchens
-              </Typography>
+            <Typography variant="h2" sx={{ maxWidth: 760 }}>
+              Lost Tables, Reimagined for Modern Kitchens
+            </Typography>
+            <Typography variant="body1" sx={{ color: 'text.secondary', maxWidth: 760 }}>
+              Browse inspired Roman and Greek reconstructions with compact discovery tools and clear paths to cook or build ingredient
+              kits.
+            </Typography>
+            <Stack
+              direction={{ xs: 'column', sm: 'row' }}
+              spacing={1.25}
+              justifyContent="space-between"
+              alignItems={{ sm: 'center' }}
+            >
+              <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap">
+                <Chip icon={<PublicOutlinedIcon />} label={`${cultures.length} cultures`} color="secondary" />
+                <Chip icon={<MenuBookOutlinedIcon />} label={`${recipes.length} recipes`} color="secondary" />
+                <Chip icon={<LocalMallOutlinedIcon />} label="Kit-ready concepts" color="secondary" />
+              </Stack>
               <Button
                 variant="contained"
                 color="secondary"
                 startIcon={<ShoppingCartOutlinedIcon />}
                 onClick={() => setCartOpen(true)}
+                sx={{ alignSelf: { xs: 'flex-start', sm: 'auto' } }}
               >
                 Cart ({cartItemCount})
               </Button>
-            </Stack>
-            <Typography variant="body1" sx={{ color: 'text.secondary', maxWidth: 760 }}>
-              Browse inspired Roman and Greek reconstructions with compact discovery tools and clear paths to cook or build ingredient
-              kits.
-            </Typography>
-            <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap">
-              <Chip icon={<PublicOutlinedIcon />} label={`${cultures.length - 1} cultures`} color="secondary" />
-              <Chip icon={<MenuBookOutlinedIcon />} label={`${recipes.length} recipes`} color="secondary" />
-              <Chip icon={<LocalMallOutlinedIcon />} label="Kit-ready concepts" color="secondary" />
             </Stack>
           </Stack>
         </Container>
@@ -309,7 +367,7 @@ function App() {
       <Container maxWidth="lg" sx={{ pt: 3 }}>
         <Paper sx={{ p: { xs: 1.5, sm: 2 }, mb: 2.5 }}>
           <Grid container spacing={1.25} alignItems="center">
-            <Grid item xs={12} sm={6} md={4}>
+            <Grid item xs={12} sm={6} md={3}>
               <TextField
                 fullWidth
                 size="small"
@@ -319,36 +377,57 @@ function App() {
                 onChange={(event) => setQuery(event.target.value)}
               />
             </Grid>
-            <Grid item xs={6} sm={6} md={2.5}>
+            <Grid item xs={12} sm={6} md={3}>
               <FormControl fullWidth size="small">
                 <InputLabel id="culture-filter-label">Culture</InputLabel>
                 <Select
+                  multiple
                   labelId="culture-filter-label"
                   label="Culture"
-                  value={culture}
-                  onChange={(event) => setCulture(event.target.value)}
+                  value={culturesSelected}
+                  onChange={(event) => {
+                    const value = event.target.value
+                    setCulturesSelected(typeof value === 'string' ? value.split(',') : value)
+                  }}
+                  renderValue={(selected) => formatSelectedValues(selected, 'All cultures')}
+                  MenuProps={{ PaperProps: { sx: { maxHeight: 320 } } }}
+                  sx={{ minWidth: 170 }}
                 >
                   {cultures.map((value) => (
                     <MenuItem key={value} value={value}>
-                      {value === 'all' ? 'All cultures' : value}
+                      <Checkbox size="small" checked={culturesSelected.includes(value)} />
+                      <ListItemText primary={value} />
                     </MenuItem>
                   ))}
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={6} sm={6} md={2.5}>
+            <Grid item xs={12} sm={6} md={3}>
               <FormControl fullWidth size="small">
                 <InputLabel id="era-filter-label">Era</InputLabel>
-                <Select labelId="era-filter-label" label="Era" value={era} onChange={(event) => setEra(event.target.value)}>
+                <Select
+                  multiple
+                  labelId="era-filter-label"
+                  label="Era"
+                  value={erasSelected}
+                  onChange={(event) => {
+                    const value = event.target.value
+                    setErasSelected(typeof value === 'string' ? value.split(',') : value)
+                  }}
+                  renderValue={(selected) => formatSelectedValues(selected, 'All eras')}
+                  MenuProps={{ PaperProps: { sx: { maxHeight: 320 } } }}
+                  sx={{ minWidth: 170 }}
+                >
                   {eras.map((value) => (
                     <MenuItem key={value} value={value}>
-                      {value === 'all' ? 'All eras' : value}
+                      <Checkbox size="small" checked={erasSelected.includes(value)} />
+                      <ListItemText primary={value} />
                     </MenuItem>
                   ))}
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={8} sm={6} md={2}>
+            <Grid item xs={8} sm={4} md={2}>
               <FormControl fullWidth size="small">
                 <InputLabel id="sort-label">Sort</InputLabel>
                 <Select labelId="sort-label" label="Sort" value={sortBy} onChange={(event) => setSortBy(event.target.value)}>
@@ -358,15 +437,16 @@ function App() {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={4} sm={6} md={1}>
+            <Grid item xs={4} sm={2} md={1}>
               <Button
                 fullWidth
                 size="small"
                 variant="text"
                 onClick={() => {
                   setQuery('')
-                  setCulture('all')
-                  setEra('all')
+                  setCulturesSelected([])
+                  setErasSelected([])
+                  setQuickFilters({ fast: false, kitReady: false })
                   setSortBy('featured')
                 }}
               >
@@ -376,10 +456,37 @@ function App() {
           </Grid>
         </Paper>
 
+        <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap" sx={{ mb: 2 }}>
+          <Chip
+            label="45 min or less"
+            variant="outlined"
+            sx={quickFilterChipSx(quickFilters.fast)}
+            onClick={() =>
+              setQuickFilters((previous) => ({
+                ...previous,
+                fast: !previous.fast,
+              }))
+            }
+          />
+          <Chip
+            label="Kit-ready only"
+            variant="outlined"
+            sx={quickFilterChipSx(quickFilters.kitReady)}
+            onClick={() =>
+              setQuickFilters((previous) => ({
+                ...previous,
+                kitReady: !previous.kitReady,
+              }))
+            }
+          />
+        </Stack>
+
         <Stack direction={{ xs: 'column', sm: 'row' }} justifyContent="space-between" alignItems={{ sm: 'center' }} sx={{ mb: 1.5 }}>
           <Typography variant="h5">Recipe Repository</Typography>
           <Typography variant="body2" color="text.secondary">
-            Showing {filteredRecipes.length} of {recipes.length}
+            Showing {filteredRecipes.length === 0 ? 0 : (page - 1) * pageSize + 1}
+            -
+            {Math.min(page * pageSize, filteredRecipes.length)} of {filteredRecipes.length}
           </Typography>
         </Stack>
 
@@ -411,8 +518,9 @@ function App() {
               variant="outlined"
               onClick={() => {
                 setQuery('')
-                setCulture('all')
-                setEra('all')
+                setCulturesSelected([])
+                setErasSelected([])
+                setQuickFilters({ fast: false, kitReady: false })
                 setSortBy('featured')
               }}
             >
@@ -423,7 +531,7 @@ function App() {
 
         {!loading && !error && filteredRecipes.length > 0 && (
           <Grid container spacing={2}>
-            {filteredRecipes.map((recipe) => {
+            {pagedRecipes.map((recipe) => {
               const minutes = estimateMinutes(recipe)
 
               return (
@@ -450,19 +558,29 @@ function App() {
                           </Typography>
                         )}
 
-                        <Stack spacing={0.25} sx={{ pt: 0.25 }}>
-                          {(recipe.ingredients || []).slice(0, 3).map((item, index) => (
-                            <Typography key={`${recipe.id}-ingredient-${index}`} variant="caption" color="text.secondary">
-                              {getIngredientLine(item)}
-                            </Typography>
-                          ))}
-                        </Stack>
+                        <Divider />
+
+                        <Box>
+                          <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 600 }}>
+                            Key ingredients
+                          </Typography>
+                          <List dense disablePadding sx={{ mt: 0.25 }}>
+                            {(recipe.ingredients || []).slice(0, 2).map((item, index) => (
+                              <ListItem key={`${recipe.id}-ingredient-${index}`} disableGutters sx={{ py: 0 }}>
+                                <ListItemText
+                                  primary={getIngredientLine(item)}
+                                  primaryTypographyProps={{ variant: 'caption', color: 'text.secondary' }}
+                                />
+                              </ListItem>
+                            ))}
+                          </List>
+                        </Box>
 
                         <Stack direction="row" spacing={1} sx={{ pt: 0.5 }}>
-                          <Button variant="contained" size="small" onClick={() => openRecipeDetails(recipe, 'recipe')}>
+                          <Button fullWidth variant="contained" size="small" onClick={() => openRecipeDetails(recipe, 'recipe')}>
                             View
                           </Button>
-                          <Button variant="outlined" size="small" onClick={() => openRecipeDetails(recipe, 'kit')}>
+                          <Button fullWidth variant="outlined" size="small" onClick={() => openRecipeDetails(recipe, 'kit')}>
                             Kit
                           </Button>
                         </Stack>
@@ -473,6 +591,18 @@ function App() {
               )
             })}
           </Grid>
+        )}
+
+        {!loading && !error && filteredRecipes.length > pageSize && (
+          <Stack alignItems="center" sx={{ mt: 3 }}>
+            <Pagination
+              page={page}
+              count={totalPages}
+              onChange={(_, value) => setPage(value)}
+              color="secondary"
+              shape="rounded"
+            />
+          </Stack>
         )}
       </Container>
 
