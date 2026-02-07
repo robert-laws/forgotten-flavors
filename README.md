@@ -2,13 +2,28 @@
 
 [![Deploy Pages](https://github.com/robert-laws/forgotten-flavors/actions/workflows/pages.yml/badge.svg)](https://github.com/robert-laws/forgotten-flavors/actions/workflows/pages.yml)
 
-Simple recipe catalog demo designed for GitHub Pages with a static HTML UI.
+React + Vite + Material UI storefront prototype for inspired Roman and Greek "forgotten flavors" recipes.
 
-Note: This repository is currently Pages-only (static assets). No server-side runtime is required.
+## Stack
+- React 19
+- Vite 7
+- Material UI (MUI)
 
-## What's Included
-- `recipes.json` stores the recipe data.
-- `recipes.html` fetches and renders recipes from the JSON file.
+## Data
+- `public/recipes.json`: recipe catalog rendered by the app
 
-## Run
-Open `recipes.html` locally or view the site on GitHub Pages.
+## Run Locally
+```bash
+npm install
+npm run dev
+```
+
+## Build
+```bash
+npm run build
+npm run preview
+```
+
+## Deploy
+GitHub Pages is configured via `.github/workflows/pages.yml`.
+The workflow runs `npm ci`, builds with Vite, and deploys `dist/`.
