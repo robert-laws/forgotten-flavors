@@ -143,19 +143,105 @@ function App() {
     loadRecipes()
   }, [])
 
-  const cultures = useMemo(() => {
+  const allCultures = useMemo(() => {
     const values = new Set(recipes.map((recipe) => recipe.culture).filter(Boolean))
     return Array.from(values)
   }, [recipes])
 
-  const eras = useMemo(() => {
+  const allEras = useMemo(() => {
     const values = new Set(recipes.map((recipe) => recipe.era).filter(Boolean))
     return Array.from(values)
   }, [recipes])
 
-  const filteredRecipes = useMemo(() => {
-    const lowered = query.trim().toLowerCase()
+  const queryLowered = query.trim().toLowerCase()
 
+  const availableCultures = useMemo(() => {
+    const values = new Set(
+      recipes
+        .filter((recipe) => {
+          const matchesEra = erasSelected.length === 0 || erasSelected.includes(recipe.era)
+          const matchesFast = !quickFilters.fast || (estimateMinutes(recipe) ?? Number.MAX_SAFE_INTEGER) <= 45
+          const matchesKitReady = !quickFilters.kitReady || getKitItems(recipe).length > 0
+          const searchable = [recipe.name, recipe.summary, recipe.region, recipe.era, recipe.culture]
+            .filter(Boolean)
+            .join(' ')
+            .toLowerCase()
+          const matchesSearch = queryLowered.length === 0 || searchable.includes(queryLowered)
+          return matchesEra && matchesFast && matchesKitReady && matchesSearch
+        })
+        .map((recipe) => recipe.culture)
+        .filter(Boolean),
+    )
+
+    return Array.from(values)
+  }, [recipes, erasSelected, quickFilters, queryLowered])
+
+  const availableEras = useMemo(() => {
+    const values = new Set(
+      recipes
+        .filter((recipe) => {
+          const matchesCulture =
+            culturesSelected.length === 0 || culturesSelected.includes(recipe.culture)
+          const matchesFast = !quickFilters.fast || (estimateMinutes(recipe) ?? Number.MAX_SAFE_INTEGER) <= 45
+          const matchesKitReady = !quickFilters.kitReady || getKitItems(recipe).length > 0
+          const searchable = [recipe.name, recipe.summary, recipe.region, recipe.era, recipe.culture]
+            .filter(Boolean)
+            .join(' ')
+            .toLowerCase()
+          const matchesSearch = queryLowered.length === 0 || searchable.includes(queryLowered)
+          return matchesCulture && matchesFast && matchesKitReady && matchesSearch
+        })
+        .map((recipe) => recipe.era)
+        .filter(Boolean),
+    )
+
+    return Array.from(values)
+  }, [recipes, culturesSelected, quickFilters, queryLowered])
+
+  const cultureCounts = useMemo(() => {
+    const counts = new Map()
+
+    recipes.forEach((recipe) => {
+      const matchesEra = erasSelected.length === 0 || erasSelected.includes(recipe.era)
+      const matchesFast = !quickFilters.fast || (estimateMinutes(recipe) ?? Number.MAX_SAFE_INTEGER) <= 45
+      const matchesKitReady = !quickFilters.kitReady || getKitItems(recipe).length > 0
+      const searchable = [recipe.name, recipe.summary, recipe.region, recipe.era, recipe.culture]
+        .filter(Boolean)
+        .join(' ')
+        .toLowerCase()
+      const matchesSearch = queryLowered.length === 0 || searchable.includes(queryLowered)
+
+      if (matchesEra && matchesFast && matchesKitReady && matchesSearch && recipe.culture) {
+        counts.set(recipe.culture, (counts.get(recipe.culture) || 0) + 1)
+      }
+    })
+
+    return counts
+  }, [recipes, erasSelected, quickFilters, queryLowered])
+
+  const eraCounts = useMemo(() => {
+    const counts = new Map()
+
+    recipes.forEach((recipe) => {
+      const matchesCulture =
+        culturesSelected.length === 0 || culturesSelected.includes(recipe.culture)
+      const matchesFast = !quickFilters.fast || (estimateMinutes(recipe) ?? Number.MAX_SAFE_INTEGER) <= 45
+      const matchesKitReady = !quickFilters.kitReady || getKitItems(recipe).length > 0
+      const searchable = [recipe.name, recipe.summary, recipe.region, recipe.era, recipe.culture]
+        .filter(Boolean)
+        .join(' ')
+        .toLowerCase()
+      const matchesSearch = queryLowered.length === 0 || searchable.includes(queryLowered)
+
+      if (matchesCulture && matchesFast && matchesKitReady && matchesSearch && recipe.era) {
+        counts.set(recipe.era, (counts.get(recipe.era) || 0) + 1)
+      }
+    })
+
+    return counts
+  }, [recipes, culturesSelected, quickFilters, queryLowered])
+
+  const filteredRecipes = useMemo(() => {
     const matches = recipes.filter((recipe) => {
       const matchesCulture =
         culturesSelected.length === 0 || culturesSelected.includes(recipe.culture)
@@ -167,7 +253,7 @@ function App() {
         .join(' ')
         .toLowerCase()
 
-      const matchesSearch = lowered.length === 0 || searchable.includes(lowered)
+      const matchesSearch = queryLowered.length === 0 || searchable.includes(queryLowered)
       return matchesCulture && matchesEra && matchesFast && matchesKitReady && matchesSearch
     })
 
@@ -182,7 +268,7 @@ function App() {
       }
       return a.name.localeCompare(b.name)
     })
-  }, [recipes, query, culturesSelected, erasSelected, quickFilters, sortBy])
+  }, [recipes, queryLowered, culturesSelected, erasSelected, quickFilters, sortBy])
 
   const activeFilters = [
     query ? `Search: ${query}` : null,
@@ -210,6 +296,20 @@ function App() {
   useEffect(() => {
     setPage(1)
   }, [query, culturesSelected, erasSelected, quickFilters, sortBy])
+
+  useEffect(() => {
+    setCulturesSelected((previous) => {
+      const next = previous.filter((value) => availableCultures.includes(value))
+      return next.length === previous.length ? previous : next
+    })
+  }, [availableCultures])
+
+  useEffect(() => {
+    setErasSelected((previous) => {
+      const next = previous.filter((value) => availableEras.includes(value))
+      return next.length === previous.length ? previous : next
+    })
+  }, [availableEras])
 
   useEffect(() => {
     if (page > totalPages) {
@@ -346,7 +446,7 @@ function App() {
               alignItems={{ sm: 'center' }}
             >
               <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap">
-                <Chip icon={<PublicOutlinedIcon />} label={`${cultures.length} cultures`} color="secondary" />
+                <Chip icon={<PublicOutlinedIcon />} label={`${allCultures.length} cultures`} color="secondary" />
                 <Chip icon={<MenuBookOutlinedIcon />} label={`${recipes.length} recipes`} color="secondary" />
                 <Chip icon={<LocalMallOutlinedIcon />} label="Kit-ready concepts" color="secondary" />
               </Stack>
@@ -404,10 +504,10 @@ function App() {
                   MenuProps={{ PaperProps: { sx: { maxHeight: 320 } } }}
                   sx={{ minWidth: 170 }}
                 >
-                  {cultures.map((value) => (
+                  {availableCultures.map((value) => (
                     <MenuItem key={value} value={value}>
                       <Checkbox size="small" checked={culturesSelected.includes(value)} />
-                      <ListItemText primary={value} />
+                      <ListItemText primary={`${value} (${cultureCounts.get(value) || 0})`} />
                     </MenuItem>
                   ))}
                 </Select>
@@ -429,10 +529,10 @@ function App() {
                   MenuProps={{ PaperProps: { sx: { maxHeight: 320 } } }}
                   sx={{ minWidth: 170 }}
                 >
-                  {eras.map((value) => (
+                  {availableEras.map((value) => (
                     <MenuItem key={value} value={value}>
                       <Checkbox size="small" checked={erasSelected.includes(value)} />
-                      <ListItemText primary={value} />
+                      <ListItemText primary={`${value} (${eraCounts.get(value) || 0})`} />
                     </MenuItem>
                   ))}
                 </Select>
