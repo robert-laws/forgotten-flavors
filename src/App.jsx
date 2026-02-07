@@ -365,7 +365,18 @@ function App() {
       </Box>
 
       <Container maxWidth="lg" sx={{ pt: 3 }}>
-        <Paper sx={{ p: { xs: 1.5, sm: 2 }, mb: 2.5 }}>
+        <Paper
+          sx={{
+            p: { xs: 1.5, sm: 2 },
+            mb: 2.5,
+            '& .MuiInputBase-input, & .MuiSelect-select': {
+              fontSize: '0.92rem',
+            },
+            '& .MuiInputLabel-root': {
+              fontSize: '0.9rem',
+            },
+          }}
+        >
           <Grid container spacing={1.25} alignItems="center">
             <Grid item xs={12} sm={6} md={3}>
               <TextField
@@ -458,6 +469,7 @@ function App() {
 
         <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap" sx={{ mb: 2 }}>
           <Chip
+            size="small"
             label="45 min or less"
             variant="outlined"
             sx={quickFilterChipSx(quickFilters.fast)}
@@ -469,6 +481,7 @@ function App() {
             }
           />
           <Chip
+            size="small"
             label="Kit-ready only"
             variant="outlined"
             sx={quickFilterChipSx(quickFilters.kitReady)}

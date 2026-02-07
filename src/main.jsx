@@ -29,23 +29,24 @@ const theme = createTheme({
   typography: {
     fontFamily: ['"Plus Jakarta Sans"', '"Segoe UI"', 'sans-serif'].join(','),
     h2: {
-      fontFamily: ['"Sora"', '"Plus Jakarta Sans"', 'sans-serif'].join(','),
+      fontFamily: ['"Source Serif 4"', 'Georgia', 'serif'].join(','),
       fontWeight: 700,
       lineHeight: 1.04,
       letterSpacing: -0.7,
       fontSize: 'clamp(2.3rem, 6vw, 4.4rem)',
     },
     h4: {
-      fontFamily: ['"Sora"', '"Plus Jakarta Sans"', 'sans-serif'].join(','),
+      fontFamily: ['"Source Serif 4"', 'Georgia', 'serif'].join(','),
       fontWeight: 600,
       letterSpacing: -0.3,
     },
     h5: {
-      fontFamily: ['"Sora"', '"Plus Jakarta Sans"', 'sans-serif'].join(','),
+      fontFamily: ['"Source Serif 4"', 'Georgia', 'serif'].join(','),
       fontWeight: 600,
       letterSpacing: -0.2,
     },
     h6: {
+      fontFamily: ['"Source Serif 4"', 'Georgia', 'serif'].join(','),
       fontWeight: 600,
       letterSpacing: -0.15,
     },
