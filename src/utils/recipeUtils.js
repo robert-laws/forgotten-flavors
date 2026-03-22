@@ -57,12 +57,13 @@ export function formatSelectedValues(selected, emptyLabel) {
 export function quickFilterChipSx(active) {
   return {
     borderWidth: 1.5,
-    borderColor: active ? 'secondary.main' : 'rgba(39, 25, 15, 0.2)',
-    bgcolor: active ? 'secondary.main' : 'background.paper',
-    color: active ? 'secondary.contrastText' : 'text.primary',
-    fontWeight: 600,
+    borderColor: active ? 'primary.main' : 'rgba(84, 64, 46, 0.16)',
+    bgcolor: active ? 'primary.main' : 'rgba(255, 248, 238, 0.86)',
+    color: active ? 'primary.contrastText' : 'text.primary',
+    boxShadow: active ? '0 12px 24px rgba(155, 86, 49, 0.18)' : 'none',
+    fontWeight: 700,
     '&:hover': {
-      bgcolor: active ? 'secondary.dark' : 'rgba(45, 95, 88, 0.08)',
+      bgcolor: active ? 'primary.dark' : 'rgba(155, 86, 49, 0.08)',
     },
   }
 }

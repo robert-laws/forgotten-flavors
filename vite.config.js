@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 
 const repoBase = '/forgotten-flavors/'
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [react()],
-  base: process.env.NODE_ENV === 'production' ? repoBase : '/',
-})
+  base: mode === 'production' ? repoBase : '/',
+}))

@@ -1,4 +1,4 @@
-import { Alert, Box, Button, Divider, Drawer, IconButton, List, ListItem, ListItemText, Stack, Typography } from '@mui/material'
+import { Alert, Box, Button, Divider, Drawer, IconButton, Stack, Typography } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add'
 import CloseIcon from '@mui/icons-material/Close'
 import RemoveIcon from '@mui/icons-material/Remove'
@@ -6,52 +6,107 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
 
 function CartDrawer({ open, onClose, cartItems, onUpdateCartQuantity, onRemoveCartItem, cartItemCount, cartSubtotal }) {
   return (
-    <Drawer anchor="left" open={open} onClose={onClose}>
-      <Box sx={{ width: { xs: '100vw', sm: 400 }, p: 2.5 }}>
+    <Drawer
+      anchor="left"
+      open={open}
+      onClose={onClose}
+      PaperProps={{
+        sx: {
+          width: { xs: '100vw', sm: 420 },
+        },
+      }}
+    >
+      <Box sx={{ p: { xs: 2, sm: 2.5 } }}>
         <Stack spacing={2}>
-          <Stack direction="row" justifyContent="space-between" alignItems="center">
-            <Typography variant="h5">Cart</Typography>
-            <IconButton onClick={onClose}>
-              <CloseIcon />
-            </IconButton>
-          </Stack>
+          <Box
+            sx={{
+              p: 2.25,
+              borderRadius: 6,
+              bgcolor: 'rgba(255, 248, 239, 0.07)',
+              border: '1px solid rgba(255, 236, 220, 0.1)',
+            }}
+          >
+            <Stack direction="row" justifyContent="space-between" alignItems="center">
+              <Box>
+                <Typography variant="overline" sx={{ color: 'rgba(255, 236, 220, 0.74)' }}>
+                  Cart Ledger
+                </Typography>
+                <Typography variant="h4" sx={{ mt: 0.5, color: '#fff8ef' }}>
+                  Selected kit items
+                </Typography>
+              </Box>
+              <IconButton onClick={onClose} sx={{ color: '#fff4ea' }}>
+                <CloseIcon />
+              </IconButton>
+            </Stack>
+          </Box>
 
           {cartItems.length === 0 && <Alert severity="info">Your cart is empty. Add kit items from any recipe.</Alert>}
 
           {cartItems.length > 0 && (
             <>
-              <List dense disablePadding>
+              <Stack spacing={1.1}>
                 {cartItems.map((item) => (
-                  <ListItem key={item.id} disableGutters sx={{ alignItems: 'flex-start', py: 1 }}>
-                    <ListItemText
-                      primary={item.itemName}
-                      secondary={`${item.recipeName} · $${item.unitPrice.toFixed(2)} each`}
-                      sx={{ mr: 1 }}
-                    />
-                    <Stack direction="row" spacing={0.25} alignItems="center">
-                      <IconButton size="small" onClick={() => onUpdateCartQuantity(item.id, -1)}>
-                        <RemoveIcon fontSize="small" />
-                      </IconButton>
-                      <Typography variant="body2" sx={{ minWidth: 20, textAlign: 'center' }}>
-                        {item.quantity}
-                      </Typography>
-                      <IconButton size="small" onClick={() => onUpdateCartQuantity(item.id, 1)}>
-                        <AddIcon fontSize="small" />
-                      </IconButton>
+                  <Box
+                    key={item.id}
+                    sx={{
+                      p: 1.6,
+                      borderRadius: 5,
+                      border: '1px solid rgba(94, 70, 50, 0.12)',
+                      bgcolor: 'rgba(255, 248, 239, 0.98)',
+                      color: 'text.primary',
+                    }}
+                  >
+                    <Stack spacing={1.1}>
+                      <Box>
+                        <Typography variant="subtitle2">{item.itemName}</Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          {item.recipeName} · $${item.unitPrice.toFixed(2)} each
+                        </Typography>
+                      </Box>
+
+                      <Stack direction="row" justifyContent="space-between" alignItems="center" spacing={1}>
+                        <Stack direction="row" spacing={0.4} alignItems="center">
+                          <IconButton size="small" onClick={() => onUpdateCartQuantity(item.id, -1)}>
+                            <RemoveIcon fontSize="small" />
+                          </IconButton>
+                          <Typography variant="body2" sx={{ minWidth: 20, textAlign: 'center', fontWeight: 700 }}>
+                            {item.quantity}
+                          </Typography>
+                          <IconButton size="small" onClick={() => onUpdateCartQuantity(item.id, 1)}>
+                            <AddIcon fontSize="small" />
+                          </IconButton>
+                        </Stack>
+
+                        <Button size="small" color="inherit" onClick={() => onRemoveCartItem(item.id)}>
+                          Remove
+                        </Button>
+                      </Stack>
                     </Stack>
-                    <Button size="small" color="inherit" onClick={() => onRemoveCartItem(item.id)}>
-                      Remove
-                    </Button>
-                  </ListItem>
+                  </Box>
                 ))}
-              </List>
-
-              <Divider />
-
-              <Stack direction="row" justifyContent="space-between" alignItems="center">
-                <Typography variant="subtitle1">Subtotal ({cartItemCount} items)</Typography>
-                <Typography variant="h6">${cartSubtotal.toFixed(2)}</Typography>
               </Stack>
+
+              <Divider sx={{ borderColor: 'rgba(255, 236, 220, 0.12)' }} />
+
+              <Box
+                sx={{
+                  p: 2.1,
+                  borderRadius: 5,
+                  bgcolor: 'rgba(255, 248, 239, 0.98)',
+                  color: 'text.primary',
+                }}
+              >
+                <Stack direction="row" justifyContent="space-between" alignItems="center">
+                  <Box>
+                    <Typography variant="subtitle1">Subtotal ({cartItemCount} items)</Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      Mock checkout for preview flow
+                    </Typography>
+                  </Box>
+                  <Typography variant="h5">${cartSubtotal.toFixed(2)}</Typography>
+                </Stack>
+              </Box>
 
               <Button variant="contained" size="large" startIcon={<ShoppingCartOutlinedIcon />}>
                 Checkout (Mock)

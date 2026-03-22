@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Alert, Box, Button, CircularProgress, Container, Pagination, Paper, Stack, Typography } from '@mui/material'
 import CartDrawer from './components/CartDrawer'
+import DiscoveryHighlights from './components/DiscoveryHighlights'
 import HeroSection from './components/HeroSection'
 import RecipeDetailsDrawer from './components/RecipeDetailsDrawer'
 import RecipeFiltersPanel from './components/RecipeFiltersPanel'
@@ -61,6 +62,25 @@ function App() {
     const values = new Set(recipes.map((recipe) => recipe.culture).filter(Boolean))
     return Array.from(values)
   }, [recipes])
+
+  const featuredCultures = useMemo(() => summarizeByField(recipes, 'culture').slice(0, 4), [recipes])
+
+  const featuredEras = useMemo(() => summarizeByField(recipes, 'era').slice(0, 4), [recipes])
+
+  const curatedKitCount = useMemo(
+    () => recipes.filter((recipe) => Boolean(recipe.commerce?.kitsAvailable || recipe.commerce?.ingredientLinks?.length > 0)).length,
+    [recipes],
+  )
+
+  const sourceRichCount = useMemo(
+    () => recipes.filter((recipe) => (recipe.history?.sources || []).length > 0).length,
+    [recipes],
+  )
+
+  const fastRecipesCount = useMemo(
+    () => recipes.filter((recipe) => (estimateMinutes(recipe) ?? Number.MAX_SAFE_INTEGER) <= 45).length,
+    [recipes],
+  )
 
   const queryLowered = query.trim().toLowerCase()
 
@@ -336,9 +356,8 @@ function App() {
     <Box
       sx={{
         minHeight: '100vh',
-        background:
-          'radial-gradient(circle at 8% 0%, rgba(164, 107, 49, 0.18), transparent 40%), radial-gradient(circle at 96% 12%, rgba(47, 91, 84, 0.14), transparent 32%), #efe4d4',
-        pb: 7,
+        background: 'transparent',
+        pb: { xs: 6, md: 8 },
       }}
     >
       <HeroSection
@@ -346,84 +365,118 @@ function App() {
         recipesCount={recipes.length}
         cartItemCount={cartItemCount}
         onOpenCart={() => setCartOpen(true)}
+        featuredCultures={featuredCultures}
+        featuredEras={featuredEras}
+        curatedKitCount={curatedKitCount}
+        sourceRichCount={sourceRichCount}
       />
 
-      <Container maxWidth="lg" sx={{ pt: 3 }}>
-        <RecipeFiltersPanel
-          query={query}
-          onQueryChange={setQuery}
-          culturesSelected={culturesSelected}
-          onCulturesChange={setCulturesSelected}
-          availableCultures={availableCultures}
-          cultureCounts={cultureCounts}
-          erasSelected={erasSelected}
-          onErasChange={setErasSelected}
-          availableEras={availableEras}
-          eraCounts={eraCounts}
-          sortBy={sortBy}
-          onSortByChange={setSortBy}
-          onReset={resetFilters}
-          formatSelectedValues={formatSelectedValues}
-        />
-
-        <RecipeToolbar
-          filteredCount={filteredRecipes.length}
-          totalCount={recipes.length}
-          page={page}
-          pageSize={pageSize}
-          activeFilters={activeFilters}
-          quickFilters={quickFilters}
-          onToggleFast={() =>
-            setQuickFilters((previous) => ({
-              ...previous,
-              fast: !previous.fast,
-            }))
-          }
-          onToggleKitReady={() =>
-            setQuickFilters((previous) => ({
-              ...previous,
-              kitReady: !previous.kitReady,
-            }))
-          }
-          quickFilterChipSx={quickFilterChipSx}
-        />
-
-        {loading && (
-          <Stack alignItems="center" sx={{ py: 8 }}>
-            <CircularProgress />
-          </Stack>
-        )}
-
-        {error && <Alert severity="error">{error}</Alert>}
-
-        {!loading && !error && filteredRecipes.length === 0 && (
-          <Paper sx={{ p: 3 }}>
-            <Typography variant="h6" sx={{ mb: 0.5 }}>
-              No recipes match current filters
-            </Typography>
-            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-              Try broadening your search or clearing one of the active filters.
-            </Typography>
-            <Button variant="outlined" onClick={resetFilters}>
-              Clear filters
-            </Button>
-          </Paper>
-        )}
-
-        {!loading && !error && filteredRecipes.length > 0 && (
-          <RecipeGrid
-            recipes={pagedRecipes}
-            estimateMinutes={estimateMinutes}
-            getIngredientLine={getIngredientLine}
-            onOpenRecipeDetails={openRecipeDetails}
+      <Box sx={{ mt: { xs: -3, md: -4.5 }, position: 'relative', zIndex: 2 }}>
+        <Container maxWidth="lg">
+          <RecipeFiltersPanel
+            query={query}
+            onQueryChange={setQuery}
+            culturesSelected={culturesSelected}
+            onCulturesChange={setCulturesSelected}
+            availableCultures={availableCultures}
+            cultureCounts={cultureCounts}
+            erasSelected={erasSelected}
+            onErasChange={setErasSelected}
+            availableEras={availableEras}
+            eraCounts={eraCounts}
+            sortBy={sortBy}
+            onSortByChange={setSortBy}
+            onReset={resetFilters}
+            formatSelectedValues={formatSelectedValues}
           />
-        )}
+        </Container>
+      </Box>
 
-        {!loading && !error && filteredRecipes.length > pageSize && (
-          <Stack alignItems="center" sx={{ mt: 3 }}>
-            <Pagination page={page} count={totalPages} onChange={(_, value) => setPage(value)} color="secondary" shape="rounded" />
-          </Stack>
-        )}
+      <DiscoveryHighlights
+        featuredCultures={featuredCultures}
+        featuredEras={featuredEras}
+        fastRecipesCount={fastRecipesCount}
+        curatedKitCount={curatedKitCount}
+      />
+
+      <Container maxWidth="lg" sx={{ pt: 1, pb: 2 }}>
+        <Box
+          sx={{
+            py: { xs: 2.5, md: 3.5 },
+            borderTop: '1px solid rgba(97, 73, 49, 0.12)',
+          }}
+        >
+          <RecipeToolbar
+            filteredCount={filteredRecipes.length}
+            totalCount={recipes.length}
+            page={page}
+            pageSize={pageSize}
+            activeFilters={activeFilters}
+            quickFilters={quickFilters}
+            onToggleFast={() =>
+              setQuickFilters((previous) => ({
+                ...previous,
+                fast: !previous.fast,
+              }))
+            }
+            onToggleKitReady={() =>
+              setQuickFilters((previous) => ({
+                ...previous,
+                kitReady: !previous.kitReady,
+              }))
+            }
+            quickFilterChipSx={quickFilterChipSx}
+          />
+
+          {loading && (
+            <Stack alignItems="center" spacing={2} sx={{ py: 9 }}>
+              <CircularProgress color="primary" />
+              <Typography variant="body2" color="text.secondary">
+                Indexing the archive...
+              </Typography>
+            </Stack>
+          )}
+
+          {error && <Alert severity="error">{error}</Alert>}
+
+          {!loading && !error && filteredRecipes.length === 0 && (
+            <Paper
+              sx={{
+                p: { xs: 3, md: 4 },
+                textAlign: 'center',
+                background: 'linear-gradient(180deg, rgba(251, 244, 232, 0.98) 0%, rgba(238, 226, 205, 0.98) 100%)',
+              }}
+            >
+              <Typography variant="overline" sx={{ color: 'secondary.main' }}>
+                No Match
+              </Typography>
+              <Typography variant="h5" sx={{ mt: 0.5, mb: 1 }}>
+                No recipes match the current trail
+              </Typography>
+              <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                Broaden the search terms or clear a filter to reopen the full archive.
+              </Typography>
+              <Button variant="outlined" onClick={resetFilters}>
+                Clear filters
+              </Button>
+            </Paper>
+          )}
+
+          {!loading && !error && filteredRecipes.length > 0 && (
+            <RecipeGrid
+              recipes={pagedRecipes}
+              estimateMinutes={estimateMinutes}
+              getIngredientLine={getIngredientLine}
+              onOpenRecipeDetails={openRecipeDetails}
+            />
+          )}
+
+          {!loading && !error && filteredRecipes.length > pageSize && (
+            <Stack alignItems="center" sx={{ mt: 3.5 }}>
+              <Pagination page={page} count={totalPages} onChange={(_, value) => setPage(value)} color="primary" shape="rounded" />
+            </Stack>
+          )}
+        </Box>
       </Container>
 
       <RecipeDetailsDrawer
@@ -460,3 +513,17 @@ function App() {
 }
 
 export default App
+
+function summarizeByField(recipes, field) {
+  const counts = new Map()
+
+  recipes.forEach((recipe) => {
+    if (recipe[field]) {
+      counts.set(recipe[field], (counts.get(recipe[field]) || 0) + 1)
+    }
+  })
+
+  return [...counts.entries()]
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+    .map(([label, count]) => ({ label, count }))
+}
