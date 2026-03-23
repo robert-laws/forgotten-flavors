@@ -4,6 +4,10 @@ import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined'
 import PublicOutlinedIcon from '@mui/icons-material/PublicOutlined'
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
 
+const heroImage = `${import.meta.env.BASE_URL}images/site/hero-archive-table.webp`
+const ingredientImage = `${import.meta.env.BASE_URL}images/site/accent-ingredient-study.webp`
+const eraMapImage = `${import.meta.env.BASE_URL}images/site/era-antique-map.webp`
+
 function HeroSection({
   allCulturesCount,
   recipesCount,
@@ -126,13 +130,17 @@ function HeroSection({
           <Stack spacing={2}>
             <Box
               sx={{
-                p: { xs: 2.5, md: 3.25 },
-                borderRadius: 7,
+                minHeight: { xs: 340, md: 430 },
+                p: { xs: 2.25, md: 3 },
+                borderRadius: 4,
                 position: 'relative',
                 overflow: 'hidden',
                 border: '1px solid rgba(255, 233, 214, 0.12)',
-                bgcolor: 'rgba(255, 248, 238, 0.08)',
-                backdropFilter: 'blur(16px)',
+                backgroundImage: `linear-gradient(180deg, rgba(18, 13, 10, 0.1) 0%, rgba(18, 13, 10, 0.52) 62%, rgba(18, 13, 10, 0.88) 100%), url(${heroImage})`,
+                backgroundSize: 'cover',
+                backgroundPosition: { xs: '68% center', md: 'center' },
+                display: 'flex',
+                alignItems: 'flex-end',
               }}
             >
               <Box
@@ -161,7 +169,7 @@ function HeroSection({
                 </Box>
               </Box>
 
-              <Stack spacing={2.25} sx={{ maxWidth: 380 }}>
+              <Stack spacing={2} sx={{ maxWidth: 390, position: 'relative', zIndex: 1 }}>
                 <Box>
                   <Typography variant="overline" sx={{ color: 'rgba(255, 236, 220, 0.72)' }}>
                     Curator&apos;s Note
@@ -171,9 +179,17 @@ function HeroSection({
                   </Typography>
                 </Box>
 
-                <Typography variant="body2" sx={{ color: 'rgba(255, 240, 228, 0.78)', lineHeight: 1.8 }}>
-                  The new front page frames the collection as a living archive: bold headline, stronger section rhythm, curated
-                  pathways, and a clearer line between historical intrigue and practical kitchen use.
+                <Typography
+                  variant="body2"
+                  sx={{
+                    color: 'rgba(255, 240, 228, 0.86)',
+                    lineHeight: 1.75,
+                    maxWidth: 360,
+                    textShadow: '0 1px 18px rgba(0, 0, 0, 0.34)',
+                  }}
+                >
+                  A reconstructed table scene turns the landing page into an editorial threshold: tactile, moody, and grounded
+                  in ingredients rather than decorative fantasy.
                 </Typography>
 
                 <Stack direction="row" spacing={0.75} useFlexGap flexWrap="wrap">
@@ -202,52 +218,73 @@ function HeroSection({
             >
               <Box
                 sx={{
-                  p: 2.25,
-                  borderRadius: 6,
+                  borderRadius: 4,
                   bgcolor: '#f7efe1',
                   border: '1px solid rgba(91, 64, 42, 0.12)',
+                  overflow: 'hidden',
                 }}
               >
-                <Typography variant="overline" sx={{ color: 'secondary.main' }}>
-                  Leading Cultures
-                </Typography>
-                <Stack spacing={0.7} sx={{ mt: 1.25 }}>
-                  {featuredCultures.slice(0, 3).map((culture) => (
-                    <Stack key={culture.label} direction="row" justifyContent="space-between" alignItems="baseline">
-                      <Typography variant="body2" sx={{ fontWeight: 700 }}>
-                        {culture.label}
-                      </Typography>
-                      <Typography variant="caption" color="text.secondary">
-                        {culture.count} recipes
-                      </Typography>
-                    </Stack>
-                  ))}
-                </Stack>
+                <Box
+                  sx={{
+                    minHeight: 108,
+                    backgroundImage: `linear-gradient(180deg, rgba(33, 22, 15, 0.1) 0%, rgba(33, 22, 15, 0.45) 100%), url(${ingredientImage})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                  }}
+                />
+                <Box sx={{ p: 2.1 }}>
+                  <Typography variant="overline" sx={{ color: 'secondary.main' }}>
+                    Leading Cultures
+                  </Typography>
+                  <Stack spacing={0.7} sx={{ mt: 1.1 }}>
+                    {featuredCultures.slice(0, 3).map((culture) => (
+                      <Stack key={culture.label} direction="row" justifyContent="space-between" alignItems="baseline">
+                        <Typography variant="body2" sx={{ fontWeight: 700 }}>
+                          {culture.label}
+                        </Typography>
+                        <Typography variant="caption" color="text.secondary">
+                          {culture.count} recipes
+                        </Typography>
+                      </Stack>
+                    ))}
+                  </Stack>
+                </Box>
               </Box>
 
               <Box
                 sx={{
-                  p: 2.25,
-                  borderRadius: 6,
+                  borderRadius: 4,
                   bgcolor: 'rgba(92, 121, 113, 0.18)',
                   border: '1px solid rgba(190, 216, 205, 0.16)',
+                  overflow: 'hidden',
                 }}
               >
-                <Typography variant="overline" sx={{ color: '#d7ece5' }}>
-                  Era Span
-                </Typography>
-                <Stack spacing={0.7} sx={{ mt: 1.25 }}>
-                  {featuredEras.slice(0, 3).map((era) => (
-                    <Stack key={era.label} direction="row" justifyContent="space-between" alignItems="baseline">
-                      <Typography variant="body2" sx={{ fontWeight: 700, color: '#f4f2ed' }}>
-                        {era.label}
-                      </Typography>
-                      <Typography variant="caption" sx={{ color: 'rgba(241, 246, 243, 0.72)' }}>
-                        {era.count} recipes
-                      </Typography>
-                    </Stack>
-                  ))}
-                </Stack>
+                <Box
+                  sx={{
+                    minHeight: 108,
+                    backgroundImage: `linear-gradient(180deg, rgba(23, 18, 15, 0.12) 0%, rgba(23, 18, 15, 0.34) 100%), url(${eraMapImage})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center 44%',
+                    filter: 'saturate(0.76) sepia(0.12)',
+                  }}
+                />
+                <Box sx={{ p: 2.1 }}>
+                  <Typography variant="overline" sx={{ color: '#d7ece5' }}>
+                    Era Span
+                  </Typography>
+                  <Stack spacing={0.7} sx={{ mt: 1.1 }}>
+                    {featuredEras.slice(0, 3).map((era) => (
+                      <Stack key={era.label} direction="row" justifyContent="space-between" alignItems="baseline">
+                        <Typography variant="body2" sx={{ fontWeight: 700, color: '#f4f2ed' }}>
+                          {era.label}
+                        </Typography>
+                        <Typography variant="caption" sx={{ color: 'rgba(241, 246, 243, 0.72)' }}>
+                          {era.count} recipes
+                        </Typography>
+                      </Stack>
+                    ))}
+                  </Stack>
+                </Box>
               </Box>
             </Box>
           </Stack>

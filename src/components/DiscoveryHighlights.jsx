@@ -3,16 +3,19 @@ import HistoryEduOutlinedIcon from '@mui/icons-material/HistoryEduOutlined'
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined'
 import TravelExploreOutlinedIcon from '@mui/icons-material/TravelExploreOutlined'
 
+const cookwareImage = `${import.meta.env.BASE_URL}images/site/accent-cookware-study.webp`
+const archiveTexture = `${import.meta.env.BASE_URL}images/site/texture-archive-map.webp`
+
 function DiscoveryHighlights({ featuredCultures, featuredEras, fastRecipesCount, curatedKitCount }) {
   const explorationModes = [
     {
       title: 'Follow culture trails',
-      detail: 'Move from Roman pantry roasting to Andalusian spice kitchens through compact cultural clusters.',
+      detail: 'Move from Roman pantry roasting to Andalusian spice kitchens through tighter cultural clusters.',
       icon: <TravelExploreOutlinedIcon fontSize="small" />,
     },
     {
       title: 'Read historical context',
-      detail: 'Every recipe opens into a dossier with period notes, sources, and reconstruction details.',
+      detail: 'Each recipe opens into a dossier with period notes, sources, and reconstruction details.',
       icon: <HistoryEduOutlinedIcon fontSize="small" />,
     },
     {
@@ -23,7 +26,24 @@ function DiscoveryHighlights({ featuredCultures, featuredEras, fastRecipesCount,
   ]
 
   return (
-    <Box id="highlights" sx={{ py: { xs: 4, md: 6 } }}>
+    <Box
+      id="highlights"
+      sx={{
+        py: { xs: 4, md: 6 },
+        position: 'relative',
+      }}
+    >
+      <Box
+        sx={{
+          position: 'absolute',
+          inset: 0,
+          opacity: 0.18,
+          backgroundImage: `url(${archiveTexture})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          pointerEvents: 'none',
+        }}
+      />
       <Container maxWidth="lg">
         <Box
           sx={{
@@ -52,20 +72,71 @@ function DiscoveryHighlights({ featuredCultures, featuredEras, fastRecipesCount,
                 pointerEvents: 'none',
               }}
             />
-            <Stack spacing={2.5} sx={{ position: 'relative' }}>
-              <Box>
-                <Typography variant="overline" sx={{ color: 'rgba(255, 236, 220, 0.74)' }}>
-                  Curated Pathways
-                </Typography>
-                <Typography variant="h4" sx={{ mt: 1, maxWidth: 640 }}>
-                  A discovery surface that feels closer to an exhibition catalog than a utility table.
-                </Typography>
+            <Box
+              sx={{
+                position: 'relative',
+                display: 'grid',
+                gap: { xs: 2.25, md: 2.75 },
+              }}
+            >
+              <Box
+                sx={{
+                  display: 'grid',
+                  gap: { xs: 2, md: 2.75 },
+                  gridTemplateColumns: { xs: '1fr', lg: 'minmax(0, 1.08fr) minmax(320px, 0.82fr)' },
+                  alignItems: 'start',
+                }}
+              >
+                <Stack spacing={2} sx={{ justifyContent: 'space-between', pr: { lg: 1.5 } }}>
+                  <Box>
+                    <Typography variant="overline" sx={{ color: 'rgba(255, 236, 220, 0.74)' }}>
+                      Curated Pathways
+                    </Typography>
+                    <Typography variant="h4" sx={{ mt: 1, maxWidth: 580 }}>
+                      A discovery surface that feels closer to an exhibition catalog than a utility table.
+                    </Typography>
+                  </Box>
+                  <Typography variant="body1" sx={{ color: 'rgba(255, 240, 228, 0.76)', maxWidth: 510, lineHeight: 1.75 }}>
+                    The desktop composition works better when the image behaves like a supporting plate and the cards read as quick
+                    routes into the archive. The section should feel arranged, not compressed.
+                  </Typography>
+                </Stack>
+
+                <Stack spacing={1.25} sx={{ alignSelf: 'stretch' }}>
+                  <Box
+                    sx={{
+                      minHeight: { xs: 280, lg: 360 },
+                      borderRadius: 4,
+                      overflow: 'hidden',
+                      border: '1px solid rgba(255, 236, 220, 0.1)',
+                      backgroundImage: `linear-gradient(180deg, rgba(20, 15, 12, 0.04) 0%, rgba(20, 15, 12, 0.3) 100%), url(${cookwareImage})`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center 44%',
+                    }}
+                  />
+                  <Box
+                    sx={{
+                      border: '1px solid rgba(255, 236, 220, 0.1)',
+                      borderRadius: 4,
+                      p: 1.75,
+                      bgcolor: 'rgba(255, 249, 241, 0.06)',
+                      backdropFilter: 'blur(10px)',
+                    }}
+                  >
+                    <Typography variant="overline" sx={{ color: 'rgba(255, 236, 220, 0.74)' }}>
+                      Material Study
+                    </Typography>
+                    <Typography variant="body2" sx={{ mt: 0.5, color: 'rgba(255, 240, 228, 0.8)', lineHeight: 1.65 }}>
+                      Knives, linen, bowls, and spice traces extend the archive tone without crowding the main argument.
+                    </Typography>
+                  </Box>
+                </Stack>
               </Box>
 
               <Box
                 sx={{
                   display: 'grid',
-                  gap: 1.25,
+                  gap: 1.4,
                   gridTemplateColumns: { xs: '1fr', md: 'repeat(3, minmax(0, 1fr))' },
                 }}
               >
@@ -78,9 +149,10 @@ function DiscoveryHighlights({ featuredCultures, featuredEras, fastRecipesCount,
                       border: '1px solid rgba(255, 236, 220, 0.1)',
                       bgcolor: 'rgba(255, 249, 241, 0.06)',
                       backdropFilter: 'blur(10px)',
+                      minHeight: { md: 228 },
                     }}
                   >
-                    <Stack spacing={1}>
+                    <Stack spacing={1.15} sx={{ height: '100%' }}>
                       <Box
                         sx={{
                           width: 38,
@@ -95,14 +167,14 @@ function DiscoveryHighlights({ featuredCultures, featuredEras, fastRecipesCount,
                         {item.icon}
                       </Box>
                       <Typography variant="subtitle1">{item.title}</Typography>
-                      <Typography variant="body2" sx={{ color: 'rgba(255, 240, 228, 0.78)' }}>
+                      <Typography variant="body2" sx={{ color: 'rgba(255, 240, 228, 0.78)', lineHeight: 1.7 }}>
                         {item.detail}
                       </Typography>
                     </Stack>
                   </Box>
                 ))}
               </Box>
-            </Stack>
+            </Box>
           </Paper>
 
           <Box sx={{ display: 'grid', gap: 2.5 }}>

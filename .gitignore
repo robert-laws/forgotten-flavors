@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local generation and scratch artifacts
+.venv-imagegen/
+output/
+tmp/
