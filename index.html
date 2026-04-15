@@ -14,10 +14,15 @@
             .map(function (s) {
               return s.replace(/~and~/g, '&');
             });
+          // Preserve the subdirectory base path (e.g. /forgotten-flavors on GitHub Pages).
+          // index.html is served from that base, so l.pathname gives us the prefix we need
+          // to prepend before the decoded route — otherwise replaceState strips it and
+          // React Router's basename no longer matches.
+          var basePath = l.pathname.replace(/\/$/, '');
           window.history.replaceState(
             null,
             null,
-            decoded[0] + (decoded[1] ? '&' + decoded[1] : '') + l.hash
+            basePath + decoded[0] + (decoded[1] ? '&' + decoded[1] : '') + l.hash
           );
         }
       })(window.location);
