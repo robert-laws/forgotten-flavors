@@ -203,25 +203,24 @@ export default function RecipeDetailPage() {
           </Stack>
 
           {/* Stats bar */}
-          <Stack
-            direction="row"
-            spacing={{ xs: 3.5, md: 5 }}
-            useFlexGap
-            flexWrap="wrap"
-            divider={
-              <Box
-                component="span"
-                sx={{
-                  display: { xs: 'none', md: 'block' },
-                  width: 1,
-                  bgcolor: 'rgba(255,243,229,0.1)',
-                  alignSelf: 'stretch',
-                }}
-              />
-            }
+          <Box
             sx={{
+              display: 'grid',
+              gridTemplateColumns: {
+                xs: 'repeat(2, 1fr)',
+                sm: 'repeat(3, 1fr)',
+                md: 'repeat(5, 1fr)',
+              },
+              gap: { xs: 2.5, md: 0 },
               pt: 3,
               borderTop: '1px solid rgba(255,243,229,0.1)',
+              '& > *:not(:last-child)': {
+                borderRight: { md: '1px solid rgba(255,243,229,0.1)' },
+                pr: { md: 3 },
+              },
+              '& > *:not(:first-of-type)': {
+                pl: { md: 3 },
+              },
             }}
           >
             {totalMinutes && (
@@ -253,7 +252,7 @@ export default function RecipeDetailPage() {
               />
             )}
             <StatBlock label="Ingredients" value={`${(recipe.ingredients || []).length} items`} />
-          </Stack>
+          </Box>
         </Container>
       </Box>
 
