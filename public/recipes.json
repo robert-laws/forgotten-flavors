@@ -6656,56 +6656,58 @@
     "era": "Late Anglo-Saxon",
     "region": "Wessex",
     "culture": "Anglo-Saxon",
-    "summary": "Beef braised slowly with dark ale and onion.",
+    "summary": "Beef braised slowly in dark ale with onion, parsnip, and herbs \u2014 a hearty dish from the thane-halls of late Anglo-Saxon Wessex.",
     "ingredients": [
       {
-        "name": "Barley",
-        "quantity": 497,
+        "name": "Beef (shoulder or shin)",
+        "quantity": 800,
         "unit": "g",
-        "prep": "sliced",
+        "prep": "cut into large pieces",
         "optional": false,
         "substitutions": [
-          "Ale"
+          "Lamb shoulder"
         ]
       },
       {
-        "name": "Beef",
-        "quantity": 111,
-        "unit": "g",
-        "prep": "washed",
+        "name": "Dark ale or stout",
+        "quantity": 500,
+        "unit": "ml",
+        "prep": "",
         "optional": false,
         "substitutions": [
-          "Oats"
+          "Brown ale",
+          "Mead"
+        ]
+      },
+      {
+        "name": "Onion",
+        "quantity": 2,
+        "unit": "medium",
+        "prep": "roughly chopped",
+        "optional": false,
+        "substitutions": [
+          "Leeks"
         ]
       },
       {
         "name": "Parsnip",
         "quantity": 2,
-        "unit": "tbsp",
-        "prep": "fresh",
-        "optional": true,
+        "unit": "medium",
+        "prep": "peeled and chunked",
+        "optional": false,
         "substitutions": [
-          "Mint"
+          "Turnip",
+          "Carrot"
         ]
       },
       {
-        "name": "Sesame oil",
+        "name": "Lard or beef dripping",
         "quantity": 2,
         "unit": "tbsp",
         "prep": "",
         "optional": false,
         "substitutions": [
-          "Olive oil"
-        ]
-      },
-      {
-        "name": "Lemon juice",
-        "quantity": 1,
-        "unit": "tbsp",
-        "prep": "",
-        "optional": true,
-        "substitutions": [
-          "Apple cider vinegar"
+          "Butter"
         ]
       },
       {
@@ -6715,47 +6717,98 @@
         "prep": "",
         "optional": false,
         "substitutions": []
+      },
+      {
+        "name": "Dried thyme",
+        "quantity": 1,
+        "unit": "tsp",
+        "prep": "",
+        "optional": true,
+        "substitutions": [
+          "Fresh thyme",
+          "Dried sage"
+        ]
+      },
+      {
+        "name": "Apple cider vinegar",
+        "quantity": 1,
+        "unit": "tbsp",
+        "prep": "",
+        "optional": true,
+        "substitutions": [
+          "Mead vinegar"
+        ]
       }
     ],
     "steps": [
       {
         "order": 1,
-        "instruction": "Prepare aromatics and warm sesame oil in a heavy pan.",
-        "durationMinutes": 13,
+        "instruction": "Melt the lard in a heavy iron pot or Dutch oven over medium-high heat. Season the beef pieces with salt and sear in batches until deeply browned on all sides. Remove and set aside.",
+        "durationMinutes": 15,
         "tutorialTips": [
-          "Warm fat gently to preserve delicate aromas."
+          "Don't crowd the pot \u2014 brown in two batches so the beef sears rather than steams. Good colour here means depth of flavour later."
         ]
       },
       {
         "order": 2,
-        "instruction": "Cook barley with beef until tender and integrated.",
-        "durationMinutes": 21,
+        "instruction": "Reduce the heat to medium and cook the onions in the same pot, scraping up any browned bits from the base, until softened and beginning to colour \u2014 about 8 minutes.",
+        "durationMinutes": 10,
         "tutorialTips": [
-          "Add liquid in stages for controlled texture."
+          "Those caramelised bits on the pot base are pure flavour \u2014 the ale will lift them all."
         ]
       },
       {
         "order": 3,
-        "instruction": "Finish with parsnip and seasoning, then rest before serving.",
-        "durationMinutes": 12,
+        "instruction": "Return the beef to the pot along with the parsnips, thyme, and ale. The liquid should come roughly halfway up the meat. Bring to a gentle simmer.",
+        "durationMinutes": 5,
         "tutorialTips": [
-          "Resting helps the flavors settle and deepen."
+          "A hard boil will toughen the meat \u2014 you want a lazy, barely-there bubble throughout the braise."
+        ]
+      },
+      {
+        "order": 4,
+        "instruction": "Cover and braise over the lowest possible heat (or in a 160 \u00b0C / 320 \u00b0F oven) for 2\u20132.5 hours, until the beef yields easily to a fork and the braising liquid has reduced to a rich, glossy sauce.",
+        "durationMinutes": 150,
+        "tutorialTips": [
+          "Check every 45 minutes and add a splash of water if the pot looks dry. The finished sauce should coat a spoon."
+        ]
+      },
+      {
+        "order": 5,
+        "instruction": "Add the cider vinegar if using, taste for salt, and let the pot rest uncovered for 10 minutes before serving.",
+        "durationMinutes": 10,
+        "tutorialTips": [
+          "Resting allows the braising juices to redistribute back into the meat and the sauce to settle."
         ]
       }
     ],
     "history": {
-      "context": "Inspired by Anglo-Saxon traditions from Wessex during the Late Anglo-Saxon.",
-      "firstRecordedYear": 777,
+      "context": "Ale-braised beef speaks directly to the material culture of Late Anglo-Saxon England (c. 900\u20131066 CE), when ale was the universal drink of hall and hovel, brewed from malted barley in quantities that far exceeded what was consumed as beverage. Surplus and stale ale was folded naturally into cookery \u2014 used to tenderize the tough cuts of working cattle and to stretch the flavor of simple root vegetables across a long winter meal. In the great halls of thanes across Wessex, such braised dishes would have accompanied flatbreads and barley pottages at communal feasts, shared across long oak tables by lord and ceorls alike. The practice of long-braising in fermented liquid has ancient roots stretching well before the Saxon period, but it found particular expression in the ale-rich kitchens of pre-Conquest England.",
+      "firstRecordedYear": 950,
       "sources": [
-        "Anglo-Saxon culinary reconstructions",
-        "Comparative food history notes"
+        "Hagen, Ann \u2014 A Handbook of Anglo-Saxon Food (1992)",
+        "Anglo-Saxon culinary reconstructions, Leeds University Food History Project",
+        "Comparative food history notes, Early Medieval Britain"
       ],
-      "authenticity": "inspired"
+      "authenticity": "inspired",
+      "culturalNote": "The Anglo-Saxons kept cattle primarily for labor and dairy, meaning beef was largely a byproduct of aging oxen rather than dedicated meat animals. The tougher, more collagenous cuts of a working ox benefit enormously from long, slow braising in liquid \u2014 making ale-braise not merely a culinary technique, but a practical and elegant adaptation to the materials at hand."
     },
     "commerce": {
       "kitsAvailable": false,
       "ingredientLinks": []
-    }
+    },
+    "description": "A slow-braised beef dish from the thane-halls of late Anglo-Saxon Wessex, where dark ale \u2014 brewed in monastery and hearth-house alike \u2014 served as both cooking medium and everyday sustenance. The meat grows yielding and richly flavoured over hours of low heat, the ale losing its bitterness and melding with rendered fat, root vegetables, and a handful of dried herbs into a deeply savory, warming broth. Serve with barley bread or a thick pottage to soak up the braising liquor.",
+    "servings": 4,
+    "difficulty": "medium",
+    "tags": [
+      "braised",
+      "ale",
+      "slow-cook",
+      "beef",
+      "hearty",
+      "winter",
+      "one-pot"
+    ]
   },
   {
     "id": "anglo-saxon-herb-cheese-oatcakes-3",
@@ -7744,7 +7797,7 @@
     "id": "han-chinese-soy-braised-chicken-2",
     "name": "Soy Braised Chicken",
     "era": "Tang Dynasty",
-    "region": "Chang’an",
+    "region": "Chang\u2019an",
     "culture": "Han Chinese",
     "summary": "Chicken braised with soy, ginger, and aromatics.",
     "ingredients": [
@@ -7834,7 +7887,7 @@
       }
     ],
     "history": {
-      "context": "Inspired by Han Chinese traditions from Chang’an during the Tang Dynasty.",
+      "context": "Inspired by Han Chinese traditions from Chang\u2019an during the Tang Dynasty.",
       "firstRecordedYear": 287,
       "sources": [
         "Han Chinese culinary reconstructions",
@@ -8069,7 +8122,7 @@
     "id": "han-chinese-steamed-fish-with-ginger-5",
     "name": "Steamed Fish with Ginger",
     "era": "Han Dynasty",
-    "region": "Chang’an",
+    "region": "Chang\u2019an",
     "culture": "Han Chinese",
     "summary": "Delicate fish steamed with ginger and scallion.",
     "ingredients": [
@@ -8159,7 +8212,7 @@
       }
     ],
     "history": {
-      "context": "Inspired by Han Chinese traditions from Chang’an during the Han Dynasty.",
+      "context": "Inspired by Han Chinese traditions from Chang\u2019an during the Han Dynasty.",
       "firstRecordedYear": 398,
       "sources": [
         "Han Chinese culinary reconstructions",

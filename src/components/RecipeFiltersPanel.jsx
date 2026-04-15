@@ -191,6 +191,7 @@ function RecipeFiltersPanel({
               sx={{
                 minHeight: 54,
                 borderWidth: 1.5,
+                fontSize: { xs: '1rem', md: '1.0625rem' },
               }}
             >
               Reset filters

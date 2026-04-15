@@ -1,4 +1,5 @@
 import { Box, Button, Card, CardContent, Chip, Divider, List, ListItem, ListItemText, Stack, Typography } from '@mui/material'
+import { Link } from 'react-router-dom'
 
 function RecipeGrid({ recipes, estimateMinutes, getIngredientLine, onOpenRecipeDetails }) {
   return (
@@ -99,6 +100,20 @@ function RecipeGrid({ recipes, estimateMinutes, getIngredientLine, onOpenRecipeD
                       Build kit
                     </Button>
                   </Stack>
+                  <Button
+                    component={Link}
+                    to={`/recipe/${recipe.id}`}
+                    fullWidth
+                    size="small"
+                    sx={{
+                      mt: 0.75,
+                      color: 'text.secondary',
+                      fontSize: '0.78rem',
+                      '&:hover': { color: 'primary.main' },
+                    }}
+                  >
+                    View full story →
+                  </Button>
                 </Box>
               </Stack>
             </CardContent>
