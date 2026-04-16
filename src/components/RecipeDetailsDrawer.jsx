@@ -34,8 +34,9 @@ function RecipeDetailsDrawer({
   estimateMinutes,
   getRecipeSubstitutions,
   getIngredientLine,
-  getKitItems,
+  getCuratedKitItems,
   getMockPrice,
+  getSuggestedKitItems,
   onAddCartItem,
   onAddKitToCart,
   variationName,
@@ -61,7 +62,9 @@ function RecipeDetailsDrawer({
           <Stack spacing={2}>
             {(() => {
               const totalMinutes = estimateMinutes(selectedRecipe)
+              const curatedKitItems = getCuratedKitItems(selectedRecipe)
               const substitutions = getRecipeSubstitutions(selectedRecipe)
+              const suggestedKitItems = getSuggestedKitItems(selectedRecipe)
 
               return (
                 <>
@@ -222,28 +225,56 @@ function RecipeDetailsDrawer({
                   {detailTab === 'kit' && (
                     <Box sx={sectionCardSx}>
                       <Stack spacing={1.25}>
-                        <Typography variant="body2" color="text.secondary">
-                          Add a ready-to-cook ingredient kit to the cart.
-                        </Typography>
-
-                        {getKitItems(selectedRecipe).length > 0 ? (
-                          <List dense disablePadding>
-                            {getKitItems(selectedRecipe).map((item) => (
-                              <ListItem key={item} disableGutters sx={{ gap: 1.25, alignItems: 'center' }}>
-                                <ListItemText primary={item} secondary={`$${getMockPrice(item).toFixed(2)}`} />
-                                <Button size="small" variant="outlined" onClick={() => onAddCartItem(selectedRecipe, item)}>
-                                  Add
-                                </Button>
-                              </ListItem>
-                            ))}
-                          </List>
+                        {curatedKitItems.length > 0 ? (
+                          <>
+                            <Typography variant="body2" color="text.secondary">
+                              Add the archive&apos;s curated ingredient kit to the cart.
+                            </Typography>
+                            <List dense disablePadding>
+                              {curatedKitItems.map((item) => (
+                                <ListItem key={item} disableGutters sx={{ gap: 1.25, alignItems: 'center' }}>
+                                  <ListItemText primary={item} secondary={`$${getMockPrice(item).toFixed(2)}`} />
+                                  <Button size="small" variant="outlined" onClick={() => onAddCartItem(selectedRecipe, item)}>
+                                    Add
+                                  </Button>
+                                </ListItem>
+                              ))}
+                            </List>
+                            <Button
+                              variant="contained"
+                              startIcon={<LocalMallOutlinedIcon />}
+                              onClick={() => onAddKitToCart(selectedRecipe, curatedKitItems)}
+                            >
+                              Add curated kit
+                            </Button>
+                          </>
+                        ) : suggestedKitItems.length > 0 ? (
+                          <>
+                            <Alert severity="info">
+                              No curated commerce kit is linked for this recipe yet. These pantry picks are suggested from the ingredient list.
+                            </Alert>
+                            <Typography variant="subtitle2">Suggested pantry picks</Typography>
+                            <List dense disablePadding>
+                              {suggestedKitItems.map((item) => (
+                                <ListItem key={item} disableGutters sx={{ gap: 1.25, alignItems: 'center' }}>
+                                  <ListItemText primary={item} secondary={`$${getMockPrice(item).toFixed(2)}`} />
+                                  <Button size="small" variant="outlined" onClick={() => onAddCartItem(selectedRecipe, item)}>
+                                    Add
+                                  </Button>
+                                </ListItem>
+                              ))}
+                            </List>
+                            <Button
+                              variant="outlined"
+                              startIcon={<LocalMallOutlinedIcon />}
+                              onClick={() => onAddKitToCart(selectedRecipe, suggestedKitItems)}
+                            >
+                              Add suggested bundle
+                            </Button>
+                          </>
                         ) : (
-                          <Alert severity="info">No predefined kit items yet for this recipe.</Alert>
+                          <Alert severity="info">No kit items or ingredient suggestions are available for this recipe yet.</Alert>
                         )}
-
-                        <Button variant="contained" startIcon={<LocalMallOutlinedIcon />} onClick={() => onAddKitToCart(selectedRecipe)}>
-                          Add entire kit
-                        </Button>
                       </Stack>
                     </Box>
                   )}

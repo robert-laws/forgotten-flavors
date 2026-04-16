@@ -10,10 +10,12 @@ import RecipeToolbar from './components/RecipeToolbar'
 import {
   estimateMinutes,
   formatSelectedValues,
+  getCuratedKitItems,
   getIngredientLine,
-  getKitItems,
   getMockPrice,
   getRecipeSubstitutions,
+  getSuggestedKitItems,
+  hasCuratedKit,
   quickFilterChipSx,
   toCartItemId,
 } from './utils/recipeUtils'
@@ -67,10 +69,7 @@ function App() {
 
   const featuredEras = useMemo(() => summarizeByField(recipes, 'era').slice(0, 4), [recipes])
 
-  const curatedKitCount = useMemo(
-    () => recipes.filter((recipe) => Boolean(recipe.commerce?.kitsAvailable || recipe.commerce?.ingredientLinks?.length > 0)).length,
-    [recipes],
-  )
+  const curatedKitCount = useMemo(() => recipes.filter(hasCuratedKit).length, [recipes])
 
   const sourceRichCount = useMemo(
     () => recipes.filter((recipe) => (recipe.history?.sources || []).length > 0).length,
@@ -91,7 +90,7 @@ function App() {
         .filter((recipe) => {
           const matchesEra = erasSelected.length === 0 || erasSelected.includes(recipe.era)
           const matchesFast = !quickFilters.fast || (estimateMinutes(recipe) ?? Number.MAX_SAFE_INTEGER) <= 45
-          const matchesKitReady = !quickFilters.kitReady || getKitItems(recipe).length > 0
+          const matchesKitReady = !quickFilters.kitReady || hasCuratedKit(recipe)
           const searchable = [recipe.name, recipe.summary, recipe.region, recipe.era, recipe.culture]
             .filter(Boolean)
             .join(' ')
@@ -113,7 +112,7 @@ function App() {
           const matchesCulture =
             culturesSelected.length === 0 || culturesSelected.includes(recipe.culture)
           const matchesFast = !quickFilters.fast || (estimateMinutes(recipe) ?? Number.MAX_SAFE_INTEGER) <= 45
-          const matchesKitReady = !quickFilters.kitReady || getKitItems(recipe).length > 0
+          const matchesKitReady = !quickFilters.kitReady || hasCuratedKit(recipe)
           const searchable = [recipe.name, recipe.summary, recipe.region, recipe.era, recipe.culture]
             .filter(Boolean)
             .join(' ')
@@ -134,7 +133,7 @@ function App() {
     recipes.forEach((recipe) => {
       const matchesEra = erasSelected.length === 0 || erasSelected.includes(recipe.era)
       const matchesFast = !quickFilters.fast || (estimateMinutes(recipe) ?? Number.MAX_SAFE_INTEGER) <= 45
-      const matchesKitReady = !quickFilters.kitReady || getKitItems(recipe).length > 0
+      const matchesKitReady = !quickFilters.kitReady || hasCuratedKit(recipe)
       const searchable = [recipe.name, recipe.summary, recipe.region, recipe.era, recipe.culture]
         .filter(Boolean)
         .join(' ')
@@ -156,7 +155,7 @@ function App() {
       const matchesCulture =
         culturesSelected.length === 0 || culturesSelected.includes(recipe.culture)
       const matchesFast = !quickFilters.fast || (estimateMinutes(recipe) ?? Number.MAX_SAFE_INTEGER) <= 45
-      const matchesKitReady = !quickFilters.kitReady || getKitItems(recipe).length > 0
+      const matchesKitReady = !quickFilters.kitReady || hasCuratedKit(recipe)
       const searchable = [recipe.name, recipe.summary, recipe.region, recipe.era, recipe.culture]
         .filter(Boolean)
         .join(' ')
@@ -177,7 +176,7 @@ function App() {
         culturesSelected.length === 0 || culturesSelected.includes(recipe.culture)
       const matchesEra = erasSelected.length === 0 || erasSelected.includes(recipe.era)
       const matchesFast = !quickFilters.fast || (estimateMinutes(recipe) ?? Number.MAX_SAFE_INTEGER) <= 45
-      const matchesKitReady = !quickFilters.kitReady || getKitItems(recipe).length > 0
+      const matchesKitReady = !quickFilters.kitReady || hasCuratedKit(recipe)
       const searchable = [recipe.name, recipe.summary, recipe.region, recipe.era, recipe.culture]
         .filter(Boolean)
         .join(' ')
@@ -288,8 +287,8 @@ function App() {
     })
   }
 
-  const addKitToCart = (recipe) => {
-    const kitItems = getKitItems(recipe)
+  const addKitToCart = (recipe, itemNames = getCuratedKitItems(recipe)) => {
+    const kitItems = Array.isArray(itemNames) ? itemNames.filter(Boolean) : []
     if (kitItems.length === 0) {
       return
     }
@@ -491,8 +490,9 @@ function App() {
         estimateMinutes={estimateMinutes}
         getRecipeSubstitutions={getRecipeSubstitutions}
         getIngredientLine={getIngredientLine}
-        getKitItems={getKitItems}
+        getCuratedKitItems={getCuratedKitItems}
         getMockPrice={getMockPrice}
+        getSuggestedKitItems={getSuggestedKitItems}
         onAddCartItem={addCartItem}
         onAddKitToCart={addKitToCart}
         variationName={variationName}

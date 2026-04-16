@@ -17,12 +17,16 @@ export function getIngredientLine(item) {
   return `${item.name} - ${qty}${unit}${optional}`.trim()
 }
 
-export function getKitItems(recipe) {
-  if ((recipe.commerce?.ingredientLinks || []).length > 0) {
-    return recipe.commerce.ingredientLinks
-  }
+export function getCuratedKitItems(recipe) {
+  return (recipe.commerce?.ingredientLinks || []).filter(Boolean)
+}
 
-  return (recipe.ingredients || []).slice(0, 4).map((item) => item.name)
+export function hasCuratedKit(recipe) {
+  return getCuratedKitItems(recipe).length > 0
+}
+
+export function getSuggestedKitItems(recipe) {
+  return Array.from(new Set((recipe.ingredients || []).map((item) => item.name).filter(Boolean))).slice(0, 4)
 }
 
 export function toCartItemId(recipeId, itemName) {
