@@ -81,6 +81,7 @@ function App() {
     () => recipes.filter((recipe) => (estimateMinutes(recipe) ?? Number.MAX_SAFE_INTEGER) <= 45).length,
     [recipes],
   )
+  const archiveReady = !loading && !error
 
   const queryLowered = query.trim().toLowerCase()
 
@@ -365,6 +366,7 @@ function App() {
         recipesCount={recipes.length}
         cartItemCount={cartItemCount}
         onOpenCart={() => setCartOpen(true)}
+        archiveReady={archiveReady}
         featuredCultures={featuredCultures}
         featuredEras={featuredEras}
         curatedKitCount={curatedKitCount}
@@ -392,12 +394,14 @@ function App() {
         </Container>
       </Box>
 
-      <DiscoveryHighlights
-        featuredCultures={featuredCultures}
-        featuredEras={featuredEras}
-        fastRecipesCount={fastRecipesCount}
-        curatedKitCount={curatedKitCount}
-      />
+      {archiveReady && (
+        <DiscoveryHighlights
+          featuredCultures={featuredCultures}
+          featuredEras={featuredEras}
+          fastRecipesCount={fastRecipesCount}
+          curatedKitCount={curatedKitCount}
+        />
+      )}
 
       <Container maxWidth="lg" sx={{ pt: 1, pb: 2 }}>
         <Box
