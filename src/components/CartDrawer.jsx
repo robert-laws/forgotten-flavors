@@ -21,7 +21,7 @@ function CartDrawer({ open, onClose, cartItems, onUpdateCartQuantity, onRemoveCa
           <Box
             sx={{
               p: 2.25,
-              borderRadius: 6,
+              borderRadius: 4,
               bgcolor: 'rgba(255, 248, 239, 0.07)',
               border: '1px solid rgba(255, 236, 220, 0.1)',
             }}
@@ -35,7 +35,7 @@ function CartDrawer({ open, onClose, cartItems, onUpdateCartQuantity, onRemoveCa
                   Selected kit items
                 </Typography>
               </Box>
-              <IconButton onClick={onClose} sx={{ color: '#fff4ea' }}>
+              <IconButton aria-label="Close cart" onClick={onClose} sx={{ color: '#fff4ea' }}>
                 <CloseIcon />
               </IconButton>
             </Stack>
@@ -51,7 +51,7 @@ function CartDrawer({ open, onClose, cartItems, onUpdateCartQuantity, onRemoveCa
                     key={item.id}
                     sx={{
                       p: 1.6,
-                      borderRadius: 5,
+                      borderRadius: 4,
                       border: '1px solid rgba(94, 70, 50, 0.12)',
                       bgcolor: 'rgba(255, 248, 239, 0.98)',
                       color: 'text.primary',
@@ -92,7 +92,7 @@ function CartDrawer({ open, onClose, cartItems, onUpdateCartQuantity, onRemoveCa
               <Box
                 sx={{
                   p: 2.1,
-                  borderRadius: 5,
+                  borderRadius: 4,
                   bgcolor: 'rgba(255, 248, 239, 0.98)',
                   color: 'text.primary',
                 }}

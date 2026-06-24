@@ -12,6 +12,7 @@ import {
   TextField,
   Typography,
 } from '@mui/material'
+import RestartAltOutlinedIcon from '@mui/icons-material/RestartAltOutlined'
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined'
 
 function RecipeFiltersPanel({
@@ -33,12 +34,12 @@ function RecipeFiltersPanel({
   return (
     <Paper
       sx={{
-        p: { xs: 2, md: 2.5 },
+        p: { xs: 2, md: 2.25 },
         borderRadius: 2,
         position: 'relative',
         overflow: 'hidden',
         background: 'linear-gradient(180deg, rgba(251, 244, 232, 0.98) 0%, rgba(241, 228, 208, 0.98) 100%)',
-        boxShadow: '0 22px 50px rgba(24, 13, 7, 0.24)',
+        boxShadow: '0 18px 36px rgba(24, 13, 7, 0.2)',
         '& .MuiOutlinedInput-root': {
           backgroundColor: 'rgba(255, 250, 243, 0.92)',
           minHeight: 54,
@@ -56,30 +57,28 @@ function RecipeFiltersPanel({
       <Stack spacing={2.25}>
         <Box
           sx={{
-            display: 'grid',
-            gap: { xs: 1.5, md: 2.25 },
-            alignItems: 'end',
-            gridTemplateColumns: { xs: '1fr', lg: 'minmax(0, 1fr) 320px' },
+            display: 'flex',
+            gap: { xs: 1.5, md: 2 },
+            alignItems: { xs: 'stretch', sm: 'flex-start' },
+            justifyContent: 'space-between',
+            flexDirection: { xs: 'column', sm: 'row' },
           }}
         >
           <BoxCopy />
-
-          <Box
+          <Button
+            size="small"
+            variant="outlined"
+            color="primary"
+            startIcon={<RestartAltOutlinedIcon />}
+            onClick={onReset}
             sx={{
-              p: { xs: 1.15, md: 1.35 },
-              borderRadius: 2,
-              border: '1px solid rgba(83, 62, 43, 0.12)',
-              bgcolor: 'rgba(255, 250, 242, 0.74)',
-              justifySelf: { lg: 'end' },
+              minHeight: 40,
+              alignSelf: { xs: 'stretch', sm: 'flex-start' },
+              px: 1.75,
             }}
           >
-            <Typography variant="overline" sx={{ color: 'secondary.main' }}>
-              How To Use It
-            </Typography>
-            <Typography variant="body2" color="text.secondary" sx={{ mt: 0.45, lineHeight: 1.6, fontSize: '0.93rem' }}>
-              Search broadly, then tighten the route with Culture and Era.
-            </Typography>
-          </Box>
+            Reset filters
+          </Button>
         </Box>
 
         <Box
@@ -89,7 +88,7 @@ function RecipeFiltersPanel({
             gridTemplateColumns: {
               xs: '1fr',
               sm: 'repeat(2, minmax(0, 1fr))',
-              lg: 'minmax(0, 2fr) repeat(3, minmax(150px, 0.95fr)) 190px',
+              lg: 'minmax(0, 2fr) repeat(3, minmax(150px, 0.95fr))',
             },
             alignItems: 'end',
           }}
@@ -180,23 +179,6 @@ function RecipeFiltersPanel({
               </Select>
             </FormControl>
           </FilterField>
-
-          <Box sx={{ minWidth: { xl: 180 } }}>
-            <Button
-              fullWidth
-              size="small"
-              variant="outlined"
-              color="primary"
-              onClick={onReset}
-              sx={{
-                minHeight: 54,
-                borderWidth: 1.5,
-                fontSize: { xs: '1rem', md: '1.0625rem' },
-              }}
-            >
-              Reset filters
-            </Button>
-          </Box>
         </Box>
       </Stack>
     </Paper>
@@ -207,9 +189,9 @@ function BoxCopy() {
   return (
     <Stack spacing={0.5}>
       <Typography variant="overline" sx={{ color: 'secondary.main' }}>
-        Discovery Deck
+        Archive Route
       </Typography>
-      <Typography variant="h6">Build a route through the archive</Typography>
+      <Typography variant="h6">Find the next dish to explore</Typography>
     </Stack>
   )
 }
@@ -217,7 +199,7 @@ function BoxCopy() {
 function FilterField({ label, children }) {
   return (
     <Stack spacing={0.55}>
-      <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 700, letterSpacing: 0.35 }}>
+      <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 700, letterSpacing: 0 }}>
         {label}
       </Typography>
       {children}

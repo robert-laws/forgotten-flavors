@@ -1,4 +1,7 @@
 import { Box, Button, Card, CardContent, Chip, Divider, List, ListItem, ListItemText, Stack, Typography } from '@mui/material'
+import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined'
+import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined'
+import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined'
 import { Link } from 'react-router-dom'
 
 function RecipeGrid({ recipes, estimateMinutes, getIngredientLine, onOpenRecipeDetails }) {
@@ -19,7 +22,7 @@ function RecipeGrid({ recipes, estimateMinutes, getIngredientLine, onOpenRecipeD
             key={recipe.id}
             sx={{
               height: '100%',
-              minHeight: 420,
+              minHeight: 400,
               overflow: 'hidden',
               position: 'relative',
               background: 'linear-gradient(180deg, rgba(251, 244, 232, 0.98) 0%, rgba(244, 235, 222, 0.98) 100%)',
@@ -62,7 +65,17 @@ function RecipeGrid({ recipes, estimateMinutes, getIngredientLine, onOpenRecipeD
                 </Stack>
 
                 {recipe.summary && (
-                  <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.7 }}>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{
+                      lineHeight: 1.7,
+                      display: '-webkit-box',
+                      WebkitLineClamp: 3,
+                      WebkitBoxOrient: 'vertical',
+                      overflow: 'hidden',
+                    }}
+                  >
                     {recipe.summary}
                   </Typography>
                 )}
@@ -70,7 +83,7 @@ function RecipeGrid({ recipes, estimateMinutes, getIngredientLine, onOpenRecipeD
                 <Box
                   sx={{
                     p: 1.6,
-                    borderRadius: 5,
+                    borderRadius: 4,
                     bgcolor: 'rgba(84, 118, 109, 0.08)',
                     border: '1px solid rgba(63, 107, 98, 0.12)',
                   }}
@@ -93,10 +106,22 @@ function RecipeGrid({ recipes, estimateMinutes, getIngredientLine, onOpenRecipeD
 
                 <Box sx={{ mt: 'auto' }}>
                   <Stack direction="row" spacing={1} sx={{ pt: 0.75 }}>
-                    <Button fullWidth variant="contained" size="small" onClick={() => onOpenRecipeDetails(recipe, 'recipe')}>
+                    <Button
+                      fullWidth
+                      variant="contained"
+                      size="small"
+                      startIcon={<ArticleOutlinedIcon />}
+                      onClick={() => onOpenRecipeDetails(recipe, 'recipe')}
+                    >
                       Open dossier
                     </Button>
-                    <Button fullWidth variant="outlined" size="small" onClick={() => onOpenRecipeDetails(recipe, 'kit')}>
+                    <Button
+                      fullWidth
+                      variant="outlined"
+                      size="small"
+                      startIcon={<LocalMallOutlinedIcon />}
+                      onClick={() => onOpenRecipeDetails(recipe, 'kit')}
+                    >
                       Build kit
                     </Button>
                   </Stack>
@@ -105,6 +130,7 @@ function RecipeGrid({ recipes, estimateMinutes, getIngredientLine, onOpenRecipeD
                     to={`/recipe/${recipe.id}`}
                     fullWidth
                     size="small"
+                    endIcon={<ArrowForwardOutlinedIcon fontSize="small" />}
                     sx={{
                       mt: 0.75,
                       color: 'text.secondary',
@@ -112,7 +138,7 @@ function RecipeGrid({ recipes, estimateMinutes, getIngredientLine, onOpenRecipeD
                       '&:hover': { color: 'primary.main' },
                     }}
                   >
-                    View full story →
+                    View full story
                   </Button>
                 </Box>
               </Stack>

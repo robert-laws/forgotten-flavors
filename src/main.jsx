@@ -36,38 +36,47 @@ const theme = createTheme({
       fontFamily: ['"Fraunces"', '"Iowan Old Style"', 'serif'].join(','),
       fontWeight: 800,
       lineHeight: 0.98,
-      letterSpacing: -1.2,
-      fontSize: 'clamp(3rem, 8vw, 5.7rem)',
+      letterSpacing: 0,
+      fontSize: '2.75rem',
+      '@media (min-width:900px)': {
+        fontSize: '5.15rem',
+      },
     },
     h2: {
       fontFamily: ['"Fraunces"', '"Iowan Old Style"', 'serif'].join(','),
       fontWeight: 700,
       lineHeight: 1.02,
-      letterSpacing: -0.9,
-      fontSize: 'clamp(2.4rem, 5vw, 4.35rem)',
+      letterSpacing: 0,
+      fontSize: '2.35rem',
+      '@media (min-width:900px)': {
+        fontSize: '4.1rem',
+      },
     },
     h3: {
       fontFamily: ['"Fraunces"', '"Iowan Old Style"', 'serif'].join(','),
       fontWeight: 700,
       lineHeight: 1.04,
-      letterSpacing: -0.65,
-      fontSize: 'clamp(2rem, 4vw, 3.15rem)',
+      letterSpacing: 0,
+      fontSize: '2rem',
+      '@media (min-width:900px)': {
+        fontSize: '3rem',
+      },
     },
     h4: {
       fontFamily: ['"Fraunces"', '"Iowan Old Style"', 'serif'].join(','),
       fontWeight: 700,
-      letterSpacing: -0.32,
+      letterSpacing: 0,
     },
     h5: {
       fontFamily: ['"Fraunces"', '"Iowan Old Style"', 'serif'].join(','),
       fontWeight: 700,
-      letterSpacing: -0.2,
+      letterSpacing: 0,
     },
     h6: {
       fontFamily: ['"Fraunces"', '"Iowan Old Style"', 'serif'].join(','),
       fontWeight: 700,
       lineHeight: 1.08,
-      letterSpacing: -0.16,
+      letterSpacing: 0,
     },
     subtitle1: {
       fontWeight: 600,
@@ -77,12 +86,12 @@ const theme = createTheme({
     },
     overline: {
       fontWeight: 800,
-      letterSpacing: 2.4,
+      letterSpacing: 0,
     },
     button: {
       textTransform: 'none',
       fontWeight: 700,
-      letterSpacing: 0.15,
+      letterSpacing: 0,
     },
   },
   shape: {
@@ -104,7 +113,7 @@ const theme = createTheme({
         },
         body: {
           background:
-            'radial-gradient(circle at top left, rgba(201, 128, 73, 0.18), transparent 28%), linear-gradient(180deg, #18120f 0rem, #201814 28rem, #efe0cc 28rem, #efe0cc 100%)',
+            'linear-gradient(180deg, #151917 0rem, #1f2723 27rem, #efe0cc 27rem, #efe0cc 100%)',
           color: '#1f1812',
         },
         '::selection': {
@@ -116,7 +125,7 @@ const theme = createTheme({
     MuiPaper: {
       styleOverrides: {
         root: {
-          borderRadius: 16,
+          borderRadius: 8,
           border: '1px solid rgba(72, 50, 32, 0.12)',
           boxShadow: '0 18px 40px rgba(35, 22, 12, 0.12)',
           backgroundImage: 'none',
@@ -126,7 +135,7 @@ const theme = createTheme({
     MuiCard: {
       styleOverrides: {
         root: {
-          borderRadius: 16,
+          borderRadius: 8,
           border: '1px solid rgba(72, 50, 32, 0.12)',
           boxShadow: '0 18px 34px rgba(34, 20, 12, 0.12)',
           backgroundImage: 'none',
@@ -136,7 +145,7 @@ const theme = createTheme({
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
-          borderRadius: 14,
+          borderRadius: 8,
           backgroundColor: 'rgba(255, 249, 241, 0.9)',
         },
       },
@@ -144,7 +153,7 @@ const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 14,
+          borderRadius: 8,
           paddingInline: 18,
           minHeight: 44,
           boxShadow: 'none',
@@ -154,9 +163,9 @@ const theme = createTheme({
     MuiChip: {
       styleOverrides: {
         root: {
-          borderRadius: 14,
+          borderRadius: 8,
           fontWeight: 700,
-          letterSpacing: 0.15,
+          letterSpacing: 0,
         },
       },
     },
@@ -173,7 +182,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           minHeight: 42,
-          borderRadius: 14,
+          borderRadius: 8,
           fontWeight: 700,
         },
       },
@@ -181,7 +190,7 @@ const theme = createTheme({
     MuiPaginationItem: {
       styleOverrides: {
         root: {
-          borderRadius: 14,
+          borderRadius: 8,
           fontWeight: 700,
         },
       },
