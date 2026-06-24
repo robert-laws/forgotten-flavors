@@ -92,7 +92,7 @@ export default function RecipeDetailPage() {
       {/* ── Hero ─────────────────────────────────────────────────────── */}
       <Box
         sx={{
-          background: 'linear-gradient(158deg, #1a1108 0%, #261c16 55%, #2c1e16 100%)',
+          background: 'linear-gradient(158deg, #131817 0%, #1e2a25 55%, #2d251e 100%)',
           pt: { xs: 2.5, md: 3.5 },
           pb: { xs: 7, md: 10 },
           position: 'relative',
@@ -102,7 +102,7 @@ export default function RecipeDetailPage() {
             position: 'absolute',
             inset: 0,
             background:
-              'radial-gradient(ellipse at 75% -10%, rgba(155,86,49,0.22) 0%, transparent 55%)',
+              'linear-gradient(115deg, rgba(63,107,98,0.2) 0%, transparent 58%)',
             pointerEvents: 'none',
           },
           '&::after': {
@@ -135,7 +135,7 @@ export default function RecipeDetailPage() {
           {/* Culture · Era */}
           <Typography
             variant="overline"
-            sx={{ color: 'rgba(203,137,89,0.8)', display: 'block', letterSpacing: 2.8 }}
+            sx={{ color: 'rgba(203,137,89,0.8)', display: 'block', letterSpacing: 0 }}
           >
             {[recipe.culture, recipe.era].filter(Boolean).join(' · ')}
           </Typography>
@@ -262,7 +262,7 @@ export default function RecipeDetailPage() {
           mt: { xs: -5, md: -7 },
           position: 'relative',
           zIndex: 2,
-          borderRadius: '28px 28px 0 0',
+          borderRadius: '8px 8px 0 0',
           bgcolor: 'background.default',
           boxShadow: '0 -2px 40px rgba(20,12,6,0.35)',
         }}
@@ -310,7 +310,7 @@ export default function RecipeDetailPage() {
                       fontSize: { xs: '1.6rem', md: '2.1rem' },
                       fontWeight: 700,
                       color: 'primary.dark',
-                      letterSpacing: -0.6,
+                      letterSpacing: 0,
                       lineHeight: 1,
                     }}
                   >
@@ -394,7 +394,7 @@ export default function RecipeDetailPage() {
                 <Box sx={{ mt: 3.5 }}>
                   <Typography
                     variant="overline"
-                    sx={{ color: 'text.secondary', mb: 1.25, display: 'block', fontSize: '0.8rem', letterSpacing: 2.5 }}
+                    sx={{ color: 'text.secondary', mb: 1.25, display: 'block', fontSize: '0.8rem', letterSpacing: 0 }}
                   >
                     Sources &amp; References
                   </Typography>
@@ -447,7 +447,7 @@ export default function RecipeDetailPage() {
                   <>
                     <Typography
                       variant="overline"
-                      sx={{ color: 'text.secondary', pt: 2, pb: 0.5, display: 'block', fontSize: '0.8rem', letterSpacing: 2.5 }}
+                      sx={{ color: 'text.secondary', pt: 2, pb: 0.5, display: 'block', fontSize: '0.8rem', letterSpacing: 0 }}
                     >
                       Optional
                     </Typography>
@@ -480,7 +480,7 @@ export default function RecipeDetailPage() {
             <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap" alignItems="center">
               <Typography
                 variant="overline"
-                sx={{ color: 'text.secondary', fontSize: '0.8rem', letterSpacing: 2.5, mr: 0.5 }}
+                sx={{ color: 'text.secondary', fontSize: '0.8rem', letterSpacing: 0, mr: 0.5 }}
               >
                 Tags
               </Typography>
@@ -530,9 +530,9 @@ function SectionLabel({ children }) {
       sx={{
         display: 'block',
         mb: 2.25,
-        color: 'primary.main',
+        color: 'primary.dark',
         fontSize: '0.8rem',
-        letterSpacing: 2.5,
+        letterSpacing: 0,
       }}
     >
       {children}
@@ -554,7 +554,7 @@ function StatBlock({ icon, label, value }) {
           sx={{
             color: 'rgba(255,243,229,0.42)',
             textTransform: 'uppercase',
-            letterSpacing: 1.4,
+            letterSpacing: 0,
             fontWeight: 700,
             fontSize: '0.62rem',
           }}
@@ -569,7 +569,7 @@ function StatBlock({ icon, label, value }) {
   )
 }
 
-function IngredientRow({ item, optional = false }) {
+function IngredientRow({ item }) {
   const qty = item.quantity && item.unit ? `${item.quantity} ${item.unit}` : ''
   const nameParts = [item.prep, item.name].filter(Boolean)
   const displayName = nameParts.join(' ')
@@ -582,7 +582,6 @@ function IngredientRow({ item, optional = false }) {
         gap: 1.5,
         py: 1.1,
         borderBottom: '1px solid rgba(72,50,32,0.08)',
-        opacity: optional ? 0.68 : 1,
         alignItems: 'baseline',
       }}
     >
@@ -675,7 +674,7 @@ function StepCard({ step }) {
                 variant="caption"
                 sx={{ color: 'text.secondary', lineHeight: 1.65, display: 'block' }}
               >
-                💡 {step.tutorialTips[0]}
+                Tip: {step.tutorialTips[0]}
               </Typography>
             </Box>
           )}
@@ -713,7 +712,7 @@ function RelatedCard({ recipe }) {
           color: 'secondary.main',
           fontWeight: 700,
           textTransform: 'uppercase',
-          letterSpacing: 1.1,
+          letterSpacing: 0,
           display: 'block',
           mb: 0.5,
         }}

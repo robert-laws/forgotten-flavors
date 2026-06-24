@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Alert, Box, Button, CircularProgress, Container, Pagination, Paper, Stack, Typography } from '@mui/material'
-import AtlasExplorer from './components/AtlasExplorer'
 import CartDrawer from './components/CartDrawer'
 import DiscoveryHighlights from './components/DiscoveryHighlights'
 import HeroSection from './components/HeroSection'
@@ -20,13 +19,6 @@ import {
   quickFilterChipSx,
   toCartItemId,
 } from './utils/recipeUtils'
-import {
-  buildCultureAtlas,
-  buildEraAtlas,
-  formatYear,
-  getYearBounds,
-  withinYears,
-} from './utils/atlasUtils'
 
 function App() {
   const [recipes, setRecipes] = useState([])
@@ -40,8 +32,6 @@ function App() {
     kitReady: false,
   })
   const [sortBy, setSortBy] = useState('featured')
-  const [atlasView, setAtlasView] = useState('map')
-  const [yearRange, setYearRange] = useState(null)
   const [page, setPage] = useState(1)
   const [selectedRecipe, setSelectedRecipe] = useState(null)
   const [detailTab, setDetailTab] = useState('recipe')
@@ -92,12 +82,6 @@ function App() {
   )
   const archiveReady = !loading && !error
 
-  const yearBounds = useMemo(() => getYearBounds(recipes), [recipes])
-  const cultureAtlas = useMemo(() => buildCultureAtlas(recipes), [recipes])
-  const eraAtlas = useMemo(() => buildEraAtlas(recipes), [recipes])
-  const effectiveYearRange = yearRange ?? [yearBounds.min, yearBounds.max]
-  const [yearLo, yearHi] = effectiveYearRange
-
   const queryLowered = query.trim().toLowerCase()
 
   const availableCultures = useMemo(() => {
@@ -112,20 +96,14 @@ function App() {
             .join(' ')
             .toLowerCase()
           const matchesSearch = queryLowered.length === 0 || searchable.includes(queryLowered)
-          return (
-            matchesEra &&
-            matchesFast &&
-            matchesKitReady &&
-            matchesSearch &&
-            withinYears(recipe, yearRange, yearLo, yearHi)
-          )
+          return matchesEra && matchesFast && matchesKitReady && matchesSearch
         })
         .map((recipe) => recipe.culture)
         .filter(Boolean),
     )
 
     return Array.from(values)
-  }, [recipes, erasSelected, quickFilters, queryLowered, yearRange, yearLo, yearHi])
+  }, [recipes, erasSelected, quickFilters, queryLowered])
 
   const availableEras = useMemo(() => {
     const values = new Set(
@@ -140,20 +118,14 @@ function App() {
             .join(' ')
             .toLowerCase()
           const matchesSearch = queryLowered.length === 0 || searchable.includes(queryLowered)
-          return (
-            matchesCulture &&
-            matchesFast &&
-            matchesKitReady &&
-            matchesSearch &&
-            withinYears(recipe, yearRange, yearLo, yearHi)
-          )
+          return matchesCulture && matchesFast && matchesKitReady && matchesSearch
         })
         .map((recipe) => recipe.era)
         .filter(Boolean),
     )
 
     return Array.from(values)
-  }, [recipes, culturesSelected, quickFilters, queryLowered, yearRange, yearLo, yearHi])
+  }, [recipes, culturesSelected, quickFilters, queryLowered])
 
   const cultureCounts = useMemo(() => {
     const counts = new Map()
@@ -168,20 +140,13 @@ function App() {
         .toLowerCase()
       const matchesSearch = queryLowered.length === 0 || searchable.includes(queryLowered)
 
-      if (
-        matchesEra &&
-        matchesFast &&
-        matchesKitReady &&
-        matchesSearch &&
-        withinYears(recipe, yearRange, yearLo, yearHi) &&
-        recipe.culture
-      ) {
+      if (matchesEra && matchesFast && matchesKitReady && matchesSearch && recipe.culture) {
         counts.set(recipe.culture, (counts.get(recipe.culture) || 0) + 1)
       }
     })
 
     return counts
-  }, [recipes, erasSelected, quickFilters, queryLowered, yearRange, yearLo, yearHi])
+  }, [recipes, erasSelected, quickFilters, queryLowered])
 
   const eraCounts = useMemo(() => {
     const counts = new Map()
@@ -197,20 +162,13 @@ function App() {
         .toLowerCase()
       const matchesSearch = queryLowered.length === 0 || searchable.includes(queryLowered)
 
-      if (
-        matchesCulture &&
-        matchesFast &&
-        matchesKitReady &&
-        matchesSearch &&
-        withinYears(recipe, yearRange, yearLo, yearHi) &&
-        recipe.era
-      ) {
+      if (matchesCulture && matchesFast && matchesKitReady && matchesSearch && recipe.era) {
         counts.set(recipe.era, (counts.get(recipe.era) || 0) + 1)
       }
     })
 
     return counts
-  }, [recipes, culturesSelected, quickFilters, queryLowered, yearRange, yearLo, yearHi])
+  }, [recipes, culturesSelected, quickFilters, queryLowered])
 
   const filteredRecipes = useMemo(() => {
     const matches = recipes.filter((recipe) => {
@@ -225,14 +183,7 @@ function App() {
         .toLowerCase()
 
       const matchesSearch = queryLowered.length === 0 || searchable.includes(queryLowered)
-      return (
-        matchesCulture &&
-        matchesEra &&
-        matchesFast &&
-        matchesKitReady &&
-        matchesSearch &&
-        withinYears(recipe, yearRange, yearLo, yearHi)
-      )
+      return matchesCulture && matchesEra && matchesFast && matchesKitReady && matchesSearch
     })
 
     return matches.sort((a, b) => {
@@ -246,13 +197,12 @@ function App() {
       }
       return a.name.localeCompare(b.name)
     })
-  }, [recipes, queryLowered, culturesSelected, erasSelected, quickFilters, sortBy, yearRange, yearLo, yearHi])
+  }, [recipes, queryLowered, culturesSelected, erasSelected, quickFilters, sortBy])
 
   const activeFilters = [
     query ? `Search: ${query}` : null,
     culturesSelected.length > 0 ? `Culture: ${culturesSelected.join(', ')}` : null,
     erasSelected.length > 0 ? `Era: ${erasSelected.join(', ')}` : null,
-    yearRange ? `Years: ${formatYear(yearLo)}–${formatYear(yearHi)}` : null,
     sortBy !== 'featured' ? `Sort: ${sortBy}` : null,
   ].filter(Boolean)
 
@@ -272,7 +222,7 @@ function App() {
 
   useEffect(() => {
     setPage(1)
-  }, [query, culturesSelected, erasSelected, quickFilters, sortBy, yearRange])
+  }, [query, culturesSelected, erasSelected, quickFilters, sortBy])
 
   useEffect(() => {
     setCulturesSelected((previous) => {
@@ -400,28 +350,7 @@ function App() {
     setErasSelected([])
     setQuickFilters({ fast: false, kitReady: false })
     setSortBy('featured')
-    setYearRange(null)
   }
-
-  const toggleCulture = (culture) => {
-    setCulturesSelected((previous) =>
-      previous.includes(culture) ? previous.filter((value) => value !== culture) : [...previous, culture],
-    )
-  }
-
-  const toggleEra = (era) => {
-    setErasSelected((previous) =>
-      previous.includes(era) ? previous.filter((value) => value !== era) : [...previous, era],
-    )
-  }
-
-  const resetAtlas = () => {
-    setCulturesSelected([])
-    setErasSelected([])
-    setYearRange(null)
-  }
-
-  const atlasHasSelection = culturesSelected.length > 0 || erasSelected.length > 0 || Boolean(yearRange)
 
   return (
     <Box
@@ -470,24 +399,6 @@ function App() {
           featuredEras={featuredEras}
           fastRecipesCount={fastRecipesCount}
           curatedKitCount={curatedKitCount}
-        />
-      )}
-
-      {archiveReady && (
-        <AtlasExplorer
-          view={atlasView}
-          onViewChange={setAtlasView}
-          cultureAtlas={cultureAtlas}
-          eraAtlas={eraAtlas}
-          bounds={yearBounds}
-          culturesSelected={culturesSelected}
-          onToggleCulture={toggleCulture}
-          erasSelected={erasSelected}
-          onToggleEra={toggleEra}
-          yearRange={effectiveYearRange}
-          onYearRangeChange={setYearRange}
-          onReset={resetAtlas}
-          hasActiveSelection={atlasHasSelection}
         />
       )}
 

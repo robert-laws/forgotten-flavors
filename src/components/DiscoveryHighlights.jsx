@@ -29,49 +29,38 @@ function DiscoveryHighlights({ featuredCultures, featuredEras, fastRecipesCount,
     <Box
       id="highlights"
       sx={{
-        py: { xs: 4, md: 6 },
+        py: { xs: 3.5, md: 5.5 },
         position: 'relative',
+        overflow: 'hidden',
+        bgcolor: '#17201d',
       }}
     >
       <Box
         sx={{
           position: 'absolute',
           inset: 0,
-          opacity: 0.18,
-          backgroundImage: `url(${archiveTexture})`,
+          opacity: 0.14,
+          backgroundImage: `linear-gradient(180deg, rgba(23, 32, 29, 0.72), rgba(23, 32, 29, 0.92)), url(${archiveTexture})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           pointerEvents: 'none',
         }}
       />
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" sx={{ position: 'relative' }}>
         <Box
           sx={{
             display: 'grid',
-            gap: 2.5,
+            gap: { xs: 3, lg: 3.5 },
             gridTemplateColumns: { xs: '1fr', lg: '1.25fr 0.95fr' },
           }}
         >
-          <Paper
+          <Box
             sx={{
-              p: { xs: 2.5, md: 3.5 },
-              background: 'linear-gradient(135deg, #221813 0%, #38281f 100%)',
+              py: { xs: 0.5, md: 1 },
               color: '#fff8ef',
-              overflow: 'hidden',
               position: 'relative',
             }}
           >
-            <Box
-              sx={{
-                position: 'absolute',
-                inset: 'auto auto -52px -40px',
-                width: 180,
-                height: 180,
-                borderRadius: '50%',
-                background: 'radial-gradient(circle, rgba(203, 137, 89, 0.34), transparent 70%)',
-                pointerEvents: 'none',
-              }}
-            />
             <Box
               sx={{
                 position: 'relative',
@@ -93,12 +82,12 @@ function DiscoveryHighlights({ featuredCultures, featuredEras, fastRecipesCount,
                       Curated Pathways
                     </Typography>
                     <Typography variant="h4" sx={{ mt: 1, maxWidth: 580 }}>
-                      A discovery surface that feels closer to an exhibition catalog than a utility table.
+                      Choose a route by culture, era, or cooking window.
                     </Typography>
                   </Box>
                   <Typography variant="body1" sx={{ color: 'rgba(255, 240, 228, 0.76)', maxWidth: 510, lineHeight: 1.75 }}>
-                    The desktop composition works better when the image behaves like a supporting plate and the cards read as quick
-                    routes into the archive. The section should feel arranged, not compressed.
+                    Each route keeps historical notes, substitutions, and kit items close enough to move from reading to cooking
+                    without losing the archive trail.
                   </Typography>
                 </Stack>
 
@@ -124,10 +113,10 @@ function DiscoveryHighlights({ featuredCultures, featuredEras, fastRecipesCount,
                     }}
                   >
                     <Typography variant="overline" sx={{ color: 'rgba(255, 236, 220, 0.74)' }}>
-                      Material Study
+                      Pantry Evidence
                     </Typography>
                     <Typography variant="body2" sx={{ mt: 0.5, color: 'rgba(255, 240, 228, 0.8)', lineHeight: 1.65 }}>
-                      Knives, linen, bowls, and spice traces extend the archive tone without crowding the main argument.
+                      Tools, bowls, spices, and linen frame how reconstructed recipes move from records into kitchens.
                     </Typography>
                   </Box>
                 </Stack>
@@ -149,7 +138,7 @@ function DiscoveryHighlights({ featuredCultures, featuredEras, fastRecipesCount,
                       border: '1px solid rgba(255, 236, 220, 0.1)',
                       bgcolor: 'rgba(255, 249, 241, 0.06)',
                       backdropFilter: 'blur(10px)',
-                      minHeight: { md: 228 },
+                      minHeight: { md: 196 },
                     }}
                   >
                     <Stack spacing={1.15} sx={{ height: '100%' }}>
@@ -175,7 +164,7 @@ function DiscoveryHighlights({ featuredCultures, featuredEras, fastRecipesCount,
                 ))}
               </Box>
             </Box>
-          </Paper>
+          </Box>
 
           <Box sx={{ display: 'grid', gap: 2.5 }}>
             <Paper
@@ -186,7 +175,7 @@ function DiscoveryHighlights({ featuredCultures, featuredEras, fastRecipesCount,
             >
               <Stack spacing={1.5}>
                 <Typography variant="overline" sx={{ color: 'secondary.main' }}>
-                  Culture Atlas
+                  Culture Routes
                 </Typography>
                 <Typography variant="h6">Major routes through the collection</Typography>
                 <Stack spacing={1}>

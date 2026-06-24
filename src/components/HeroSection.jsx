@@ -26,7 +26,7 @@ function HeroSection({
         overflow: 'hidden',
         borderBottom: '1px solid rgba(255, 231, 214, 0.08)',
         background:
-          'radial-gradient(circle at top left, rgba(201, 128, 73, 0.22), transparent 26%), radial-gradient(circle at 86% 22%, rgba(88, 124, 115, 0.18), transparent 24%), linear-gradient(135deg, #18120f 0%, #221814 42%, #2c211a 100%)',
+          'linear-gradient(135deg, #141817 0%, #1c2824 48%, #2c241d 100%)',
       }}
     >
       <Box
@@ -37,21 +37,21 @@ function HeroSection({
           backgroundImage:
             'linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)',
           backgroundSize: '90px 90px',
-          maskImage: 'radial-gradient(circle at center, black 30%, transparent 85%)',
+          maskImage: 'linear-gradient(180deg, rgba(0,0,0,0.88), rgba(0,0,0,0.18))',
           pointerEvents: 'none',
         }}
       />
 
-      <Container maxWidth="lg" sx={{ position: 'relative', py: { xs: 6, md: 8.5 } }}>
+      <Container maxWidth="lg" sx={{ position: 'relative', py: { xs: 3.75, md: 7.5 } }}>
         <Box
           sx={{
             display: 'grid',
-            gap: { xs: 3, md: 4 },
+            gap: { xs: 2.5, md: 4 },
             alignItems: 'start',
             gridTemplateColumns: { xs: '1fr', lg: '1.1fr 0.9fr' },
           }}
         >
-          <Stack spacing={3}>
+          <Stack spacing={{ xs: 2.1, md: 3 }}>
             <Stack direction="row" spacing={1.25} alignItems="center" useFlexGap flexWrap="wrap">
               <Typography variant="overline" sx={{ color: 'rgba(255, 236, 220, 0.76)' }}>
                 Forgotten Flavors
@@ -75,14 +75,14 @@ function HeroSection({
                 variant="body1"
                 sx={{
                   mt: 2,
-                  maxWidth: 640,
+                  maxWidth: 620,
                   color: 'rgba(255, 240, 228, 0.78)',
-                  fontSize: { xs: '1rem', md: '1.07rem' },
-                  lineHeight: 1.75,
+                  fontSize: { xs: '0.98rem', md: '1.07rem' },
+                  lineHeight: 1.7,
                 }}
               >
-                Browse reconstructions across Roman, Greek, Egyptian, Persian, and later kitchen traditions with a landing page
-                that feels more like an editorial collection than a flat recipe shelf.
+                Browse reconstructions across Roman, Greek, Egyptian, Persian, and later kitchen traditions through sourced
+                dossiers, cookable kits, and practical notes for today&apos;s kitchen.
               </Typography>
             </Box>
 
@@ -133,7 +133,7 @@ function HeroSection({
           <Stack spacing={2}>
             <Box
               sx={{
-                minHeight: { xs: 340, md: 430 },
+                minHeight: { xs: 220, md: 430 },
                 p: { xs: 2.25, md: 3 },
                 borderRadius: 4,
                 position: 'relative',
@@ -179,7 +179,7 @@ function HeroSection({
                   <Typography variant="overline" sx={{ color: 'rgba(255, 236, 220, 0.72)' }}>
                     Curator&apos;s Note
                   </Typography>
-                  <Typography variant="h4" sx={{ mt: 0.75, color: '#fff8ef', fontSize: { xs: '1.8rem', md: '2.1rem' } }}>
+                  <Typography variant="h4" sx={{ mt: 0.75, color: '#fff8ef', fontSize: { xs: '1.55rem', md: '2.1rem' } }}>
                     From pantry fragments to cookable dossiers
                   </Typography>
                 </Box>
@@ -193,12 +193,18 @@ function HeroSection({
                     textShadow: '0 1px 18px rgba(0, 0, 0, 0.34)',
                   }}
                 >
-                  A reconstructed table scene turns the landing page into an editorial threshold: tactile, moody, and grounded
-                  in ingredients rather than decorative fantasy.
+                  A reconstructed table scene sets the archive tone: tactile, moody, and grounded in ingredients, tools, and
+                  source notes rather than decorative fantasy.
                 </Typography>
 
                 {archiveReady && (
-                  <Stack direction="row" spacing={0.75} useFlexGap flexWrap="wrap">
+                  <Stack
+                    direction="row"
+                    spacing={0.75}
+                    useFlexGap
+                    flexWrap="wrap"
+                    sx={{ display: { xs: 'none', sm: 'flex' } }}
+                  >
                     {featuredCultures.slice(0, 4).map((culture) => (
                       <Chip
                         key={culture.label}
@@ -219,7 +225,7 @@ function HeroSection({
             {archiveReady && (
               <Box
                 sx={{
-                  display: 'grid',
+                  display: { xs: 'none', sm: 'grid' },
                   gap: 2,
                   gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, minmax(0, 1fr))' },
                 }}
