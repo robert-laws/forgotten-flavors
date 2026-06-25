@@ -1,0 +1,1225 @@
+{
+  "assets": {
+    "old-babylonian-pashrutum-leek-and-coriander-stew": {
+      "file": "images/recipes/old-babylonian-pashrutum-leek-and-coriander-stew.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T20:56:58Z"
+    },
+    "old-babylonian-tuhu-beet-and-lamb-stew": {
+      "file": "images/recipes/old-babylonian-tuhu-beet-and-lamb-stew.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T20:57:05Z"
+    },
+    "old-babylonian-elamite-dill-and-sour-milk-broth": {
+      "file": "images/recipes/old-babylonian-elamite-dill-and-sour-milk-broth.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T20:57:50Z"
+    },
+    "old-babylonian-turnip-greens-with-beer-and-garlic": {
+      "file": "images/recipes/old-babylonian-turnip-greens-with-beer-and-garlic.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T20:58:57Z"
+    },
+    "old-babylonian-lamb-with-barley-cakes-and-onion": {
+      "file": "images/recipes/old-babylonian-lamb-with-barley-cakes-and-onion.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T20:58:59Z"
+    },
+    "egyptian-emmer-bread-with-date-honey": {
+      "file": "images/recipes/egyptian-emmer-bread-with-date-honey.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T20:59:19Z"
+    },
+    "egyptian-nile-fish-with-coriander-and-leeks": {
+      "file": "images/recipes/egyptian-nile-fish-with-coriander-and-leeks.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T20:59:44Z"
+    },
+    "egyptian-lentil-onion-stew": {
+      "file": "images/recipes/egyptian-lentil-onion-stew.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T20:59:47Z"
+    },
+    "egyptian-tiger-nut-honey-cakes": {
+      "file": "images/recipes/egyptian-tiger-nut-honey-cakes.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:00:02Z"
+    },
+    "classical-greek-barley-maza-with-olive-relish": {
+      "file": "images/recipes/classical-greek-barley-maza-with-olive-relish.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:00:33Z"
+    },
+    "egyptian-beer-bread-onion-pottage": {
+      "file": "images/recipes/egyptian-beer-bread-onion-pottage.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:00:35Z"
+    },
+    "classical-greek-lentil-soup-with-vinegar-and-coriander": {
+      "file": "images/recipes/classical-greek-lentil-soup-with-vinegar-and-coriander.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:00:53Z"
+    },
+    "classical-greek-aegean-fish-with-asafoetida-and-herbs": {
+      "file": "images/recipes/classical-greek-aegean-fish-with-asafoetida-and-herbs.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:01:20Z"
+    },
+    "classical-greek-cheese-honey-sesame-cakes": {
+      "file": "images/recipes/classical-greek-cheese-honey-sesame-cakes.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:01:26Z"
+    },
+    "classical-greek-fig-and-wine-poached-fowl": {
+      "file": "images/recipes/classical-greek-fig-and-wine-poached-fowl.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:01:39Z"
+    },
+    "roman-apician-lentils-with-chestnuts": {
+      "file": "images/recipes/roman-apician-lentils-with-chestnuts.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:02:04Z"
+    },
+    "roman-chicken-in-honeyed-garum": {
+      "file": "images/recipes/roman-chicken-in-honeyed-garum.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:02:08Z"
+    },
+    "roman-patina-of-pears": {
+      "file": "images/recipes/roman-patina-of-pears.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:02:28Z"
+    },
+    "roman-lucanian-sausage-patties": {
+      "file": "images/recipes/roman-lucanian-sausage-patties.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:02:51Z"
+    },
+    "roman-peas-a-la-vitellius": {
+      "file": "images/recipes/roman-peas-a-la-vitellius.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:02:55Z"
+    },
+    "byzantine-garos-fish-with-cabbage": {
+      "file": "images/recipes/byzantine-garos-fish-with-cabbage.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:03:15Z"
+    },
+    "byzantine-wheat-berry-trahana-style-soup": {
+      "file": "images/recipes/byzantine-wheat-berry-trahana-style-soup.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:03:35Z"
+    },
+    "byzantine-honeyed-cheese-placenta": {
+      "file": "images/recipes/byzantine-honeyed-cheese-placenta.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:03:37Z"
+    },
+    "byzantine-dill-lentil-skillet": {
+      "file": "images/recipes/byzantine-dill-lentil-skillet.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:04:08Z"
+    },
+    "abbasid-sikbaj-vinegar-beef-stew": {
+      "file": "images/recipes/abbasid-sikbaj-vinegar-beef-stew.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:04:26Z"
+    },
+    "byzantine-pomegranate-chicken-stew": {
+      "file": "images/recipes/byzantine-pomegranate-chicken-stew.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:04:38Z"
+    },
+    "abbasid-judhaba-chicken-over-bread-pudding": {
+      "file": "images/recipes/abbasid-judhaba-chicken-over-bread-pudding.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:04:54Z"
+    },
+    "abbasid-zirbaja-almond-chicken": {
+      "file": "images/recipes/abbasid-zirbaja-almond-chicken.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:05:18Z"
+    },
+    "abbasid-harisa-wheat-and-lamb-porridge": {
+      "file": "images/recipes/abbasid-harisa-wheat-and-lamb-porridge.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:05:31Z"
+    },
+    "abbasid-bazmaward-rolled-bread": {
+      "file": "images/recipes/abbasid-bazmaward-rolled-bread.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:05:36Z"
+    },
+    "andalusian-isfiriya-spiced-meat-patties": {
+      "file": "images/recipes/andalusian-isfiriya-spiced-meat-patties.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:06:02Z"
+    },
+    "andalusian-tuffahiya-apple-lamb-stew": {
+      "file": "images/recipes/andalusian-tuffahiya-apple-lamb-stew.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:06:18Z"
+    },
+    "andalusian-mujabbana-cheese-fritters": {
+      "file": "images/recipes/andalusian-mujabbana-cheese-fritters.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:06:25Z"
+    },
+    "andalusian-spinach-with-raisins-and-murri": {
+      "file": "images/recipes/andalusian-spinach-with-raisins-and-murri.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:06:49Z"
+    },
+    "andalusian-eggplant-with-walnuts-and-vinegar": {
+      "file": "images/recipes/andalusian-eggplant-with-walnuts-and-vinegar.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:07:03Z"
+    },
+    "maghrebi-couscous-with-turnips-and-chickpeas": {
+      "file": "images/recipes/maghrebi-couscous-with-turnips-and-chickpeas.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:07:15Z"
+    },
+    "maghrebi-lamb-with-prunes-and-almonds": {
+      "file": "images/recipes/maghrebi-lamb-with-prunes-and-almonds.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:07:44Z"
+    },
+    "maghrebi-carrot-cumin-salad": {
+      "file": "images/recipes/maghrebi-carrot-cumin-salad.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:08:04Z"
+    },
+    "maghrebi-harira-lentil-chickpea-pot": {
+      "file": "images/recipes/maghrebi-harira-lentil-chickpea-pot.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:08:17Z"
+    },
+    "maghrebi-semolina-date-cakes": {
+      "file": "images/recipes/maghrebi-semolina-date-cakes.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:08:31Z"
+    },
+    "levantine-sumac-fish-with-onions": {
+      "file": "images/recipes/levantine-sumac-fish-with-onions.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:08:59Z"
+    },
+    "levantine-chickpea-and-tahini-patties": {
+      "file": "images/recipes/levantine-chickpea-and-tahini-patties.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:09:18Z"
+    },
+    "levantine-kishk-soup-with-lamb": {
+      "file": "images/recipes/levantine-kishk-soup-with-lamb.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:09:36Z"
+    },
+    "levantine-stuffed-grape-leaves-with-lentils": {
+      "file": "images/recipes/levantine-stuffed-grape-leaves-with-lentils.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:09:52Z"
+    },
+    "levantine-date-molasses-eggplant": {
+      "file": "images/recipes/levantine-date-molasses-eggplant.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:10:18Z"
+    },
+    "persianate-saffron-rice-with-barberries": {
+      "file": "images/recipes/persianate-saffron-rice-with-barberries.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:10:34Z"
+    },
+    "persianate-pomegranate-walnut-fowl": {
+      "file": "images/recipes/persianate-pomegranate-walnut-fowl.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:10:40Z"
+    },
+    "persianate-herb-omelet-kuku": {
+      "file": "images/recipes/persianate-herb-omelet-kuku.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:11:05Z"
+    },
+    "persianate-sour-orange-lamb-stew": {
+      "file": "images/recipes/persianate-sour-orange-lamb-stew.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:11:16Z"
+    },
+    "persianate-rosewater-almond-halwa": {
+      "file": "images/recipes/persianate-rosewater-almond-halwa.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:11:29Z"
+    },
+    "ottoman-mutancana-lamb-with-dried-fruit": {
+      "file": "images/recipes/ottoman-mutancana-lamb-with-dried-fruit.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:12:00Z"
+    },
+    "ottoman-tutmac-noodle-soup": {
+      "file": "images/recipes/ottoman-tutmac-noodle-soup.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:12:00Z"
+    },
+    "ottoman-stuffed-quince-with-minced-lamb": {
+      "file": "images/recipes/ottoman-stuffed-quince-with-minced-lamb.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:12:26Z"
+    },
+    "ottoman-yogurt-mint-chickpea-soup": {
+      "file": "images/recipes/ottoman-yogurt-mint-chickpea-soup.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:12:47Z"
+    },
+    "ottoman-almond-rice-pilaf": {
+      "file": "images/recipes/ottoman-almond-rice-pilaf.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:13:02Z"
+    },
+    "medieval-english-makerouns": {
+      "file": "images/recipes/medieval-english-makerouns.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:13:11Z"
+    },
+    "medieval-english-sawse-madame-goose": {
+      "file": "images/recipes/medieval-english-sawse-madame-goose.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:13:36Z"
+    },
+    "medieval-english-tart-in-ymber-day": {
+      "file": "images/recipes/medieval-english-tart-in-ymber-day.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:14:00Z"
+    },
+    "medieval-english-pygg-in-sawse-sawge": {
+      "file": "images/recipes/medieval-english-pygg-in-sawse-sawge.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:14:12Z"
+    },
+    "medieval-english-frumenty-with-venison": {
+      "file": "images/recipes/medieval-english-frumenty-with-venison.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:14:20Z"
+    },
+    "medieval-french-green-porray-pottage": {
+      "file": "images/recipes/medieval-french-green-porray-pottage.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:14:42Z"
+    },
+    "medieval-french-cameline-roast-chicken": {
+      "file": "images/recipes/medieval-french-cameline-roast-chicken.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:15:01Z"
+    },
+    "medieval-french-civet-of-hare-or-rabbit": {
+      "file": "images/recipes/medieval-french-civet-of-hare-or-rabbit.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:15:22Z"
+    },
+    "medieval-french-blancmanger-of-rice-and-chicken": {
+      "file": "images/recipes/medieval-french-blancmanger-of-rice-and-chicken.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:15:34Z"
+    },
+    "medieval-french-pears-in-hypocras-syrup": {
+      "file": "images/recipes/medieval-french-pears-in-hypocras-syrup.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:15:44Z"
+    },
+    "renaissance-italian-herb-ravioli-in-broth": {
+      "file": "images/recipes/renaissance-italian-herb-ravioli-in-broth.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:16:11Z"
+    },
+    "renaissance-italian-white-garlic-sauce-chicken": {
+      "file": "images/recipes/renaissance-italian-white-garlic-sauce-chicken.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:16:25Z"
+    },
+    "renaissance-italian-saffron-rice-torta": {
+      "file": "images/recipes/renaissance-italian-saffron-rice-torta.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:16:28Z"
+    },
+    "renaissance-italian-fennel-sausage-with-verjuice": {
+      "file": "images/recipes/renaissance-italian-fennel-sausage-with-verjuice.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:17:07Z"
+    },
+    "renaissance-italian-almond-milk-rice-pudding": {
+      "file": "images/recipes/renaissance-italian-almond-milk-rice-pudding.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:17:12Z"
+    },
+    "catalan-almond-picada-fish-stew": {
+      "file": "images/recipes/catalan-almond-picada-fish-stew.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:17:21Z"
+    },
+    "catalan-menjar-blanc": {
+      "file": "images/recipes/catalan-menjar-blanc.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:17:56Z"
+    },
+    "catalan-spinach-with-raisins-and-pine-nuts": {
+      "file": "images/recipes/catalan-spinach-with-raisins-and-pine-nuts.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:18:11Z"
+    },
+    "catalan-escabeche-of-trout": {
+      "file": "images/recipes/catalan-escabeche-of-trout.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:18:18Z"
+    },
+    "catalan-catalan-chickpea-potage": {
+      "file": "images/recipes/catalan-catalan-chickpea-potage.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:18:36Z"
+    },
+    "german-medieval-spiced-apple-fritters": {
+      "file": "images/recipes/german-medieval-spiced-apple-fritters.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:18:57Z"
+    },
+    "german-medieval-barley-pea-pottage": {
+      "file": "images/recipes/german-medieval-barley-pea-pottage.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:19:22Z"
+    },
+    "german-medieval-green-herb-sauce-eggs": {
+      "file": "images/recipes/german-medieval-green-herb-sauce-eggs.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:19:23Z"
+    },
+    "german-medieval-roast-pork-with-caraway-mustard": {
+      "file": "images/recipes/german-medieval-roast-pork-with-caraway-mustard.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:19:44Z"
+    },
+    "german-medieval-gingerbread-wafers": {
+      "file": "images/recipes/german-medieval-gingerbread-wafers.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:20:10Z"
+    },
+    "norse-barley-and-smoked-fish-pottage": {
+      "file": "images/recipes/norse-barley-and-smoked-fish-pottage.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:20:12Z"
+    },
+    "norse-rye-flatbread-with-skyr": {
+      "file": "images/recipes/norse-rye-flatbread-with-skyr.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:20:26Z"
+    },
+    "norse-juniper-apple-pork": {
+      "file": "images/recipes/norse-juniper-apple-pork.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:20:54Z"
+    },
+    "norse-lamb-with-cabbage-and-angelica": {
+      "file": "images/recipes/norse-lamb-with-cabbage-and-angelica.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:20:56Z"
+    },
+    "norse-dried-pea-and-root-mash": {
+      "file": "images/recipes/norse-dried-pea-and-root-mash.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:21:08Z"
+    },
+    "anglo-saxon-ale-braised-beef-with-leeks": {
+      "file": "images/recipes/anglo-saxon-ale-braised-beef-with-leeks.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:21:37Z"
+    },
+    "anglo-saxon-oatcakes-with-fresh-cheese": {
+      "file": "images/recipes/anglo-saxon-oatcakes-with-fresh-cheese.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:21:47Z"
+    },
+    "anglo-saxon-pea-and-onion-pottage": {
+      "file": "images/recipes/anglo-saxon-pea-and-onion-pottage.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:21:53Z"
+    },
+    "anglo-saxon-honeyed-apple-barley": {
+      "file": "images/recipes/anglo-saxon-honeyed-apple-barley.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:22:34Z"
+    },
+    "anglo-saxon-roast-hen-with-herbs-and-parsnips": {
+      "file": "images/recipes/anglo-saxon-roast-hen-with-herbs-and-parsnips.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:22:34Z"
+    },
+    "insular-celtic-cawl-of-leeks-and-mutton": {
+      "file": "images/recipes/insular-celtic-cawl-of-leeks-and-mutton.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:22:38Z"
+    },
+    "insular-celtic-salmon-with-sorrel-butter": {
+      "file": "images/recipes/insular-celtic-salmon-with-sorrel-butter.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:23:19Z"
+    },
+    "insular-celtic-oat-bannocks-with-honey": {
+      "file": "images/recipes/insular-celtic-oat-bannocks-with-honey.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:23:19Z"
+    },
+    "insular-celtic-barley-root-vegetable-stew": {
+      "file": "images/recipes/insular-celtic-barley-root-vegetable-stew.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:23:27Z"
+    },
+    "malwa-mughal-nimatnama-samosa-style-pastries": {
+      "file": "images/recipes/malwa-mughal-nimatnama-samosa-style-pastries.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:24:06Z"
+    },
+    "insular-celtic-apple-cider-pork-pot": {
+      "file": "images/recipes/insular-celtic-apple-cider-pork-pot.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:24:11Z"
+    },
+    "malwa-mughal-saffron-mutton-qaliya": {
+      "file": "images/recipes/malwa-mughal-saffron-mutton-qaliya.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:24:11Z"
+    },
+    "malwa-mughal-spiced-rice-pulao-with-pistachios": {
+      "file": "images/recipes/malwa-mughal-spiced-rice-pulao-with-pistachios.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:24:58Z"
+    },
+    "malwa-mughal-firni-with-cardamom": {
+      "file": "images/recipes/malwa-mughal-firni-with-cardamom.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:25:06Z"
+    },
+    "malwa-mughal-almond-chicken-with-rosewater": {
+      "file": "images/recipes/malwa-mughal-almond-chicken-with-rosewater.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:25:07Z"
+    },
+    "qing-chinese-mock-crab-of-egg-and-fish": {
+      "file": "images/recipes/qing-chinese-mock-crab-of-egg-and-fish.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:25:49Z"
+    },
+    "qing-chinese-steamed-fish-with-ginger-and-scallion": {
+      "file": "images/recipes/qing-chinese-steamed-fish-with-ginger-and-scallion.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:25:52Z"
+    },
+    "qing-chinese-red-braised-pork-with-rock-sugar": {
+      "file": "images/recipes/qing-chinese-red-braised-pork-with-rock-sugar.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:25:58Z"
+    },
+    "qing-chinese-tea-smoked-duck": {
+      "file": "images/recipes/qing-chinese-tea-smoked-duck.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:26:42Z"
+    },
+    "qing-chinese-ham-simmered-cabbage": {
+      "file": "images/recipes/qing-chinese-ham-simmered-cabbage.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:26:42Z"
+    },
+    "song-yuan-chinese-millet-congee-with-scallion": {
+      "file": "images/recipes/song-yuan-chinese-millet-congee-with-scallion.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:26:44Z"
+    },
+    "song-yuan-chinese-mutton-soup-with-turnip": {
+      "file": "images/recipes/song-yuan-chinese-mutton-soup-with-turnip.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:27:26Z"
+    },
+    "song-yuan-chinese-sesame-noodles-with-vinegar": {
+      "file": "images/recipes/song-yuan-chinese-sesame-noodles-with-vinegar.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:27:26Z"
+    },
+    "song-yuan-chinese-soy-braised-wheat-gluten": {
+      "file": "images/recipes/song-yuan-chinese-soy-braised-wheat-gluten.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:27:31Z"
+    },
+    "song-yuan-chinese-lotus-root-and-pork-broth": {
+      "file": "images/recipes/song-yuan-chinese-lotus-root-and-pork-broth.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:28:07Z"
+    },
+    "japanese-miso-grilled-eggplant": {
+      "file": "images/recipes/japanese-miso-grilled-eggplant.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:28:07Z"
+    },
+    "japanese-chestnut-rice": {
+      "file": "images/recipes/japanese-chestnut-rice.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:28:22Z"
+    },
+    "japanese-clear-fish-broth-with-greens": {
+      "file": "images/recipes/japanese-clear-fish-broth-with-greens.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:28:49Z"
+    },
+    "japanese-simmered-tofu-with-ginger": {
+      "file": "images/recipes/japanese-simmered-tofu-with-ginger.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:28:59Z"
+    },
+    "japanese-sweet-red-bean-mochi": {
+      "file": "images/recipes/japanese-sweet-red-bean-mochi.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:29:05Z"
+    },
+    "joseon-korean-steamed-stuffed-cucumber": {
+      "file": "images/recipes/joseon-korean-steamed-stuffed-cucumber.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:29:38Z"
+    },
+    "joseon-korean-jang-gyehyang-noodle-soup": {
+      "file": "images/recipes/joseon-korean-jang-gyehyang-noodle-soup.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:29:43Z"
+    },
+    "joseon-korean-beef-pear-skewers": {
+      "file": "images/recipes/joseon-korean-beef-pear-skewers.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:29:45Z"
+    },
+    "joseon-korean-soybean-paste-fish-stew": {
+      "file": "images/recipes/joseon-korean-soybean-paste-fish-stew.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:30:22Z"
+    },
+    "joseon-korean-rice-cake-with-honey": {
+      "file": "images/recipes/joseon-korean-rice-cake-with-honey.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:30:25Z"
+    },
+    "nahua-amaranth-honey-cakes": {
+      "file": "images/recipes/nahua-amaranth-honey-cakes.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:30:28Z"
+    },
+    "nahua-bean-and-squash-tamales": {
+      "file": "images/recipes/nahua-bean-and-squash-tamales.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:31:11Z"
+    },
+    "nahua-turkey-in-chili-cacao-broth": {
+      "file": "images/recipes/nahua-turkey-in-chili-cacao-broth.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:31:15Z"
+    },
+    "nahua-pumpkin-seed-chili-sauce": {
+      "file": "images/recipes/nahua-pumpkin-seed-chili-sauce.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:31:30Z"
+    },
+    "nahua-atole-with-chia-and-honey": {
+      "file": "images/recipes/nahua-atole-with-chia-and-honey.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:31:57Z"
+    },
+    "maya-chaya-pumpkin-seed-tamal": {
+      "file": "images/recipes/maya-chaya-pumpkin-seed-tamal.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:32:00Z"
+    },
+    "maya-cacao-atole": {
+      "file": "images/recipes/maya-cacao-atole.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:32:32Z"
+    },
+    "maya-turkey-pozole-with-chili": {
+      "file": "images/recipes/maya-turkey-pozole-with-chili.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:32:43Z"
+    },
+    "maya-squash-blossom-bean-stew": {
+      "file": "images/recipes/maya-squash-blossom-bean-stew.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:32:53Z"
+    },
+    "maya-maize-cakes-with-honey": {
+      "file": "images/recipes/maya-maize-cakes-with-honey.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:33:20Z"
+    },
+    "inca-quinoa-herb-soup": {
+      "file": "images/recipes/inca-quinoa-herb-soup.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:33:28Z"
+    },
+    "inca-chuno-and-peanut-stew": {
+      "file": "images/recipes/inca-chuno-and-peanut-stew.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:33:39Z"
+    },
+    "inca-corn-and-bean-humitas": {
+      "file": "images/recipes/inca-corn-and-bean-humitas.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:34:15Z"
+    },
+    "inca-trout-with-aji-and-huacatay": {
+      "file": "images/recipes/inca-trout-with-aji-and-huacatay.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:34:16Z"
+    },
+    "inca-charqui-herb-skewers": {
+      "file": "images/recipes/inca-charqui-herb-skewers.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:34:33Z"
+    },
+    "early-american-indian-pudding-with-molasses": {
+      "file": "images/recipes/early-american-indian-pudding-with-molasses.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:34:55Z"
+    },
+    "early-american-pumpkin-pie-with-ginger": {
+      "file": "images/recipes/early-american-pumpkin-pie-with-ginger.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:34:58Z"
+    },
+    "early-american-johnny-cake-griddlebread": {
+      "file": "images/recipes/early-american-johnny-cake-griddlebread.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:35:13Z"
+    },
+    "early-american-cranberry-tart": {
+      "file": "images/recipes/early-american-cranberry-tart.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:35:41Z"
+    },
+    "early-american-election-cake-with-pearlash": {
+      "file": "images/recipes/early-american-election-cake-with-pearlash.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:35:52Z"
+    },
+    "virginia-ochra-soup": {
+      "file": "images/recipes/virginia-ochra-soup.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:35:56Z"
+    },
+    "virginia-catfish-soup": {
+      "file": "images/recipes/virginia-catfish-soup.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:36:23Z"
+    },
+    "virginia-sweet-potato-pudding": {
+      "file": "images/recipes/virginia-sweet-potato-pudding.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:36:38Z"
+    },
+    "virginia-corn-meal-batter-cakes": {
+      "file": "images/recipes/virginia-corn-meal-batter-cakes.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:36:50Z"
+    },
+    "virginia-apple-fritters-with-brandy": {
+      "file": "images/recipes/virginia-apple-fritters-with-brandy.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:37:13Z"
+    },
+    "georgian-english-yorkshire-pudding": {
+      "file": "images/recipes/georgian-english-yorkshire-pudding.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:37:20Z"
+    },
+    "georgian-english-curry-the-indian-way": {
+      "file": "images/recipes/georgian-english-curry-the-indian-way.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:37:39Z"
+    },
+    "georgian-english-pea-soup-with-mint": {
+      "file": "images/recipes/georgian-english-pea-soup-with-mint.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:38:02Z"
+    },
+    "georgian-english-trifle-with-syllabub": {
+      "file": "images/recipes/georgian-english-trifle-with-syllabub.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:38:05Z"
+    },
+    "georgian-english-pickled-mushrooms": {
+      "file": "images/recipes/georgian-english-pickled-mushrooms.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:38:32Z"
+    },
+    "norse-rye-flatbread-with-skyr:ingredients": {
+      "file": "images/recipes/norse-rye-flatbread-with-skyr-ingredients.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:47:43Z"
+    },
+    "norse-rye-flatbread-with-skyr:process": {
+      "file": "images/recipes/norse-rye-flatbread-with-skyr-process.webp",
+      "model": "gpt-image-2",
+      "quality": "medium",
+      "size": "1536x1024",
+      "format": "webp",
+      "generatedAt": "2026-06-18T21:47:52Z"
+    }
+  },
+  "model": "gpt-image-2",
+  "quality": "medium",
+  "size": "1536x1024",
+  "format": "webp",
+  "updatedAt": "2026-06-18T21:46:53Z"
+}
