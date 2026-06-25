@@ -17,6 +17,7 @@ import {
 } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined'
+import { formatSourceReference } from '../utils/recipeUtils'
 
 const sectionCardSx = {
   p: 2.1,
@@ -210,11 +211,15 @@ function RecipeDetailsDrawer({
                             <Divider />
                             <Typography variant="subtitle2">Sources</Typography>
                             <List dense disablePadding>
-                              {selectedRecipe.history.sources.map((source) => (
-                                <ListItem key={source} disableGutters>
-                                  <ListItemText primary={source} />
-                                </ListItem>
-                              ))}
+                              {selectedRecipe.history.sources.map((source, i) => {
+                                const sourceLabel = formatSourceReference(source)
+
+                                return (
+                                  <ListItem key={source.id || source.url || sourceLabel || i} disableGutters>
+                                    <ListItemText primary={sourceLabel} />
+                                  </ListItem>
+                                )
+                              })}
                             </List>
                           </>
                         )}

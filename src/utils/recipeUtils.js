@@ -46,6 +46,24 @@ export function getRecipeSubstitutions(recipe) {
   return Array.from(new Set(substitutions))
 }
 
+export function formatSourceReference(source) {
+  if (!source) {
+    return ''
+  }
+
+  if (typeof source === 'string') {
+    return source
+  }
+
+  if (source.citation) {
+    return source.citation
+  }
+
+  const details = [source.author, source.year].filter((value) => value != null && value !== '').join(', ')
+
+  return [source.title, details].filter(Boolean).join(' - ') || source.id || source.url || 'Source reference'
+}
+
 export function formatSelectedValues(selected, emptyLabel) {
   if (!Array.isArray(selected) || selected.length === 0) {
     return emptyLabel

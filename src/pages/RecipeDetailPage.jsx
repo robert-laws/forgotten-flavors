@@ -16,6 +16,7 @@ import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined'
 import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline'
 import HistoryEduIcon from '@mui/icons-material/HistoryEdu'
 import TuneIcon from '@mui/icons-material/Tune'
+import { formatSourceReference } from '../utils/recipeUtils'
 
 // ─── Page ────────────────────────────────────────────────────────────────────
 
@@ -399,9 +400,12 @@ export default function RecipeDetailPage() {
                     Sources &amp; References
                   </Typography>
                   <Stack spacing={0.75}>
-                    {recipe.history.sources.map((source, i) => (
+                    {recipe.history.sources.map((source, i) => {
+                      const sourceLabel = formatSourceReference(source)
+
+                      return (
                       <Typography
-                        key={i}
+                        key={source.id || source.url || sourceLabel || i}
                         variant="body2"
                         color="text.secondary"
                         sx={{
@@ -411,9 +415,10 @@ export default function RecipeDetailPage() {
                           lineHeight: 1.6,
                         }}
                       >
-                        {source}
+                        {sourceLabel}
                       </Typography>
-                    ))}
+                      )
+                    })}
                   </Stack>
                 </Box>
               )}
