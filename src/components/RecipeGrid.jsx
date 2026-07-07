@@ -3,6 +3,7 @@ import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined'
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined'
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined'
 import { Link } from 'react-router-dom'
+import { getRecipeImageAlt, getRecipeMediaUrl } from '../utils/recipeUtils'
 
 function RecipeGrid({ recipes, estimateMinutes, getIngredientLine, onOpenRecipeDetails }) {
   return (
@@ -16,38 +17,105 @@ function RecipeGrid({ recipes, estimateMinutes, getIngredientLine, onOpenRecipeD
       {recipes.map((recipe) => {
         const minutes = estimateMinutes(recipe)
         const recordedYear = formatRecordedYear(recipe.history?.firstRecordedYear)
+        const thumbnailUrl = getRecipeMediaUrl(recipe, 'thumbnailImage')
 
         return (
           <Card
             key={recipe.id}
             sx={{
               height: '100%',
-              minHeight: 400,
+              minHeight: 540,
               overflow: 'hidden',
               position: 'relative',
               background: 'linear-gradient(180deg, rgba(251, 244, 232, 0.98) 0%, rgba(244, 235, 222, 0.98) 100%)',
-              '&::before': {
-                content: '""',
-                position: 'absolute',
-                inset: '0 0 auto 0',
-                height: 7,
-                background: 'linear-gradient(90deg, #9b5631 0%, #d59a69 55%, #3f6b62 100%)',
-              },
             }}
           >
             <CardContent sx={{ p: 0, height: '100%', display: 'flex', flexDirection: 'column' }}>
+              {thumbnailUrl && (
+                <Box
+                  sx={{
+                    position: 'relative',
+                    aspectRatio: '16 / 9',
+                    overflow: 'hidden',
+                    bgcolor: '#201812',
+                    borderBottom: '1px solid rgba(72, 50, 32, 0.12)',
+                  }}
+                >
+                  <Box
+                    component="img"
+                    src={thumbnailUrl}
+                    alt={getRecipeImageAlt(recipe)}
+                    loading="lazy"
+                    sx={{
+                      display: 'block',
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                    }}
+                  />
+                  <Box
+                    sx={{
+                      position: 'absolute',
+                      inset: 0,
+                      background:
+                        'linear-gradient(180deg, rgba(16, 10, 6, 0.02) 0%, rgba(16, 10, 6, 0.18) 62%, rgba(16, 10, 6, 0.58) 100%)',
+                      pointerEvents: 'none',
+                    }}
+                  />
+                  <Chip
+                    label={recipe.macroRegion || recipe.region || 'Archive'}
+                    size="small"
+                    sx={{
+                      position: 'absolute',
+                      left: 14,
+                      bottom: 14,
+                      bgcolor: 'rgba(255, 248, 239, 0.88)',
+                      color: 'text.primary',
+                      border: '1px solid rgba(255, 248, 239, 0.5)',
+                    }}
+                  />
+                </Box>
+              )}
+
               <Stack spacing={1.75} sx={{ p: 2.25, height: '100%' }}>
                 <Stack direction="row" justifyContent="space-between" alignItems="flex-start" spacing={1.25}>
-                  <Box>
-                    <Typography variant="overline" sx={{ color: 'secondary.main' }}>
+                  <Box sx={{ minWidth: 0 }}>
+                    <Typography
+                      variant="overline"
+                      sx={{ color: 'secondary.main', display: 'block', lineHeight: 1.4 }}
+                    >
                       {recipe.culture || 'Archive'}
                     </Typography>
-                    <Typography variant="h6" sx={{ mt: 0.35, lineHeight: 1.08 }}>
+                    <Typography
+                      component={Link}
+                      to={`/recipe/${recipe.id}`}
+                      variant="h6"
+                      sx={{
+                        mt: 0.35,
+                        lineHeight: 1.08,
+                        color: 'text.primary',
+                        display: 'block',
+                        textDecoration: 'underline',
+                        textDecorationColor: 'rgba(155, 86, 49, 0.36)',
+                        textDecorationThickness: 2,
+                        textUnderlineOffset: 5,
+                        transition: 'color 0.15s ease, text-decoration-color 0.15s ease',
+                        '&:hover': {
+                          color: 'primary.main',
+                          textDecorationColor: 'primary.main',
+                        },
+                        '&:focus-visible': {
+                          outline: '3px solid rgba(155, 86, 49, 0.32)',
+                          outlineOffset: 4,
+                          borderRadius: 1,
+                        },
+                      }}
+                    >
                       {recipe.name}
                     </Typography>
                   </Box>
 
-                  <Stack spacing={0.75} alignItems="flex-end">
+                  <Stack spacing={0.75} alignItems="flex-end" sx={{ flexShrink: 0 }}>
                     {recordedYear && <Chip size="small" label={recordedYear} variant="outlined" />}
                     {minutes && (
                       <Chip

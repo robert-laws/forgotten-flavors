@@ -88,7 +88,7 @@ function RecipeToolbar({
           }}
         />
         <Typography variant="body2" color="text.secondary">
-          {filteredCount !== totalCount ? `Filtered from ${totalCount} total` : 'All recipes shown'}
+          {filteredCount !== totalCount ? `Filtered from ${totalCount} total` : `Full ${totalCount}-recipe archive`}
         </Typography>
         {activeFilters.map((label) => (
           <Chip key={label} label={label} size="small" variant="outlined" color="primary" />
