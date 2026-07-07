@@ -16,7 +16,7 @@ import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined'
 import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline'
 import HistoryEduIcon from '@mui/icons-material/HistoryEdu'
 import TuneIcon from '@mui/icons-material/Tune'
-import { formatSourceReference } from '../utils/recipeUtils'
+import { formatSourceReference, getRecipeImageAlt, getRecipeMediaUrl } from '../utils/recipeUtils'
 
 // ─── Page ────────────────────────────────────────────────────────────────────
 
@@ -86,6 +86,7 @@ export default function RecipeDetailPage() {
 
   const required = (recipe.ingredients || []).filter((i) => !i.optional)
   const optional = (recipe.ingredients || []).filter((i) => i.optional)
+  const heroImageUrl = getRecipeMediaUrl(recipe, 'heroImage')
 
   return (
     <Box sx={{ minHeight: '100vh' }}>
@@ -133,75 +134,123 @@ export default function RecipeDetailPage() {
             Archive
           </Button>
 
-          {/* Culture · Era */}
-          <Typography
-            variant="overline"
-            sx={{ color: 'rgba(203,137,89,0.8)', display: 'block', letterSpacing: 0 }}
-          >
-            {[recipe.culture, recipe.era].filter(Boolean).join(' · ')}
-          </Typography>
-
-          {/* Title */}
-          <Typography
-            variant="h2"
+          <Box
             sx={{
-              color: '#fff8ef',
-              mt: 0.75,
-              mb: 2.5,
-              maxWidth: 740,
+              display: 'grid',
+              gap: { xs: 3, md: 5 },
+              alignItems: 'end',
+              gridTemplateColumns: { xs: '1fr', md: heroImageUrl ? 'minmax(0, 1fr) minmax(360px, 0.68fr)' : '1fr' },
+              mb: 4.5,
             }}
           >
-            {recipe.name}
-          </Typography>
+            <Box>
+              {/* Culture · Era */}
+              <Typography
+                variant="overline"
+                sx={{ color: 'rgba(203,137,89,0.8)', display: 'block', letterSpacing: 0 }}
+              >
+                {[recipe.culture, recipe.era].filter(Boolean).join(' · ')}
+              </Typography>
 
-          {/* Meta chips */}
-          <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap" sx={{ mb: 4.5 }}>
-            {recipe.region && (
-              <Chip
-                label={recipe.region}
-                size="small"
+              {/* Title */}
+              <Typography
+                variant="h2"
                 sx={{
-                  bgcolor: 'rgba(255,248,239,0.09)',
-                  color: '#ffe8d0',
-                  border: '1px solid rgba(255,248,239,0.16)',
+                  color: '#fff8ef',
+                  mt: 0.75,
+                  mb: 2.5,
+                  maxWidth: 740,
                 }}
-              />
+              >
+                {recipe.name}
+              </Typography>
+
+              {/* Meta chips */}
+              <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap">
+                {recipe.region && (
+                  <Chip
+                    label={recipe.region}
+                    size="small"
+                    sx={{
+                      bgcolor: 'rgba(255,248,239,0.09)',
+                      color: '#ffe8d0',
+                      border: '1px solid rgba(255,248,239,0.16)',
+                    }}
+                  />
+                )}
+                {yearLabel && (
+                  <Chip
+                    label={`circa ${yearLabel}`}
+                    size="small"
+                    sx={{
+                      bgcolor: 'rgba(155,86,49,0.2)',
+                      color: '#ffd4a8',
+                      border: '1px solid rgba(203,137,89,0.28)',
+                    }}
+                  />
+                )}
+                {recipe.history?.authenticity && (
+                  <Chip
+                    label={recipe.history.authenticity === 'inspired' ? 'Inspired' : 'Hybrid reconstruction'}
+                    size="small"
+                    sx={{
+                      bgcolor: 'rgba(63,107,98,0.22)',
+                      color: '#b4dad5',
+                      border: '1px solid rgba(125,156,147,0.28)',
+                    }}
+                  />
+                )}
+                {recipe.tags?.slice(0, 3).map((tag) => (
+                  <Chip
+                    key={tag}
+                    label={tag}
+                    size="small"
+                    sx={{
+                      bgcolor: 'rgba(255,248,239,0.05)',
+                      color: 'rgba(255,243,229,0.5)',
+                      border: '1px solid rgba(255,248,239,0.09)',
+                    }}
+                  />
+                ))}
+              </Stack>
+            </Box>
+
+            {heroImageUrl && (
+              <Box
+                sx={{
+                  position: 'relative',
+                  overflow: 'hidden',
+                  borderRadius: 4,
+                  aspectRatio: { xs: '16 / 10', md: '4 / 3' },
+                  minHeight: { xs: 230, md: 390 },
+                  border: '1px solid rgba(255,248,239,0.12)',
+                  boxShadow: '0 28px 70px rgba(0,0,0,0.34)',
+                  bgcolor: '#211812',
+                }}
+              >
+                <Box
+                  component="img"
+                  src={heroImageUrl}
+                  alt={getRecipeImageAlt(recipe)}
+                  sx={{
+                    display: 'block',
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                  }}
+                />
+                <Box
+                  sx={{
+                    position: 'absolute',
+                    inset: 0,
+                    background:
+                      'linear-gradient(180deg, rgba(17,12,8,0) 42%, rgba(17,12,8,0.66) 100%)',
+                    pointerEvents: 'none',
+                  }}
+                />
+              </Box>
             )}
-            {yearLabel && (
-              <Chip
-                label={`circa ${yearLabel}`}
-                size="small"
-                sx={{
-                  bgcolor: 'rgba(155,86,49,0.2)',
-                  color: '#ffd4a8',
-                  border: '1px solid rgba(203,137,89,0.28)',
-                }}
-              />
-            )}
-            {recipe.history?.authenticity && (
-              <Chip
-                label={recipe.history.authenticity === 'inspired' ? 'Inspired' : 'Hybrid reconstruction'}
-                size="small"
-                sx={{
-                  bgcolor: 'rgba(63,107,98,0.22)',
-                  color: '#b4dad5',
-                  border: '1px solid rgba(125,156,147,0.28)',
-                }}
-              />
-            )}
-            {recipe.tags?.slice(0, 3).map((tag) => (
-              <Chip
-                key={tag}
-                label={tag}
-                size="small"
-                sx={{
-                  bgcolor: 'rgba(255,248,239,0.05)',
-                  color: 'rgba(255,243,229,0.5)',
-                  border: '1px solid rgba(255,248,239,0.09)',
-                }}
-              />
-            ))}
-          </Stack>
+          </Box>
 
           {/* Stats bar */}
           <Box

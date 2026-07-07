@@ -64,6 +64,20 @@ export function formatSourceReference(source) {
   return [source.title, details].filter(Boolean).join(' - ') || source.id || source.url || 'Source reference'
 }
 
+export function getRecipeMediaUrl(recipe, imageKey = 'thumbnailImage') {
+  const imagePath = recipe.media?.[imageKey] || recipe.media?.heroImage || recipe.media?.thumbnailImage
+
+  if (!imagePath) {
+    return ''
+  }
+
+  return `${import.meta.env.BASE_URL}${imagePath.replace(/^\/+/, '')}`
+}
+
+export function getRecipeImageAlt(recipe) {
+  return recipe.media?.altText || `${recipe.name} prepared as a historical recipe reconstruction.`
+}
+
 export function formatSelectedValues(selected, emptyLabel) {
   if (!Array.isArray(selected) || selected.length === 0) {
     return emptyLabel
